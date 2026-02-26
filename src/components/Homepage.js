@@ -11,7 +11,8 @@ export default function Homepage() {
                   onClick={() => nav('/login')}>
             Login
           </button>
-          <button class="bg-dark-green hover:bg-black text-white font-bold text-xl py-5 px-[40px] rounded-full">
+          <button class="bg-dark-green hover:bg-black text-white font-bold text-xl py-5 px-[40px] rounded-full"
+                  onClick={() => nav('/sign-up')}>
             Sign up
           </button>
         </div>

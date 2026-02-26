@@ -10,7 +10,7 @@ export default function LoginPage () {
                     <img src={leftArrow} alt="arrow-icon" className='m-4 size-10' onClick={() => nav('/')}/>
                 </div>
                 <div className="flex flex-col flex-1 justify-center p-5 mb-5">
-                    <img src={plant} alt="plant-icon" className='size-60'/>
+                    <img src={plant} alt="plant-icon" className='size-60 mb-[70px]'/>
                 </div>
 
             </div>
