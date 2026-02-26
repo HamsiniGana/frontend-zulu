@@ -7,7 +7,7 @@ export default function LoginPage () {
         <div className="flex flex-row w-screen">
             <div className="flex flex-col bg-light-green items-center justify-center w-1/3">
                 <div className="flex flex-row justify-start items-start w-full ">
-                    <img src={leftArrow} alt="plant-icon" className='m-4 size-10' onClick={() => nav('/')}/>
+                    <img src={leftArrow} alt="arrow-icon" className='m-4 size-10' onClick={() => nav('/')}/>
                 </div>
                 <div className="flex flex-col flex-1 justify-center p-5 mb-5">
                     <img src={plant} alt="plant-icon" className='size-60'/>
@@ -48,7 +48,7 @@ export default function LoginPage () {
 
                         <p className="mt-10 text-center text-sm/6 text-gray-500">
                         Don't have an account?
-                        <a href="#" className="font-semibold text-dark-green hover:underline hover: decoration-2"> Sign up</a>
+                        <a className="font-semibold text-dark-green hover:underline hover: decoration-2"> Sign up</a>
                         </p>
                     </div>
                 </div>
