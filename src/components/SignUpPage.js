@@ -50,7 +50,7 @@ export default function SignUpPage () {
                             </form>
 
                         <p className="mt-10 text-center text-sm/6 text-gray-500">
-                        Don't have an account?
+                        Already have an account?
                         <a href="/login" className="font-semibold text-dark-green hover:underline hover: decoration-2"> Login</a>
                         </p>
                     </div>
