@@ -12,13 +12,13 @@ export default function SignUpPage () {
             </div>
                 <div className="flex h-screen flex-col flex-1 items-center justify-center mb-5 px-6 mb-[100px] lg:px-8 mt-0">
                         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                            <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Create your new account</h2>
+                            <h2 className="mt-10 text-center text-3xl font-bold tracking-tight text-gray-900">Create your new account</h2>
                         </div>
 
                         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                             <form action="#" method="POST" className="space-y-6">
                             <div>
-                                <label for="email" className="block text-sm/6 font-medium text-gray-900">Email address:</label>
+                                <label for="email" className="block text-lg font-medium text-gray-900">Email address:</label>
                                 <div className="mt-2">
                                 <input id="email" type="email" name="email" required autocomplete="email" className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                                 </div>
@@ -26,7 +26,7 @@ export default function SignUpPage () {
 
                             <div>
                                 <div className="flex items-center justify-between">
-                                <label for="password" className="block text-sm/6 font-medium text-gray-900">Password:</label>
+                                <label for="password" className="block text-lg font-medium text-gray-900">Password:</label>
                                 </div>
                                 <div className="mt-2">
                                 <input id="password" type="password" name="password" required autocomplete="current-password" className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
@@ -35,7 +35,7 @@ export default function SignUpPage () {
 
                             <div>
                                 <div className="flex items-center justify-between">
-                                <label for="confirm-password" className="block text-sm/6 font-medium text-gray-900">Confirm password:</label>
+                                <label for="confirm-password" className="block text-lg font-medium text-gray-900">Confirm password:</label>
                                 </div>
                                 <div className="mt-2">
                                 <input id="confirm-password" type="password" name="confirm-password" required autocomplete="confirm-password" className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
@@ -49,7 +49,7 @@ export default function SignUpPage () {
                             </div>
                             </form>
 
-                        <p className="mt-10 text-center text-sm/6 text-gray-500">
+                        <p className="mt-10 text-center text-md text-gray-500">
                         Already have an account?
                         <a href="/login" className="font-semibold text-dark-green hover:underline hover: decoration-2"> Login</a>
                         </p>
