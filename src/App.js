@@ -8,9 +8,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path='/' element={<LandingPage/>}/> */}
-        {/* change the ENDPOINT!!!!!!!!!!!!!! */}
-        <Route path='/' element={<Homepage />}/>
+        <Route path='/' element={<LandingPage/>}/>
+        <Route path='/homepage' element={<Homepage />}/>
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/sign-up' element={<SignUpPage/>}/>
       </Routes>
