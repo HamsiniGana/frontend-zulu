@@ -1,5 +1,4 @@
 import plantLight from '../assets/plantLight.png'
-import Homepage from './Homepage'
 import { useNavigate } from 'react-router-dom'
 export default function Navbar() {
     const nav = useNavigate()
@@ -8,7 +7,7 @@ export default function Navbar() {
             <div>
                 {/* change the ENDPOINT!!!!!!!!!!!!!! */}
                 <img src={plantLight} alt="plant-icon" className="w-20 h-20 p-2"
-                     onClick={() => nav('/')}/>
+                     onClick={() => nav('/homepage')}/>
             </div>
             <div className="flex flex-row gap-[60px] flex-1 justify-end
                             mr-[60px] text-black text-xl">
