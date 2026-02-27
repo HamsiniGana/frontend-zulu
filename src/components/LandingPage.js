@@ -7,6 +7,10 @@ export default function LandingPage() {
         <div className="bg-medium-green min-h-screen flex">
       <div className="bg-light-green w-full m-[50px] rounded-3xl flex flex-col items-center ">
         <div className="flex flex-row justify-end my-5 mr-[50px] mb-[160px] gap-5 w-full ">
+            <button class="bg-medium-green hover:bg-black hover:text-white text-black text-xl font-bold py-5 px-[40px] rounded-full"
+                  onClick={() => nav('/homepage')}>
+            Homepage
+          </button>
           <button class="bg-medium-green hover:bg-black hover:text-white text-black text-xl font-bold py-5 px-[40px] rounded-full"
                   onClick={() => nav('/login')}>
             Login
