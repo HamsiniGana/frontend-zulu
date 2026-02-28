@@ -5,7 +5,6 @@ export default function Navbar() {
     return (
         <div className="flex flex-row bg-dark-bottle-green items-center">
             <div>
-                {/* change the ENDPOINT!!!!!!!!!!!!!! */}
                 <img src={plantLight} alt="plant-icon" className="w-20 h-20 p-2"
                      onClick={() => nav('/homepage')}/>
             </div>
