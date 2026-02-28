@@ -1,6 +1,6 @@
 import plant from '../assets/plant.png'
 import { useNavigate } from 'react-router-dom'
-
+import LoadingPage from './LoadingPage'
 export default function LandingPage() {
   const nav = useNavigate()
     return (
@@ -8,7 +8,8 @@ export default function LandingPage() {
       <div className="bg-light-green w-full m-[50px] rounded-3xl flex flex-col items-center ">
         <div className="flex flex-row justify-end my-5 mr-[50px] mb-[160px] gap-5 w-full ">
             <button class="bg-medium-green hover:bg-black hover:text-white text-black text-xl font-bold py-5 px-[40px] rounded-full"
-                  onClick={() => nav('/homepage')}>
+                  onClick={() => nav('/loadingPage')}>
+
             Homepage
           </button>
           <button class="bg-medium-green hover:bg-black hover:text-white text-black text-xl font-bold py-5 px-[40px] rounded-full"
