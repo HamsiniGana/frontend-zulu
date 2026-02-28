@@ -7,11 +7,11 @@ export default function Homepage () {
   return (
     <div className="flex flex-col">
       <Navbar />
-      <div className="bg-light-green min-h-screen flex flex-col justify-center">
+      <div className="bg-light-green min-h-screen flex flex-col">
         <div className="flex flex-row gap-[20vw] bg-gradient-to-r from-medium-green
                         via-light-green to-medium-green mx-5 p-5 items-center justify-center
                         rounded-3xl shadow-2xl shadow-dark-bottle-green
-                        hover:scale-[1.01] h-[40vh]">
+                        hover:scale-[1.01] h-[40vh] mt-[5vh]">
           <div className='flex flex-col gap-2 h-full items-center justify-center mb-2'>
             <img src={rain} alt='rain-icon' className='w-[50px] h-[50px]'/>
             <img src={sappling} alt='sappling-icon' className='w-[40px] h-[40px]'/>
@@ -30,7 +30,7 @@ export default function Homepage () {
         </div>
 
         <div className='flex flex-row justify-between items-center'>
-        <div className='flex flex-col bg-gradient-to-r from-medium-green 
+        <div className='flex flex-col bg-gradient-to-r from-medium-green
                         via-light-green to-medium-green m-5 p-5
                         rounded-3xl shadow-2xl shadow-dark-bottle-green
                         hover:scale-[1.01] w-[49vw]  h-[40vh]'>
@@ -50,7 +50,7 @@ export default function Homepage () {
         <div className='flex flex-col bg-gradient-to-r from-medium-green 
                         via-light-green to-medium-green m-5 p-5
                         rounded-3xl shadow-2xl shadow-dark-bottle-green
-                        hover:scale-[1.01] w-[45vw]  h-[38vh]'>
+                        hover:scale-[1.01] w-[45vw]  h-[35vh]'>
           <div className="flex flex-row justify-start w-full">
             <h1 className="text-dark-bottle-green font-bold text-2xl pb-5">Reports</h1>
           </div>
