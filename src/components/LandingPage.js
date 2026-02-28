@@ -1,6 +1,6 @@
 import plant from '../assets/plant.png'
 import { useNavigate } from 'react-router-dom'
-import LoadingPage from './LoadingPage'
+
 export default function LandingPage() {
   const nav = useNavigate()
     return (

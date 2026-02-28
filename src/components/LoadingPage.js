@@ -4,9 +4,11 @@ import {useNavigate } from 'react-router-dom'
 
 export default function LoadingPage() {
   const nav = useNavigate()
+
   useEffect(() => {
     setInterval(() => nav('/homepage'), 3000)
-  }, [])
+  })
+
     return (
     <div className="bg-medium-green min-h-screen flex">
       <div className="bg-light-green w-full m-[50px] rounded-3xl flex flex-col items-center justify-center">
