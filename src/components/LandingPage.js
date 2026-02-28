@@ -27,7 +27,7 @@ export default function LandingPage() {
           <p className='text-[30px]'>
             Aligning your garden’s needs with the day’s forecast
           </p>
-          <img src={plant} alt="plant-icon" className='size-60 mt-[80px] mt-[70px]'/>
+          <img src={plant} alt="plant-icon" className='size-60 mt-[60px] '/>
       </div>
     </div>
     )
