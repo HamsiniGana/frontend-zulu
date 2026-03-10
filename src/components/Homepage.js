@@ -3,7 +3,22 @@ import sappling from '../assets/sappling.png'
 import graph from '../assets/graph.png'
 import Navbar from "./Navbar"
 import report from '../assets/report.png'
+import {useEffect} from "react"
+
 export default function Homepage () {
+  // web request user location access
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((pos) => {
+        console.log("Location:", pos.coords.latitude)
+      }, 
+      // users deny access to location request
+      (err) => {
+        console.log(err.message)
+      })
+    }
+  }, [])
+
   return (
     <div className="flex flex-col">
       <Navbar />
