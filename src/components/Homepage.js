@@ -3,7 +3,11 @@ import sappling from '../assets/sappling.png'
 import graph from '../assets/graph.png'
 import Navbar from "./Navbar"
 import report from '../assets/report.png'
+import { useNavigate } from 'react-router-dom'
+
 export default function Homepage () {
+  const nav = useNavigate()
+
   return (
     <div className="flex flex-col">
       <Navbar />
@@ -24,7 +28,8 @@ export default function Homepage () {
             </div>
             <div className="flex flex-row justify-end mr-1">
                 <button  className="hover:bg-white hover:text-black py-2 px-3 rounded-xl w-[150px] hover:border hover:border-solid hover:border-black
-                bg-dark-bottle-green text-white text-xl">Get started</button>
+                bg-dark-bottle-green text-white text-xl"
+                onClick={() => nav('/homepage/data')}>Get started</button>
             </div>
           </div>
         </div>
