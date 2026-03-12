@@ -7,7 +7,7 @@ export default function LoadingPage() {
 
   useEffect(() => {
     setInterval(() => nav('/homepage'), 3000)
-  })
+  }, [nav])
 
     return (
     <div className="bg-medium-green min-h-screen flex">
