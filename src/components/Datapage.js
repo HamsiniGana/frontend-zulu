@@ -33,7 +33,7 @@ export default function DataPage() {
             (err) => {console.log(err.message)}
         )
       }
-    }, [])
+    })
 
     // Geocoding to get the latitude from user input address 
     async function addrToLat(addr) {
