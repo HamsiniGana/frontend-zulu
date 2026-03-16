@@ -5,6 +5,7 @@ import LandingPage from './components/LandingPage';
 import LoginPage from './components/LoginPage';
 import SignUpPage from './components/SignUpPage';
 import LoadingPage from './components/LoadingPage';
+import Data from './components/Data';
 function App() {
   return (
     <BrowserRouter>
@@ -14,6 +15,7 @@ function App() {
         <Route path='/homepage' element={<Homepage />}/>
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/sign-up' element={<SignUpPage/>}/>
+        <Route path='/datasets' element={<Data />}/>
       </Routes>
     </BrowserRouter>
   );

@@ -8,12 +8,13 @@ export default function Navbar() {
                 <img src={plantLight} alt="plant-icon" className="w-20 h-20 p-2"
                      onClick={() => nav('/homepage')}/>
             </div>
-            <div className="flex flex-row gap-[60px] flex-1 justify-end
-                            mr-[60px] text-black text-xl">
+            <div className="flex flex-row gap-[60px] flex-1 justify-start
+                            mr-[60px] text-black text-xl ml-[40px]">
                 <p className="hover:bg-white hover:decoration-2 bg-medium-green p-3 rounded-xl">Datasets</p>
                 <p className="hover:bg-white hover:decoration-2 bg-medium-green p-3 rounded-xl">Graphs</p>
                 <p className="hover:bg-white hover:decoration-2 bg-medium-green p-3 rounded-xl">Reports</p>
             </div>
+            <button className='p-3 bg-white text-xl rounded-xl m-3 hover:bg-medium-green'>Logout</button>
         </div>
     )
 }

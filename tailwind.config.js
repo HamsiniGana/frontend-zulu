@@ -11,7 +11,8 @@ module.exports = {
       'medium-green':'#B9DCA2',
       'light-green': '#E9F8E2',
       'white': '#ffffff',
-      'black': '#000000'
+      'black': '#000000',
+      'beige': '#f6cc90',
     }
   },
   plugins: [],
