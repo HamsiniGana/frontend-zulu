@@ -1,8 +1,50 @@
 import plant from '../assets/plant.png'
 import leftArrow from '../assets/arrow-left.svg'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import DisplayModal from './DisplayModal'
+import { useState } from 'react'
+
+
 export default function LoginPage () {
     const nav = useNavigate()
+    const [modalMsg, setModalMsg] = useState('')
+    const [modalTitle, setModalTitle] = useState('')
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+
+    const login_fn = async() => {
+        let res = ''
+        const params = new URLSearchParams({ username: username, password: password});
+
+        try {
+            res = await axios({
+            method: 'post',
+            url: 'https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/login/',
+            data: params,
+            headers: {
+                "Content-Type" : "application/x-www-form-urlencoded"
+            }
+        });
+
+        if (res.status === 200) {
+            nav('/loadingPage')
+        } else {
+            setModalMsg('Something went wrong. Please try again ☹️')
+            setModalTitle("⚠ Woops")
+        }
+
+        } catch (e) {
+            if (e.response.data.detail[0].msg !== undefined) {
+                setModalMsg(e.response.data.detail[0].msg)
+                setModalTitle("⚠ Woops")
+            } else if (e.response.data.detail !== undefined) {
+                setModalMsg(e.response.data.detail)
+                setModalTitle("⚠ Woops")
+            }
+        }
+    }
+
     return (
         <div className="flex flex-row w-screen">
             <div className="flex flex-col bg-light-green items-center justify-center w-1/3">
@@ -22,13 +64,17 @@ export default function LoginPage () {
                         </div>
 
                         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                            <form action="#" method="POST" className="space-y-6">
+                            <form onSubmit={(e) => {
+                                e.preventDefault()
+
+                            }} className="space-y-6">
                             <div>
-                                <label for="username" className="block text-lg font-medium text-gray-900">Username:</label>
+                                <label htmlFor="username" className="block text-lg font-medium text-gray-900">Username:</label>
                                 <div className="mt-2">
                                 <input id="username" 
                                 type="text" name="username" 
-                                required autocomplete="username" 
+                                required autoComplete="username" 
+                                onChange={(e) => setUsername(e.target.value)}
                                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base 
                                 text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 
                                 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
@@ -37,28 +83,38 @@ export default function LoginPage () {
 
                             <div>
                                 <div className="flex items-center justify-between">
-                                <label for="password" className="block text-lg font-medium text-gray-900">Password:</label>
+                                <label htmlFor="password" className="block text-lg font-medium text-gray-900">Password:</label>
                                 </div>
                                 <div className="mt-2">
-                                <input id="password" type="password" name="password" required autocomplete="current-password" className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
+                                <input id="password" type="password" name="password" required autoComplete="current-password" 
+                                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1
+                                outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600
+                                sm:text-sm/6" 
+                                onChange={(e) => setPassword(e.target.value)}/>
                                 </div>
                             </div>
 
                             <div>
                                 <button type="submit" className="flex w-full justify-center rounded-md bg-dark-green px-3 py-1.5 text-sm/6
                                         font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 
-                                        focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Login</button>
+                                        focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                        onClick={() => login_fn()}>Login</button>
                             </div>
                             </form>
 
                         <p className="mt-10 text-center text-md text-gray-500">
                         Don't have an account?
-                        <a href="/sign-up" className="font-semibold text-dark-green hover:underline hover: decoration-2"> Sign up</a>
+                        <a href="/sign-up" className="font-semibold text-dark-green hover:underline hover: decoration-2">Sign up</a>
                         </p>
                     </div>
                 </div>
             </div>
         </div>
+        <DisplayModal modalMsg={modalMsg}
+                      show = {modalMsg !== ''}
+                      setModalMsg={setModalMsg}
+                      modalTitle={modalTitle}
+                             />
     </div>
 )
 }
