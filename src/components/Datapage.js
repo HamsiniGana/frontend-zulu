@@ -22,18 +22,22 @@ export default function DataPage() {
       // If browser supports location access requests 
       if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
-              // remember the coordinates 
+            // remember the coordinates 
             (pos) => {
-              const lat = pos.coords.latitude
-              const lon = pos.coords.longitude
-              setLat(lat) 
-              setLon(lon)
-              weatherData(lon, lat)},
+              setLat(pos.coords.latitude) 
+              setLon(pos.coords.longitude)},
             // user denied access 
             (err) => {console.log(err.message)}
         )
       }
-    })
+    }, [])
+
+    // Weather API is fethced only when lat and lon exist or have changed
+    useEffect(() => {
+      if (lat !== null && lon != null) {
+        weatherData(lon,lat)
+      }
+    }, [lat, lon])
 
     // Geocoding to get the latitude from user input address 
     async function addrToLat(addr) {
@@ -41,11 +45,8 @@ export default function DataPage() {
       const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(addr)}`
       const res = await axios.get(url)
       if (res.data.length > 0) {
-            const lon = res.data[0].lon
-            const lat = res.data[0].lat
-            setLon(lon)
-            setLat(lat)
-            weatherData(res.data[0].lon, res.data[0].lat)
+            setLon(parseFloat(res.data[0].lon))
+            setLat(parseFloat(res.data[0].lat))
           } 
     }
 
@@ -64,7 +65,6 @@ export default function DataPage() {
             rain: res.data.daily.rain_sum[i],
         }))
         setWeather(resultData)
-        return resultData
       }
 
   return (
