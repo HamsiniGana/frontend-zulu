@@ -1,7 +1,11 @@
+import { useState } from 'react'
 import plantLight from '../assets/plantLight.png'
 import { useNavigate } from 'react-router-dom'
+import ConfirmModal from './ConfirmModal'
+
 export default function Navbar() {
     const nav = useNavigate()
+    const [showLogoutModal, setShowLogoutModal] = useState(false)
     return (
         <div className="flex flex-row bg-dark-bottle-green items-center">
             <div>
@@ -14,7 +18,12 @@ export default function Navbar() {
                 <p className="hover:bg-white hover:decoration-2 bg-medium-green p-3 rounded-xl">Graphs</p>
                 <p className="hover:bg-white hover:decoration-2 bg-medium-green p-3 rounded-xl">Reports</p>
             </div>
-            <button className='p-3 bg-white text-xl rounded-xl m-3 hover:bg-medium-green'>Logout</button>
+            <button className='p-3 bg-white text-xl rounded-xl m-3 hover:bg-medium-green'
+            onClick={() => setShowLogoutModal(true)}>Logout</button>
+
+            {showLogoutModal && <ConfirmModal showLogoutModal={showLogoutModal}
+                            setShowLogoutModal={setShowLogoutModal}/>}
         </div>
+
     )
 }
