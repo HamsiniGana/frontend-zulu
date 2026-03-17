@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --dark-green: #2A603E; /* A custom hex color */
+  --dark-green: #2A603E;
+  --medium-green: #B9DCA2;
+  --light-green: #E9F8E2;
   /* --secondary-color: rgb(237, 255, 253); A custom RGB color */
 }
 body {
