@@ -5,7 +5,7 @@ import LandingPage from './components/LandingPage';
 import LoginPage from './components/LoginPage';
 import SignUpPage from './components/SignUpPage';
 import LoadingPage from './components/LoadingPage';
-import Data from './components/Data';
+import DataPage from './components/Datapage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -15,9 +15,10 @@ function App() {
         <Route path='/' element={<LandingPage/>}/>
         <Route path='/loadingPage' element={<LoadingPage/>}/>
         <Route path='/homepage' element={<Homepage />}/>
+        <Route path='/homepage/data' element={<DataPage/>}/>
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/sign-up' element={<SignUpPage/>}/>
-        <Route path='/datasets' element={<Data />}/>
+
       </Routes>
     </BrowserRouter>
   );
