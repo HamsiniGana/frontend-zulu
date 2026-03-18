@@ -101,7 +101,7 @@ export default function LoginPage() {
                       onChange={(e) => setUsername(e.target.value)}
                       className="block w-full rounded-md bg-white px-3 py-1.5 text-base 
                                 text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 
-                                focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                focus:outline-2 focus:-outline-offset-2 focus:outline-black sm:text-sm/6"
                     />
                   </div>
                 </div>
@@ -123,7 +123,7 @@ export default function LoginPage() {
                       required
                       autoComplete="current-password"
                       className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1
-                                outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600
+                                outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-black
                                 sm:text-sm/6"
                       onChange={(e) => setPassword(e.target.value)}
                     />
@@ -134,8 +134,8 @@ export default function LoginPage() {
                   <button
                     type="submit"
                     className="flex w-full justify-center rounded-md bg-dark-green px-3 py-1.5 text-sm/6
-                                        font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 
-                                        focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                        font-semibold text-white shadow-xs hover:bg-black focus-visible:outline-2 
+                                        focus-visible:outline-offset-2 focus-visible:outline-black"
                     onClick={() => login_fn()}
                   >
                     Login

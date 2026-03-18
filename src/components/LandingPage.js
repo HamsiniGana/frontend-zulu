@@ -14,7 +14,7 @@ export default function LandingPage() {
             Homepage
           </button> */}
           <button
-            className="bg-medium-green hover:bg-black hover:text-white text-black text-xl font-bold py-5 px-[40px] rounded-full"
+            className="bg-medium-green text-black hover:bg-black hover:!text-white text-xl font-bold py-5 px-[40px] rounded-full"
             onClick={() => nav("/login")}
           >
             Login

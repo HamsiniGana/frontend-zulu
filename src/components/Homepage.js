@@ -38,7 +38,7 @@ export default function Homepage() {
             </div>
             <div className="flex flex-row justify-end mr-1">
               <button
-                className="hover:bg-white hover:text-black py-2 px-3 rounded-xl w-[150px] hover:border hover:border-solid hover:border-black
+                className="hover:bg-white hover:!text-black py-2 px-3 rounded-xl w-[150px] hover:border hover:border-solid hover:border-black
                 bg-dark-bottle-green text-white text-xl"
                 onClick={() => nav("/homepage/data")}
               >
@@ -56,7 +56,7 @@ export default function Homepage() {
                         hover:scale-[1.01] w-[49vw]  h-[40vh]"
           >
             <div className="flex flex-row justify-start w-full">
-              <h1 className="text-dark-bottle-green font-bold text-2xl pb-5">
+              <h1 className="text-dark-bottle-green font-bold text-2xl">
                 Graphs
               </h1>
             </div>
@@ -73,7 +73,7 @@ export default function Homepage() {
             </div>
             <div className="flex flex-row justify-end mr-1">
               <button
-                className="hover:bg-white hover:text-black py-2 px-3 rounded-xl w-[150px] hover:border hover:border-solid hover:border-black
+                className="hover:bg-white hover:!text-black py-2 px-3 rounded-xl w-[150px] hover:border hover:border-solid hover:border-black
               bg-dark-bottle-green text-white text-xl"
               >
                 Get started
@@ -87,7 +87,7 @@ export default function Homepage() {
                         hover:scale-[1.01] w-[49vw]  h-[40vh]"
           >
             <div className="flex flex-row justify-start w-full">
-              <h1 className="text-dark-bottle-green font-bold text-2xl pb-5">
+              <h1 className="text-dark-bottle-green font-bold text-2xl ">
                 Reports
               </h1>
             </div>
@@ -102,7 +102,7 @@ export default function Homepage() {
             </div>
             <div className="flex flex-row justify-end mr-1">
               <button
-                className="hover:bg-white hover:text-black py-2 px-3 rounded-xl w-[150px] hover:border hover:border-solid hover:border-black
+                className="hover:bg-white hover:!text-black py-2 px-3 rounded-xl w-[150px] hover:border hover:border-solid hover:border-black
               bg-dark-bottle-green text-white text-xl"
               >
                 Get started
