@@ -17,9 +17,9 @@ export default function DataPage() {
     const [lon, setLon] = useState(null)
     const [addr, setAddr] = useState("")
     const [weather, setWeather] = useState([])
-    const [plant, setPlant] = useState(null)
+    const [plant, setPlant] = useState("")
     const [water, setWater] = useState([])
-    const [soil, setSoil] = useState(null)
+    const [soil, setSoil] = useState("")
 
     // Request user's location access 
     useEffect(() => {
@@ -132,7 +132,7 @@ return (
               placeholder={lat ? `Lat: ${lat}, Lon: ${lon}` : "e.g. Kensington, NSW"}
               value={addr}
               onChange={(e) => setAddr(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && addrToLat(addr)}
+              onBlur={() => addrToLat(addr)}
               className="border border-black rounded-xl px-3 py-2 focus:outline-none"
             />
           </div>
