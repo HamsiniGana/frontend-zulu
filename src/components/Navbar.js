@@ -18,7 +18,7 @@ export default function Navbar() {
                 <p className="hover:bg-white hover:decoration-2 bg-medium-green p-3 rounded-xl">Graphs</p>
                 <p className="hover:bg-white hover:decoration-2 bg-medium-green p-3 rounded-xl">Reports</p>
             </div>
-            <button className='p-3 bg-white text-xl rounded-xl m-3 hover:bg-medium-green'
+            <button className='p-3 bg-white text-xl rounded-xl m-3 hover:!bg-medium-green'
             onClick={() => setShowLogoutModal(true)}>Logout</button>
 
             {showLogoutModal && <ConfirmModal showLogoutModal={showLogoutModal}

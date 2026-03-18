@@ -80,7 +80,7 @@ export default function SignUpPage () {
                                 autoComplete="username"
                                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900
                                 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400
-                                focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" 
+                                focus:outline-2 focus:-outline-offset-2 focus:outline-black sm:text-sm/6" 
                                 onChange={(e)=> setUsername(e.target.value)}/>
                                 </div>
                             </div>
@@ -94,7 +94,7 @@ export default function SignUpPage () {
                                 autoComplete="fullName"
                                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900
                                 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400
-                                focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" 
+                                focus:outline-2 focus:-outline-offset-2 focus:outline-black sm:text-sm/6" 
                                 onChange={(e)=> setFullName(e.target.value)}/>
                                 </div>
 
@@ -110,7 +110,7 @@ export default function SignUpPage () {
                                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base 
                                 text-gray-900 outline-1 -outline-offset-1 outline-gray-300 
                                 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 
-                                focus:outline-indigo-600 sm:text-sm/6" 
+                                focus:outline-black sm:text-sm/6" 
                                 onChange={(e)=> {setEmail(e.target.value)}}/>
                                 </div>
                             </div>
@@ -128,7 +128,7 @@ export default function SignUpPage () {
                                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base 
                                 text-gray-900 outline-1 -outline-offset-1 outline-gray-300 
                                 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 
-                                focus:outline-indigo-600 sm:text-sm/6" 
+                                focus:outline-black sm:text-sm/6" 
                                 onChange={(e)=> {setPassword(e.target.value)}}/>
                                 </div>
                             </div>
@@ -146,15 +146,15 @@ export default function SignUpPage () {
                                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base 
                                 text-gray-900 outline-1 -outline-offset-1 outline-gray-300 
                                 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2
-                                focus:outline-indigo-600 sm:text-sm/6" 
+                                focus:outline-black sm:text-sm/6" 
                                 onChange={(e)=> {setConfirmPassword(e.target.value)}}/>
                                 </div>
                             </div>
 
                             <div>
                                 <button type="submit" className="flex w-full justify-center rounded-md bg-dark-green px-3 py-1.5 text-sm/6
-                                        font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 
-                                        focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                        font-semibold text-white shadow-xs hover:bg-black focus-visible:outline-2 
+                                        focus-visible:outline-offset-2 focus-visible:outline-black"
                                         >Sign up
                                 </button>
                             </div>
