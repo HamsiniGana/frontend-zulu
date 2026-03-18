@@ -40,7 +40,7 @@ export default function Homepage() {
               <button
                 className="hover:bg-white hover:text-black py-2 px-3 rounded-xl w-[150px] hover:border hover:border-solid hover:border-black
                 bg-dark-bottle-green text-white text-xl"
-                onClick={() => nav("/datasets")}
+                onClick={() => nav("/homepage/data")}
               >
                 Get started
               </button>
