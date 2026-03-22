@@ -178,58 +178,61 @@ export default function ComparePlants() {
               >
                 {/* <tbody className=""> */}
                 {/* <thead style={{ borderRadius: "50px" }}> */}
-                  <div className="flex flex-col">
-                    <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[10vh] text-lg">
-                      Plant name
-                    </div>
-                    <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                      Attributes
-                    </div>
-                    <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                      Category
-                    </div>
-                    <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                      Climate zone
-                    </div>
-                    <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                      Growth avg
-                    </div>
-                    <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                      Rainfall avg
-                    </div>
-                    <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                      Temperature avg
-                    </div>
-                    <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                      Avg soil ph
-                    </div>
-                    <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                      Ktmp
-                    </div>
-                    <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                      Ktmpr
-                    </div>
-                    <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                      Life form
-                    </div>
-                    <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                      Life span
-                    </div>
-                    <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                      Biennial
-                    </div>
-                    <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                      Photo
-                    </div>
-                    <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                      Texture
-                    </div>
+                <div className="flex flex-col">
+                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[10vh] text-lg">
+                    Plant name
                   </div>
+                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
+                    Attributes
+                  </div>
+                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
+                    Category
+                  </div>
+                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
+                    Climate zone
+                  </div>
+                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
+                    Growth avg
+                  </div>
+                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
+                    Rainfall avg
+                  </div>
+                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
+                    Temperature avg
+                  </div>
+                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
+                    Avg soil ph
+                  </div>
+                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
+                    Ktmp
+                  </div>
+                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
+                    Ktmpr
+                  </div>
+                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
+                    Life form
+                  </div>
+                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
+                    Life span
+                  </div>
+                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
+                    Biennial
+                  </div>
+                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
+                    Photo
+                  </div>
+                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
+                    Texture
+                  </div>
+                </div>
                 {/* </thead> */}
 
                 {plantsInfo.map((plant) => {
                   return (
-                    <div key={plant.plant_name} className="odd:bg-white even:bg-light-green flex flex-col flex-1">
+                    <div
+                      key={plant.plant_name}
+                      className="odd:bg-white even:bg-light-green flex flex-col flex-1"
+                    >
                       <div className="border border-solid border-black text-center px-[3vw] py-2 w-full text-black font-bold h-[10vh] text-lg">
                         {plant.plant_name.toUpperCase()}
                       </div>
