@@ -7,7 +7,7 @@ import SignUpPage from './components/SignUpPage';
 import LoadingPage from './components/LoadingPage';
 import DataPage from './components/Datapage';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import ComparePlants from './components/ComparePlants';
 function App() {
   return (
     <BrowserRouter>
@@ -18,7 +18,7 @@ function App() {
         <Route path='/homepage/data' element={<DataPage/>}/>
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/sign-up' element={<SignUpPage/>}/>
-
+        <Route path='/homepage/compare-plants' element={<ComparePlants/>}/>
       </Routes>
     </BrowserRouter>
   );
