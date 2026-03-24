@@ -3,20 +3,31 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import DisplayModal from "./DisplayModal";
 import axios from "axios";
 import ClosableTabs from "./ClosableTabs";
 import plantBg from "../assets/plant-bg.jpg";
+import CompareCard from "./CompareCard";
 
 export default function ComparePlants() {
-  const [plants, setPlants] = useState([]);
+  const [plants, setPlants] = useState(() => {
+    return localStorage.getItem("plants")
+      ? JSON.parse(localStorage.getItem("plants"))
+      : [];
+  });
   const [newPlant, setNewPlant] = useState("");
-  const [plantsInfo, setPlantsInfo] = useState([]);
+  const [plantsInfo, setPlantsInfo] = useState(() => {
+    return localStorage.getItem("plantsInfo")
+      ? JSON.parse(localStorage.getItem("plantsInfo"))
+      : [];
+  });
   const [modalMsg, setModalMsg] = useState("");
   const [modalTitle, setModalTitle] = useState("");
 
   useEffect(() => {
+    localStorage.setItem("plants", JSON.stringify(plants));
+    localStorage.setItem("plantsInfo", JSON.stringify(plantsInfo));
     console.log(plants);
     console.log(plantsInfo);
   }, [plants, plantsInfo]);
@@ -81,14 +92,14 @@ export default function ComparePlants() {
         backgroundImage: `url(${plantBg})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
+        height: "100vh",
       }}
-      className="bg-light-green min-h-screen"
     >
       <Navbar />
       <div>
-        <div className="relative flex flex-col items-center bg-white/50 m-4 rounded-2xl h-[85vh] shadow-xl">
-          <div className="flex flex-row m-4 items-center gap-[35vw]">
-            <h1 className="mt-3">Compare plants</h1>
+        <div className="relative flex flex-col items-center bg-white/20 m-4 rounded-2xl h-[85vh] my-3 border border-solid border-white/20 backdrop-blur-sm">
+          <div className="flex flex-row items-center gap-[35vw]">
+            <h1 className="mt-3 text-black">Compare plants</h1>
           </div>
 
           <div className="flex flex-row justify-between">
@@ -125,7 +136,7 @@ export default function ComparePlants() {
                   <Button
                     style={{
                       backgroundColor: "var(--dark-bottle-green)",
-                      borderColor: "var(--dark-bottle-green)",
+                      borderColor: "black",
                       marginLeft: "-20px",
                       borderWidth: "2px",
                     }}
@@ -152,10 +163,15 @@ export default function ComparePlants() {
           <div className="flex flex-row m-4 justify-center">
             {plants.map((plant) => {
               return (
-                <ClosableTabs key={plant} plant={plant} setPlants={setPlants} />
+                <ClosableTabs
+                  key={plant}
+                  plant={plant}
+                  setPlants={setPlants}
+                  setPlantsInfo={setPlantsInfo}
+                />
               );
             })}
-            {plants.length >= 2 && (
+            {plants.length >= 1 && (
               <Button
                 style={{
                   backgroundColor: "black",
@@ -170,120 +186,30 @@ export default function ComparePlants() {
             )}
           </div>
 
-          {plantsInfo.length >= 2 && (
-            <div className="w-[85%] overflow-x-auto my-3 mx-2">
-              <div
-                // style={{ borderRadius: "50px" }}
-                className="flex flex-row min-w-[500px] border-collapse border border-black bg-white"
-              >
-                {/* <tbody className=""> */}
-                {/* <thead style={{ borderRadius: "50px" }}> */}
-                <div className="flex flex-col">
-                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[10vh] text-lg">
-                    Plant name
-                  </div>
-                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                    Attributes
-                  </div>
-                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                    Category
-                  </div>
-                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                    Climate zone
-                  </div>
-                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                    Growth avg
-                  </div>
-                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                    Rainfall avg
-                  </div>
-                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                    Temperature avg
-                  </div>
-                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                    Avg soil ph
-                  </div>
-                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                    Ktmp
-                  </div>
-                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                    Ktmpr
-                  </div>
-                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                    Life form
-                  </div>
-                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                    Life span
-                  </div>
-                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                    Biennial
-                  </div>
-                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                    Photo
-                  </div>
-                  <div className="border border-solid border-black px-3 py-2 bg-dark-bottle-green text-white font-bold h-[30vh] text-lg">
-                    Texture
-                  </div>
-                </div>
-                {/* </thead> */}
-
-                {plantsInfo.map((plant) => {
-                  return (
-                    <div
-                      key={plant.plant_name}
-                      className="odd:bg-white even:bg-light-green flex flex-col flex-1"
-                    >
-                      <div className="border border-solid border-black text-center px-[3vw] py-2 w-full text-black font-bold h-[10vh] text-lg">
-                        {plant.plant_name.toUpperCase()}
-                      </div>
-                      <div className="border border-solid border-black text-left px-[3vw] py-2 w-full text-black h-[30vh] text-lg">
-                        {plant.attributes}
-                      </div>
-                      <div className="border border-solid border-black text-left px-[3vw] py-2 w-full text-black h-[30vh] text-lg">
-                        {plant.category}
-                      </div>
-                      <div className="border border-solid border-black text-left px-[3vw] py-2 w-full text-black h-[30vh] text-lg">
-                        {plant.cliz}
-                      </div>
-                      <div className="border border-solid border-black text-left px-[3vw] py-2 w-full text-black h-[30vh] text-lg">
-                        {plant.gavg}
-                      </div>
-                      <div className="border border-solid border-black text-left px-[3vw] py-2 w-full text-black h-[30vh] text-lg">
-                        {plant.ravg}
-                      </div>
-                      <div className="border border-solid border-black text-left px-[3vw] py-2 w-full text-black h-[30vh] text-lg">
-                        {plant.tavg}
-                      </div>
-                      <div className="border border-solid border-black text-left px-[3vw] py-2 w-full text-black h-[30vh] text-lg">
-                        {plant.phavg}
-                      </div>
-                      <div className="border border-solid border-black text-left px-[3vw] py-2 w-full text-black h-[30vh] text-lg">
-                        {plant.ktmp}
-                      </div>
-                      <div className="border border-solid border-black text-left px-[3vw] py-2 w-full text-black h-[30vh] text-lg">
-                        {plant.ktmpr}
-                      </div>
-                      <div className="border border-solid border-black text-left px-[3vw] py-2 w-full text-black h-[30vh] text-lg">
-                        {plant.life_form}
-                      </div>
-                      <div className="border border-solid border-black text-left px-[3vw] py-2 w-full text-black h-[30vh] text-lg">
-                        {plant.life_span}
-                      </div>
-                      <div className="border border-solid border-black text-left px-[3vw] py-2 w-full text-black h-[30vh] text-lg">
-                        {plant.biennial}
-                      </div>
-                      <div className="border border-solid border-black text-left px-[3vw] py-2 w-full text-black h-[30vh] text-lg">
-                        {plant.photo}
-                      </div>
-                      <div className="border border-solid border-black text-left px-[3vw] py-2 w-full text-black h-[30vh] text-lg">
-                        {plant.texture}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          )}
+          <div className="flex flex-row justify-between gap-5 overflow flex-wrap mt-3">
+            {plantsInfo.length >= 1 &&
+              plantsInfo.map((p) => {
+                return (
+                  <CompareCard
+                    key={p.plant_name}
+                    attributes={p.attributes}
+                    category={p.category}
+                    cliz={p.cliz}
+                    gavg={p.gavg}
+                    phavg={p.phavg}
+                    tavg={p.tavg}
+                    ktmp={p.ktmp}
+                    ktmpr={p.ktmpr}
+                    life_form={p.life_form}
+                    life_span={p.life_span}
+                    biennial={p.biennial}
+                    photo={p.photo}
+                    texture={p.texture}
+                    plant_name={p.plant_name}
+                  />
+                );
+              })}
+          </div>
         </div>
         <DisplayModal
           modalMsg={modalMsg}
