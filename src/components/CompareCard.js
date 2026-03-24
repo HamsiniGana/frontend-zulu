@@ -3,12 +3,24 @@ import { plantAndImgMap } from "./plantsAndImagesMap";
 
 export default function CompareCard(props) {
   return (
-    <Card style={{ width: "18rem", height: "50vh", background: "rgba(255, 255, 255, 0.3)", backdropFilter: "blur(20px)"}} className="border border-solid border-black border-2">
-       {/* className="border border-solid border-black rounded-md border-2" */}
+    <Card
+      style={{
+        width: "18rem",
+        height: "50vh",
+        background: "rgba(255, 255, 255, 0.2)",
+        backdropFilter: "blur(20px)",
+      }}
+      className="border border-solid border-black border-2"
+    >
+      {/* className="border border-solid border-black rounded-md border-2" */}
       <div>
         <Card.Img
           variant="top"
-          src={plantAndImgMap[props.plant_name.trim().toLowerCase()] !== undefined ? plantAndImgMap[props.plant_name.trim().toLowerCase()]:plantAndImgMap.default}
+          src={
+            plantAndImgMap[props.plant_name.trim().toLowerCase()] !== undefined
+              ? plantAndImgMap[props.plant_name.trim().toLowerCase()]
+              : plantAndImgMap.default
+          }
           style={{
             width: "15vw",
             height: "25vh",
@@ -22,7 +34,7 @@ export default function CompareCard(props) {
         <Card.Title className="text-center">
           {props.plant_name.toUpperCase()}
         </Card.Title>
-        <Card.Title className="text-center" style={{fontSize: "12px"}}>
+        <Card.Title className="text-center" style={{ fontSize: "12px" }}>
           ________________
         </Card.Title>
         <div className="flex flex-row gap-2">

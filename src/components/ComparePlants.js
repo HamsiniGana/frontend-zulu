@@ -11,13 +11,23 @@ import plantBg from "../assets/plant-bg.jpg";
 import CompareCard from "./CompareCard";
 
 export default function ComparePlants() {
-  const [plants, setPlants] = useState([]);
+  const [plants, setPlants] = useState(() => {
+    return localStorage.getItem("plants")
+      ? JSON.parse(localStorage.getItem("plants"))
+      : [];
+  });
   const [newPlant, setNewPlant] = useState("");
-  const [plantsInfo, setPlantsInfo] = useState([]);
+  const [plantsInfo, setPlantsInfo] = useState(() => {
+    return localStorage.getItem("plantsInfo")
+      ? JSON.parse(localStorage.getItem("plantsInfo"))
+      : [];
+  });
   const [modalMsg, setModalMsg] = useState("");
   const [modalTitle, setModalTitle] = useState("");
 
   useEffect(() => {
+    localStorage.setItem("plants", JSON.stringify(plants));
+    localStorage.setItem("plantsInfo", JSON.stringify(plantsInfo));
     console.log(plants);
     console.log(plantsInfo);
   }, [plants, plantsInfo]);
