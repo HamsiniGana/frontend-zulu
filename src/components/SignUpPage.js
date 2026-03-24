@@ -160,7 +160,7 @@ export default function SignUpPage () {
                             </div>
                             </form>
 
-                        <p className="mt-10 text-center text-md text-gray-500">
+                        <p className="mt-10 text-center text-md text-gray-600">
                         Already have an account?
                         <a href="/login" className="font-semibold text-dark-green hover:underline hover: decoration-2"> Login</a>
                         </p>

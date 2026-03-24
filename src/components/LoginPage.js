@@ -143,7 +143,7 @@ export default function LoginPage() {
                 </div>
               </form>
 
-              <p className="mt-10 text-center text-md text-gray-500">
+              <p className="mt-10 text-center text-md text-gray-600">
                 Don't have an account?
                 <a
                   href="/sign-up"
