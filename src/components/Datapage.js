@@ -11,6 +11,7 @@ weather forecast grabbing
 import {useState, useEffect} from "react"
 import axios from "axios"
 import Navbar from "./Navbar"
+import bgImage from "../assets/bg-img.avif"
 
 export default function DataPage() {
     const [lat, setLat] = useState(null)
@@ -104,17 +105,18 @@ export default function DataPage() {
     }
 
 return (
-  <div className="flex flex-col">
+  <div className="flex flex-col" style={{backgroundImage:`url(${bgImage})`, backgroundRepeat: "no-repeat"}}>
     <Navbar />
 
-    <div className="bg-light-green min-h-screen flex flex-col items-center">
+    <div className="min-h-screen flex flex-col items-center">
       <div
         className="flex flex-col w-full max-w-5xl mt-[5vh] p-4 md:p-8
-        bg-gradient-to-r from-medium-green via-light-green to-medium-green
+        bg-white/10
         rounded-3xl shadow-2xl shadow-dark-bottle-green
-        hover:scale-[1.01]"
+        hover:scale-[1.01] border border-solid border-white"
+        style={{backdropFilter: "blur(10px)"}}
       >
-        <h1 className="text-dark-bottle-green font-bold text-3xl mb-6 text-center">
+        <h1 className="text-white font-bold text-3xl mb-6 text-center">
           Irrigation Guide
         </h1>
 
@@ -123,7 +125,7 @@ return (
           
           {/* ADDRESS INPUT */}
           <div className="flex flex-col gap-3 w-full max-w-[300px]">
-            <label className="font-semibold text-dark-bottle-green">
+            <label className="font-semibold text-white">
               Enter your address:
             </label>
 
@@ -139,7 +141,7 @@ return (
 
           {/* SOIL TYPE INPUT */}
           <div className="flex flex-col gap-3 w-full max-w-[300px]">
-            <label className="font-semibold text-dark-bottle-green">
+            <label className="font-semibold text-white">
               Select your soil type:
             </label>
 
@@ -160,7 +162,7 @@ return (
 
           {/* PLANT INPUT */}
           <div className="flex flex-col gap-3 w-full max-w-[300px]">
-            <label className="font-semibold text-dark-bottle-green">
+            <label className="font-semibold text-white">
               Enter plant name:
             </label>
 
@@ -174,8 +176,8 @@ return (
 
             <button
               onClick={getWateringDays}
-              className="bg-dark-bottle-green text-white py-2 px-3 rounded-xl
-              hover:bg-white hover:text-black hover:border hover:border-black transition"
+              className="bg-black text-white py-2 px-3 rounded-xl
+              hover:!bg-white hover:!text-black hover:!border hover:!border-black hover:!border-2 transition"
             >
               Get Watering Guide
             </button>
