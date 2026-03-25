@@ -50,3 +50,7 @@
   animation-delay: -0.22s;
   animation-iteration-count: 10;
 }
+
+.no-arrow::after {
+  display: none !important;
+}
