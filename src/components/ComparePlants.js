@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import DisplayModal from "./DisplayModal";
 import axios from "axios";
 import ClosableTabs from "./ClosableTabs";
-import plantBg from "../assets/plant-bg.jpg";
+import plantBg from "../assets/bg-img.avif";
 import CompareCard from "./CompareCard";
 
 export default function ComparePlants() {
@@ -28,8 +28,8 @@ export default function ComparePlants() {
   useEffect(() => {
     localStorage.setItem("plants", JSON.stringify(plants));
     localStorage.setItem("plantsInfo", JSON.stringify(plantsInfo));
-    console.log(plants);
-    console.log(plantsInfo);
+    // console.log(plants);
+    // console.log(plantsInfo);
   }, [plants, plantsInfo]);
 
   const compareFn = async () => {
@@ -97,9 +97,12 @@ export default function ComparePlants() {
     >
       <Navbar />
       <div>
-        <div className="relative flex flex-col items-center bg-white/20 m-4 rounded-2xl h-[85vh] my-3 border border-solid border-white/20 backdrop-blur-sm">
+        <div
+          className="relative flex flex-col items-center bg-white/10 m-4 rounded-2xl h-[85vh] my-3 border border-solid border-white/20"
+          style={{ backdropFilter: "blur(10px)" }}
+        >
           <div className="flex flex-row items-center gap-[35vw]">
-            <h1 className="mt-3 text-black">Compare plants</h1>
+            <h1 className="mt-3 text-white">Compare plants</h1>
           </div>
 
           <div className="flex flex-row justify-between">
@@ -135,7 +138,7 @@ export default function ComparePlants() {
                 <Col xs="auto">
                   <Button
                     style={{
-                      backgroundColor: "var(--dark-bottle-green)",
+                      backgroundColor: "var(--dark-green)",
                       borderColor: "black",
                       marginLeft: "-20px",
                       borderWidth: "2px",

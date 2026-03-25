@@ -50,8 +50,10 @@ export default function LogoutDeleteAccountCard() {
       <Dropdown className="flex flex-col items-center justify-center">
         <Dropdown.Toggle
           style={{
-            backgroundColor: "var(--dark-bottle-green)",
-            borderColor: "var(--dark-bottle-green)",
+            backgroundColor: "rgb(0,0,0, 0.1)",
+            borderColor: "rgb(0,0,0, 0.1)",
+            backdropFilter: "blur(72px)"
+
           }}
           id="dropdown-basic"
           className="no-arrow"
