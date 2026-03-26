@@ -105,7 +105,7 @@ export default function DataPage() {
     }
 
 return (
-  <div className="flex flex-col" style={{backgroundImage:`url(${bgImage})`, backgroundRepeat: "no-repeat"}}>
+  <div className="flex flex-col" style={{backgroundImage:`url(${bgImage})`, backgroundRepeat: "no-repeat", zIndex: "1"}}>
     <Navbar />
 
     <div className="min-h-screen flex flex-col items-center">

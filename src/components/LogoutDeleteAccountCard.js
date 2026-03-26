@@ -52,8 +52,6 @@ export default function LogoutDeleteAccountCard() {
           style={{
             backgroundColor: "rgb(0,0,0, 0.1)",
             borderColor: "rgb(0,0,0, 0.1)",
-            backdropFilter: "blur(72px)"
-
           }}
           id="dropdown-basic"
           className="no-arrow"

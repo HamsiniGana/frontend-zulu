@@ -20,7 +20,7 @@ export default function DataLandingPage() {
       <Navbar />
       <div
         className="bg-white/10 h-[83vh] flex flex-col mt-4 mb-5 mx-4 rounded-2xl items-center justify-center border border-solid border-white"
-        style={{ backdropFilter: "blur(5px)" }}
+        style={{ backdropFilter: "blur(5px)"}}
       >
         <h1 className="text-white mb-5">Data</h1>
         <div className="flex flex-row gap-5 justify-between">
