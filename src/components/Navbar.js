@@ -5,7 +5,10 @@ import LogoutDeleteAccountCard from "./LogoutDeleteAccountCard";
 export default function Navbar() {
   const nav = useNavigate();
   return (
-    <div className="flex flex-row bg-dark-bottle-green/70 items-center"  style={{backdropFilter: "blur(12px)"}}>
+    <div
+      className="flex flex-row bg-dark-bottle-green/70 items-center"
+      style={{ backdropFilter: "blur(12px)", "zIndex": "999", position: "relative" }}
+    >
       <div>
         <img
           src={plantLight}
@@ -18,7 +21,10 @@ export default function Navbar() {
         className="flex flex-row gap-[60px] flex-1 justify-start
                             mr-[60px] text-black text-xl ml-[40px]"
       >
-        <p className="hover:bg-white hover:decoration-2 bg-medium-green p-3 rounded-xl" onClick={()=> nav('/homepage/data')}>
+        <p
+          className="hover:bg-white hover:decoration-2 bg-medium-green p-3 rounded-xl"
+          onClick={() => nav("/homepage/data")}
+        >
           Data
         </p>
         <p className="hover:bg-white hover:decoration-2 bg-medium-green p-3 rounded-xl">
@@ -28,8 +34,7 @@ export default function Navbar() {
           Reports
         </p>
       </div>
-      <LogoutDeleteAccountCard className="justify-end"/>
-
+      <LogoutDeleteAccountCard className="justify-end" />
     </div>
   );
 }
