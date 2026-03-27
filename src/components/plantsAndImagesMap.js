@@ -25,7 +25,7 @@ import hop from "../assets/hop.png"
 import lentil from "../assets/lentils.png"
 import lettuce from "../assets/lettuce.png"
 import maize from "../assets/corn.png"
-import mung from "../assets/mung.jpg"
+// import mung from "../assets/mung.jpg"
 import oat from "../assets/oats.png"
 import olives from "../assets/olives.png"
 import pea from "../assets/pea.png"
@@ -78,7 +78,7 @@ export const plantAndImgMap = {
 "lentil": lentil,
 "lettuce": lettuce,
 "maize": maize,
-"mungbohne": mung,
+// "mungbohne": mung,
 "oat": oat,
 "olive": olives,
 "olives": olives,

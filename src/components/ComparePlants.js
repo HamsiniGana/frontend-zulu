@@ -201,11 +201,12 @@ export default function ComparePlants() {
                     gavg={p.gavg}
                     phavg={p.phavg}
                     tavg={p.tavg}
+                    ravg={p.ravg}
                     ktmp={p.ktmp}
                     ktmpr={p.ktmpr}
                     life_form={p.life_form}
                     life_span={p.life_span}
-                    biennial={p.biennial}
+                    // biennial={p.biennial}
                     photo={p.photo}
                     texture={p.texture}
                     plant_name={p.plant_name}
