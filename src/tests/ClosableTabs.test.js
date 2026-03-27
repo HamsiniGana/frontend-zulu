@@ -25,8 +25,8 @@ test('Check if closable tabs are closed when the close button is clicked', () =>
     render(<ClosableTabs plant={"tomato"} setPlants={mockSetPlants} setPlantsInfo={mockSetPlantsInfo}/>)
     render(<ClosableTabs plant={"garlic"} setPlants={mockSetPlants} setPlantsInfo={mockSetPlantsInfo}/>)
 
-    const tomatoHeading = screen.getByText("tomato")
-    const tomatoContainer = tomatoHeading.closest("div")
+    // const tomatoHeading = screen.getByText("tomato")
+    const tomatoContainer = screen.getByTestId("closable-tab-div-tomato")
     const crossBtn = within(tomatoContainer).getByRole("button")
 
     fireEvent.click(crossBtn)
