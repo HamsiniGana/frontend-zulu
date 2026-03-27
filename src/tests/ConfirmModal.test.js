@@ -83,3 +83,29 @@ test("Check confirm modal behaviour after the cancel btn is clicked", () => {
   expect(mockSetShowLogoutModal).toHaveBeenCalled();
   expect(mockFnPassed).not.toHaveBeenCalled();
 });
+
+// test("Check whether confirm modal is displayed when show props is false", () => {
+//   render(
+//     <ConfirmModal
+//       showLogoutModal={false}
+//       title={"Woops!"}
+//       msg={"Plant with given name not found"}
+//       setShowLogoutModal={mockSetShowLogoutModal}
+//       fnPassed={mockFnPassed}
+//     />,
+//   );
+
+//   const title = screen.queryByText("Woops!");
+//   expect(title).not.toBeVisible();
+
+//   const msg = screen.queryByText("Plant with given name not found");
+//   expect(msg).not.toBeVisible();
+
+//   const cancelBtn = screen.queryByRole("button", { name: /Cancel/i });
+//   const yesBtn = screen.queryByRole("button", { name: /Yes/i });
+//   const closeBtn = screen.queryByRole("button", { name: /Close/i });
+
+//   expect(cancelBtn).not.toBeVisible();
+//   expect(yesBtn).not.toBeVisible();
+//   expect(closeBtn).not.toBeVisible();
+// });
