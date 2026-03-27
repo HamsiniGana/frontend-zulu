@@ -12,7 +12,7 @@ export default function CompareCard(props) {
         borderRadius: "1rem",
       }}
     >
-      <div>
+      <div data-testid={`closable-tab-div-${props.plant_name}`}>
         <Card.Img
           variant="top"
           src={
