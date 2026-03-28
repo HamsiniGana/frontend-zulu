@@ -2,7 +2,6 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import SignUpPage from "../components/SignUpPage";
 import * as axios from "axios";
 
-const mockUseNavigate = jest.fn();
 
 const mockedSuccessResponse = {
   data: {
@@ -27,10 +26,7 @@ const mockedFailResponse = {
 };
 
 jest.mock("react-router-dom", () => ({
-  useNavigate: () => mockUseNavigate,
-  //   Link: ({ children, to }) => <a href={to}>{children}</a>,
-  //   BrowserRouter: ({ children }) => <div>{children}</div>,
-  //   MemoryRouter: ({ children }) => <div>{children}</div>,
+  useNavigate: () => jest.fn(),
 }));
 
 jest.mock("axios");
