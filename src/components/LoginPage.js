@@ -96,6 +96,7 @@ export default function LoginPage() {
                       id="username"
                       type="text"
                       name="username"
+                      placeholder="Username"
                       required
                       autoComplete="username"
                       onChange={(e) => setUsername(e.target.value)}
@@ -120,6 +121,7 @@ export default function LoginPage() {
                       id="password"
                       type="password"
                       name="password"
+                      placeholder="Password"
                       required
                       autoComplete="current-password"
                       className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1
