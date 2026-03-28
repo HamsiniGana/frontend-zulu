@@ -76,6 +76,7 @@ export default function SignUpPage () {
                                 <input id="username"
                                 type="text"
                                 name="username"
+                                placeholder="Username"
                                 required
                                 autoComplete="username"
                                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900
@@ -92,6 +93,7 @@ export default function SignUpPage () {
                                 name="fullName"
                                 required
                                 autoComplete="fullName"
+                                placeholder="Full name"
                                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900
                                 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400
                                 focus:outline-2 focus:-outline-offset-2 focus:outline-black sm:text-sm/6" 
@@ -107,6 +109,7 @@ export default function SignUpPage () {
                                 name="email" 
                                 required
                                 autoComplete="email" 
+                                placeholder='Email'
                                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base 
                                 text-gray-900 outline-1 -outline-offset-1 outline-gray-300 
                                 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 
@@ -122,7 +125,8 @@ export default function SignUpPage () {
                                 <div className="mt-2">
                                 <input id="password" 
                                 type="password" 
-                                name="password" 
+                                name="password"
+                                placeholder='Password'
                                 required
                                 autoComplete="current-password" 
                                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base 
@@ -140,7 +144,8 @@ export default function SignUpPage () {
                                 <div className="mt-2">
                                 <input id="confirm-password" 
                                 type="password" 
-                                name="confirm-password" 
+                                name="confirm-password"
+                                placeholder='Confirm password'
                                 required={true}
                                 autoComplete="confirm-password" 
                                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base 
