@@ -77,12 +77,14 @@ test("Check if closable tabs and compare cards are created when plants are added
   fireEvent.click(compareBtn);
   await waitFor(() => {
     const onionCompareCard = screen.getByText("ONION");
-    const tomatoCompareCard = screen.getByText("TOMATO");
-
-    const closableTabs = screen.getAllByRole("button", { name: /Close/i });
-
     expect(onionCompareCard).toBeInTheDocument();
+  });
+  await waitFor(() => {
+    const tomatoCompareCard = screen.getByText("TOMATO");
     expect(tomatoCompareCard).toBeInTheDocument();
+  });
+  await waitFor(() => {
+    const closableTabs = screen.getAllByRole("button", { name: /Close/i });
     expect(closableTabs).toHaveLength(2);
   });
 
