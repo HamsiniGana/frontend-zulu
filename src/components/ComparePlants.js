@@ -45,40 +45,45 @@ export default function ComparePlants() {
         url: "https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/compare/",
         params: params,
       });
-      for (const info of res.data) {
-        setPlantsInfo((prev) => {
-          const alreadyExists = prev.find(
-            (p) => p.plant_name === info.plant_name,
-          );
-          if (!alreadyExists) {
-            return [...prev, info];
-          } else {
-            return prev.map((item) => {
-              if (item.plant_name === info.plant_name) {
-                return {
-                  ...item,
-                  attributes: info.attributes,
-                  category: info.category,
-                  cliz: info.cliz,
-                  gavg: info.gavg,
-                  ktmp: info.ktmp,
-                  ktmpr: info.ktmpr,
-                  life_form: info.life_form,
-                  life_span: info.life_span,
-                  biennial: info.biennial,
-                  phavg: info.phavg,
-                  photo: info.photo,
-                  plant_name: info.plant_name,
-                  ravg: info.ravg,
-                  tavg: info.tavg,
-                  texture: info.texture,
-                };
-              } else {
-                return item;
-              }
-            });
-          }
-        });
+      if (res.status === 200) {
+        for (const info of res.data) {
+          setPlantsInfo((prev) => {
+            const alreadyExists = prev.find(
+              (p) => p.plant_name === info.plant_name,
+            );
+            if (!alreadyExists) {
+              return [...prev, info];
+            } else {
+              return prev.map((item) => {
+                if (item.plant_name === info.plant_name) {
+                  return {
+                    ...item,
+                    attributes: info.attributes,
+                    category: info.category,
+                    cliz: info.cliz,
+                    gavg: info.gavg,
+                    ktmp: info.ktmp,
+                    ktmpr: info.ktmpr,
+                    life_form: info.life_form,
+                    life_span: info.life_span,
+                    biennial: info.biennial,
+                    phavg: info.phavg,
+                    photo: info.photo,
+                    plant_name: info.plant_name,
+                    ravg: info.ravg,
+                    tavg: info.tavg,
+                    texture: info.texture,
+                  };
+                } else {
+                  return item;
+                }
+              });
+            }
+          });
+        }
+      } else {
+        setModalMsg("Something went wrong :(");
+        setModalTitle("Woops!");
       }
     } catch (e) {
       setModalMsg(e.response.data.detail);

@@ -73,6 +73,10 @@ test("Check succesful login", async () => {
   await waitFor(() => {
     expect(mockedFn).toHaveBeenCalledWith("/loadingPage");
   })
+
+  // Clear data created by this test
+  localStorage.clear()
+
 });
 
 test("Check unsuccessful login", async () => {
@@ -93,4 +97,7 @@ test("Check unsuccessful login", async () => {
     "No account with provided username😳",
   );
   expect(modalMsg).toBeInTheDocument();
+
+  // Clear data created by this test
+  localStorage.clear()
 });

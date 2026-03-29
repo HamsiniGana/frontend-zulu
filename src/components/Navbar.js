@@ -5,7 +5,7 @@ import LogoutDeleteAccountCard from "./LogoutDeleteAccountCard";
 export default function Navbar() {
   const nav = useNavigate();
   return (
-    <div
+    <nav
       className="flex flex-row bg-dark-bottle-green/70 items-center"
       style={{ backdropFilter: "blur(12px)", "zIndex": "999", position: "relative" }}
     >
@@ -35,6 +35,6 @@ export default function Navbar() {
         </p>
       </div>
       <LogoutDeleteAccountCard className="justify-end" />
-    </div>
+    </nav>
   );
 }
