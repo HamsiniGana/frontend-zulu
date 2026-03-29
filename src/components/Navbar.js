@@ -21,18 +21,18 @@ export default function Navbar() {
         className="flex flex-row gap-[60px] flex-1 justify-start
                             mr-[60px] text-black text-xl ml-[40px]"
       >
-        <p
+        <button
           className="hover:bg-white hover:decoration-2 bg-medium-green p-3 rounded-xl"
           onClick={() => nav("/homepage/data")}
         >
           Data
-        </p>
-        <p className="hover:bg-white hover:decoration-2 bg-medium-green p-3 rounded-xl">
+        </button>
+        <button className="hover:bg-white hover:decoration-2 bg-medium-green p-3 rounded-xl">
           Graphs
-        </p>
-        <p className="hover:bg-white hover:decoration-2 bg-medium-green p-3 rounded-xl">
+        </button>
+        <button className="hover:bg-white hover:decoration-2 bg-medium-green p-3 rounded-xl">
           Reports
-        </p>
+        </button>
       </div>
       <LogoutDeleteAccountCard className="justify-end" />
     </nav>
