@@ -1,7 +1,6 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import SignUpPage from "../components/SignUpPage";
 import * as axios from "axios";
-import { wait } from "@testing-library/user-event/dist/utils";
 
 const mockedFn = jest.fn();
 

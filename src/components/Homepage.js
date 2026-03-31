@@ -17,7 +17,8 @@ export default function Homepage() {
       }}
     >
       <Navbar />
-      <div className=" min-h-screen flex flex-col">
+      <div className=" min-h-screen flex flex-col"
+      data-testId={"data-container"}>
         <div
           className="flex flex-row gap-[20vw] bg-white/30 mx-5 p-5 items-center justify-center
                         rounded-3xl
