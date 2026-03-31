@@ -189,7 +189,7 @@ test("Check if default image is used for a plant that has not been mapped to an 
   expect(img).toHaveAttribute("src", "default.jpeg");
 });
 
-test("Check if plant info card closes when close button is clicked", () => {
+test("Check if plant info card closes when close button is clicked", async() => {
   render(
     <PlantInfoCard
       attributes={"grow on large scale"}
@@ -221,7 +221,7 @@ test("Check if plant info card closes when close button is clicked", () => {
 
   fireEvent.click(closeBtn);
 
-  waitFor(() => {
+  await waitFor(() => {
     expect(plantInfoCard).not.toBeInTheDocument();
   });
 });
