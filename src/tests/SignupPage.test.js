@@ -1,4 +1,10 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import {
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+  act,
+} from "@testing-library/react";
 import SignUpPage from "../components/SignUpPage";
 import * as axios from "axios";
 
@@ -73,7 +79,9 @@ test("Check redirection to login page", async () => {
 
   const loginTag = screen.getByText("Login");
 
+  // act(() => {
   fireEvent.click(loginTag);
+  // })
 
   await waitFor(() => {
     expect(mockedFn).toHaveBeenCalled();
@@ -84,19 +92,29 @@ test("Check successful sign up", async () => {
   render(<SignUpPage />);
   axios.mockResolvedValue(mockedSuccessResponse);
   const username = screen.getByPlaceholderText("Username");
-  fireEvent.change(username, { target: { value: "Harry" } });
+  act(() => {
+    fireEvent.change(username, { target: { value: "Harry" } });
+  });
 
   const fullName = screen.getByPlaceholderText("Full name");
-  fireEvent.change(fullName, { target: { value: "Harry Potter" } });
+  act(() => {
+    fireEvent.change(fullName, { target: { value: "Harry Potter" } });
+  });
 
   const email = screen.getByPlaceholderText("Email");
-  fireEvent.change(email, { target: { value: "harry@gmail.com" } });
+  act(() => {
+    fireEvent.change(email, { target: { value: "harry@gmail.com" } });
+  });
 
   const password = screen.getByPlaceholderText("Password");
-  fireEvent.change(password, { target: { value: "Harry123@@" } });
+  act(() => {
+    fireEvent.change(password, { target: { value: "Harry123@@" } });
+  });
 
   const confirmPassword = screen.getByPlaceholderText("Confirm password");
-  fireEvent.change(confirmPassword, { target: { value: "Harry123@@" } });
+  act(() => {
+    fireEvent.change(confirmPassword, { target: { value: "Harry123@@" } });
+  });
 
   const signUpBtn = screen.getByRole("button");
   expect(signUpBtn).toBeInTheDocument();
@@ -115,19 +133,29 @@ test("Check modal popup after Unsuccessful sign up", async () => {
 
   axios.mockRejectedValue(mockedFailResponse);
   const username = screen.getByPlaceholderText("Username");
-  fireEvent.change(username, { target: { value: "Harry" } });
+  act(() => {
+    fireEvent.change(username, { target: { value: "Harry" } });
+  });
 
   const fullName = screen.getByPlaceholderText("Full name");
-  fireEvent.change(fullName, { target: { value: "Harry Potter" } });
+  act(() => {
+    fireEvent.change(fullName, { target: { value: "Harry Potter" } });
+  });
 
   const email = screen.getByPlaceholderText("Email");
-  fireEvent.change(email, { target: { value: "harry@gmail.com" } });
+  act(() => {
+    fireEvent.change(email, { target: { value: "harry@gmail.com" } });
+  });
 
   const password = screen.getByPlaceholderText("Password");
-  fireEvent.change(password, { target: { value: "Harry123@@" } });
+  act(() => {
+    fireEvent.change(password, { target: { value: "Harry123@@" } });
+  });
 
   const confirmPassword = screen.getByPlaceholderText("Confirm password");
-  fireEvent.change(confirmPassword, { target: { value: "Harry123@@@" } });
+  act(() => {
+    fireEvent.change(confirmPassword, { target: { value: "Harry123@@@" } });
+  });
 
   const signUpBtn = screen.getByRole("button");
   expect(signUpBtn).toBeInTheDocument();

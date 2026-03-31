@@ -1,4 +1,4 @@
-import { screen, render, fireEvent } from "@testing-library/react";
+import { screen, render, fireEvent, waitFor } from "@testing-library/react";
 import LogoutDeleteAccountCard from "../components/LogoutDeleteAccountCard";
 
 const mockedFn = jest.fn();
@@ -11,9 +11,12 @@ test("Check whether logout dropdown id displayed when button is clicked", async 
   render(<LogoutDeleteAccountCard />);
 
   const profileBtn = screen.getAllByRole("button")[0];
+
   fireEvent.click(profileBtn);
 
-  expect(profileBtn).toHaveAttribute("aria-expanded", "true");
+  await waitFor(() => {
+    expect(profileBtn).toHaveAttribute("aria-expanded", "true");
+  });
 
   const logoutBtn = screen.getByText("Logout");
   const deleteAccountBtn = screen.getByText("Delete account");
@@ -22,13 +25,17 @@ test("Check whether logout dropdown id displayed when button is clicked", async 
   expect(deleteAccountBtn).toBeVisible();
 
   fireEvent.click(profileBtn);
-  expect(profileBtn).toHaveAttribute("aria-expanded", "false");
+
+  await waitFor(() => {
+    expect(profileBtn).toHaveAttribute("aria-expanded", "false");
+  });
 });
 
-test("Check logout navigation", () => {
+test("Check logout navigation", async () => {
   render(<LogoutDeleteAccountCard />);
 
   const profileBtn = screen.getAllByRole("button")[0];
+
   fireEvent.click(profileBtn);
 
   const logoutBtn = screen.getByText("Logout");
@@ -36,10 +43,12 @@ test("Check logout navigation", () => {
   fireEvent.click(logoutBtn);
 
   const logoutReq = screen.getByText("Logout request");
-  expect(logoutReq).toBeVisible();
+  await waitFor(() => {
+    expect(logoutReq).toBeVisible();
+  });
 });
 
-test("Check delete account navigation", () => {
+test("Check delete account navigation", async () => {
   render(<LogoutDeleteAccountCard />);
 
   const profileBtn = screen.getAllByRole("button")[0];
@@ -50,5 +59,7 @@ test("Check delete account navigation", () => {
   fireEvent.click(deleteAccountBtn);
 
   const deleteReq = screen.getByText("Account deletion request");
-  expect(deleteReq).toBeVisible();
+  await waitFor(() => {
+    expect(deleteReq).toBeVisible();
+  });
 });

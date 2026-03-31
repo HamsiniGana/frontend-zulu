@@ -55,7 +55,7 @@ export default function PlantInfo() {
       <Navbar />
       <div>
         <div
-          className="relative flex flex-col items-center bg-white/10 m-4 rounded-2xl h-[85vh] my-3 border border-solid border-white/20"
+          className="relative flex flex-col items-center bg-white/10 m-4 rounded-2xl h-[81vh] my-3 border border-solid border-white/20"
           style={{ backdropFilter: "blur(10px)" }}
         >
           <div className="flex flex-row items-center gap-[35vw]">

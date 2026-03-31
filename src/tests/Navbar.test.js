@@ -1,4 +1,10 @@
-import { screen, render, fireEvent, within } from "@testing-library/react";
+import {
+  screen,
+  render,
+  fireEvent,
+  within,
+  waitFor,
+} from "@testing-library/react";
 import Navbar from "../components/Navbar";
 
 const mockedFn = jest.fn();
@@ -7,21 +13,28 @@ jest.mock("react-router-dom", () => ({
   useNavigate: () => mockedFn,
 }));
 
-test("Check whether UI elements are displayed", () => {
+test("Check whether UI elements are displayed", async () => {
   render(<Navbar />);
   const navContainer = screen.getByRole("navigation");
-  expect(navContainer).toBeInTheDocument();
+
+  await waitFor(() => {
+    expect(navContainer).toBeInTheDocument();
+  });
 
   // Plant and profile icons
   const images = within(navContainer).getAllByRole("img");
-  expect(images).toHaveLength(2);
+  await waitFor(() => {
+    expect(images).toHaveLength(2);
+  });
 
   // Data, Graph, Report and profile btns
   const btns = within(navContainer).getAllByRole("button");
-  expect(btns).toHaveLength(4);
+  await waitFor(() => {
+    expect(btns).toHaveLength(4);
+  });
 });
 
-test("Check navigation", () => {
+test("Check navigation", async () => {
   render(<Navbar />);
   const navContainer = screen.getByRole("navigation");
 
@@ -29,6 +42,8 @@ test("Check navigation", () => {
 
   for (const btn of btns) {
     fireEvent.click(btn);
-    expect(mockedFn).toHaveBeenCalled();
+    await waitFor(() => {
+      expect(mockedFn).toHaveBeenCalled();
+    });
   }
 });

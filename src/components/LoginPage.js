@@ -145,15 +145,17 @@ export default function LoginPage() {
                 </div>
               </form>
 
-              <p className="mt-10 text-center text-md text-gray-600">
-                Don't have an account?
+              <div className="flex flex-row justify-center">
+                <p className="mt-10 text-center text-md text-gray-600">
+                  Don't have an account?
+                </p>
                 <p
                   onClick={() => nav("/sign-up")}
-                  className="font-semibold text-dark-green hover:underline hover: decoration-2"
+                  className="mt-10 font-semibold text-dark-green hover:underline hover: decoration-2"
                 >
                   Sign up
                 </p>
-              </p>
+              </div>
             </div>
           </div>
         </div>
