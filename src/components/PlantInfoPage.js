@@ -68,7 +68,7 @@ export default function PlantInfo() {
                 <Col xs="auto">
                   <Form.Control
                     type="text"
-                    placeholder="Search for plant to compare"
+                    placeholder="Search for plant"
                     className=" mt-3"
                     style={{
                       width: "400px",

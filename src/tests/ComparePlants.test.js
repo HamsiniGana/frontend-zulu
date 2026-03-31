@@ -106,7 +106,7 @@ test("Check if modal displays error messages", async () => {
   fireEvent.click(compareBtn);
 
   await waitFor(() => {
-    const modalMsg = screen.getByText("Woops!");
+    const modalMsg = screen.getByText("At least 2 plants must be provided");
     expect(modalMsg).toBeVisible();
   });
 });
