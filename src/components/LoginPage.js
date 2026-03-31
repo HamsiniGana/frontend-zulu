@@ -147,12 +147,12 @@ export default function LoginPage() {
 
               <p className="mt-10 text-center text-md text-gray-600">
                 Don't have an account?
-                <a
+                <p
                   onClick={() => nav("/sign-up")}
                   className="font-semibold text-dark-green hover:underline hover: decoration-2"
                 >
                   Sign up
-                </a>
+                </p>
               </p>
             </div>
           </div>

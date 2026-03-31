@@ -167,8 +167,8 @@ export default function SignUpPage () {
 
                         <p className="mt-10 text-center text-md text-gray-600">
                         Already have an account?
-                        <a className="font-semibold text-dark-green hover:underline hover: decoration-2"
-                        onClick={() => nav("/login")}> Login</a>
+                        <p className="font-semibold text-dark-green hover:underline hover: decoration-2"
+                        onClick={() => nav("/login")}> Login</p>
                         </p>
                     </div>
                     </div>
