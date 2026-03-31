@@ -222,6 +222,7 @@ test("Check if plant info card closes when close button is clicked", async() => 
   fireEvent.click(closeBtn);
 
   await waitFor(() => {
-    expect(plantInfoCard).not.toBeInTheDocument();
+    expect(mockSetListPlant).toHaveBeenCalled();
+    expect(mockSetListPlantInfo).toHaveBeenCalled();
   });
 });
