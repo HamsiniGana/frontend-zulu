@@ -1,12 +1,7 @@
-import {
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-  act,
-} from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import SignUpPage from "../components/SignUpPage";
 import * as axios from "axios";
+import { wait } from "@testing-library/user-event/dist/utils";
 
 const mockedFn = jest.fn();
 
@@ -41,37 +36,59 @@ jest.mock("axios");
 test("Check whether UI elements are rendered", () => {
   render(<SignUpPage />);
   const heading = screen.getByText("Create your new account");
-  expect(heading).toBeInTheDocument();
+  waitFor(() => {
+    expect(heading).toBeInTheDocument();
+  });
 
   const usernameHeading = screen.getByText("Username:");
-  expect(usernameHeading).toBeInTheDocument();
+  waitFor(() => {
+    expect(usernameHeading).toBeInTheDocument();
+  });
 
   const fullNameHeading = screen.getByText("Full name:");
-  expect(fullNameHeading).toBeInTheDocument();
+  waitFor(() => {
+    expect(fullNameHeading).toBeInTheDocument();
+  });
 
   const emailHeading = screen.getByText("Email address:");
-  expect(emailHeading).toBeInTheDocument();
+  waitFor(() => {
+    expect(emailHeading).toBeInTheDocument();
+  });
 
   const passHeading = screen.getByText("Password:");
-  expect(passHeading).toBeInTheDocument();
+  waitFor(() => {
+    expect(passHeading).toBeInTheDocument();
+  });
 
   const confirmPassHeading = screen.getByText("Confirm password:");
-  expect(confirmPassHeading).toBeInTheDocument();
+  waitFor(() => {
+    expect(confirmPassHeading).toBeInTheDocument();
+  });
 
   const signUpBtn = screen.getByRole("button");
-  expect(signUpBtn).toBeInTheDocument();
+  waitFor(() => {
+    expect(signUpBtn).toBeInTheDocument();
+  });
 
   const arrowLeft = screen.getAllByRole("img")[0];
-  expect(arrowLeft).toBeInTheDocument();
+  waitFor(() => {
+    expect(arrowLeft).toBeInTheDocument();
+  });
 
   const plantImg = screen.getAllByRole("img")[1];
-  expect(plantImg).toBeInTheDocument();
+  waitFor(() => {
+    expect(plantImg).toBeInTheDocument();
+  });
 
   const alreadyHaveAnAccountStr = screen.getByText("Already have an account?");
-  expect(alreadyHaveAnAccountStr).toBeInTheDocument();
+  waitFor(() => {
+    expect(alreadyHaveAnAccountStr).toBeInTheDocument();
+  });
 
   const loginTag = screen.getByText("Login");
-  expect(loginTag).toBeInTheDocument();
+  waitFor(() => {
+    expect(loginTag).toBeInTheDocument();
+  });
 });
 
 test("Check redirection to login page", async () => {
@@ -79,9 +96,7 @@ test("Check redirection to login page", async () => {
 
   const loginTag = screen.getByText("Login");
 
-  // act(() => {
   fireEvent.click(loginTag);
-  // })
 
   await waitFor(() => {
     expect(mockedFn).toHaveBeenCalled();
@@ -92,32 +107,25 @@ test("Check successful sign up", async () => {
   render(<SignUpPage />);
   axios.mockResolvedValue(mockedSuccessResponse);
   const username = screen.getByPlaceholderText("Username");
-  act(() => {
-    fireEvent.change(username, { target: { value: "Harry" } });
-  });
+
+  fireEvent.change(username, { target: { value: "Harry" } });
 
   const fullName = screen.getByPlaceholderText("Full name");
-  act(() => {
-    fireEvent.change(fullName, { target: { value: "Harry Potter" } });
-  });
+  fireEvent.change(fullName, { target: { value: "Harry Potter" } });
 
   const email = screen.getByPlaceholderText("Email");
-  act(() => {
-    fireEvent.change(email, { target: { value: "harry@gmail.com" } });
-  });
+  fireEvent.change(email, { target: { value: "harry@gmail.com" } });
 
   const password = screen.getByPlaceholderText("Password");
-  act(() => {
-    fireEvent.change(password, { target: { value: "Harry123@@" } });
-  });
+  fireEvent.change(password, { target: { value: "Harry123@@" } });
 
   const confirmPassword = screen.getByPlaceholderText("Confirm password");
-  act(() => {
-    fireEvent.change(confirmPassword, { target: { value: "Harry123@@" } });
-  });
+  fireEvent.change(confirmPassword, { target: { value: "Harry123@@" } });
 
   const signUpBtn = screen.getByRole("button");
-  expect(signUpBtn).toBeInTheDocument();
+  waitFor(() => {
+    expect(signUpBtn).toBeInTheDocument();
+  });
 
   fireEvent.click(signUpBtn);
 
@@ -125,7 +133,9 @@ test("Check successful sign up", async () => {
   const modalMsg = await screen.findByText(
     "Created account successfully! Now login 😃",
   );
-  expect(modalMsg).toBeInTheDocument();
+  waitFor(() => {
+    expect(modalMsg).toBeInTheDocument();
+  });
 });
 
 test("Check modal popup after Unsuccessful sign up", async () => {
@@ -133,35 +143,29 @@ test("Check modal popup after Unsuccessful sign up", async () => {
 
   axios.mockRejectedValue(mockedFailResponse);
   const username = screen.getByPlaceholderText("Username");
-  act(() => {
-    fireEvent.change(username, { target: { value: "Harry" } });
-  });
+  fireEvent.change(username, { target: { value: "Harry" } });
 
   const fullName = screen.getByPlaceholderText("Full name");
-  act(() => {
-    fireEvent.change(fullName, { target: { value: "Harry Potter" } });
-  });
+  fireEvent.change(fullName, { target: { value: "Harry Potter" } });
 
   const email = screen.getByPlaceholderText("Email");
-  act(() => {
-    fireEvent.change(email, { target: { value: "harry@gmail.com" } });
-  });
+  fireEvent.change(email, { target: { value: "harry@gmail.com" } });
 
   const password = screen.getByPlaceholderText("Password");
-  act(() => {
-    fireEvent.change(password, { target: { value: "Harry123@@" } });
-  });
+  fireEvent.change(password, { target: { value: "Harry123@@" } });
 
   const confirmPassword = screen.getByPlaceholderText("Confirm password");
-  act(() => {
-    fireEvent.change(confirmPassword, { target: { value: "Harry123@@@" } });
-  });
+  fireEvent.change(confirmPassword, { target: { value: "Harry123@@@" } });
 
   const signUpBtn = screen.getByRole("button");
-  expect(signUpBtn).toBeInTheDocument();
+  waitFor(() => {
+    expect(signUpBtn).toBeInTheDocument();
+  });
 
   fireEvent.click(signUpBtn);
 
   const modalMsg = await screen.findByText("Passwords do not match");
-  expect(modalMsg).toBeInTheDocument();
+  waitFor(() => {
+    expect(modalMsg).toBeInTheDocument();
+  });
 });
