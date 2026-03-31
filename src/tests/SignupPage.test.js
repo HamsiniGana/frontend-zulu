@@ -33,60 +33,60 @@ jest.mock("react-router-dom", () => ({
 
 jest.mock("axios");
 
-test("Check whether UI elements are rendered", () => {
+test("Check whether UI elements are rendered", async () => {
   render(<SignUpPage />);
   const heading = screen.getByText("Create your new account");
-  waitFor(() => {
+  await waitFor(() => {
     expect(heading).toBeInTheDocument();
   });
 
   const usernameHeading = screen.getByText("Username:");
-  waitFor(() => {
+  await waitFor(() => {
     expect(usernameHeading).toBeInTheDocument();
   });
 
   const fullNameHeading = screen.getByText("Full name:");
-  waitFor(() => {
+  await waitFor(() => {
     expect(fullNameHeading).toBeInTheDocument();
   });
 
   const emailHeading = screen.getByText("Email address:");
-  waitFor(() => {
+  await waitFor(() => {
     expect(emailHeading).toBeInTheDocument();
   });
 
   const passHeading = screen.getByText("Password:");
-  waitFor(() => {
+  await waitFor(() => {
     expect(passHeading).toBeInTheDocument();
   });
 
   const confirmPassHeading = screen.getByText("Confirm password:");
-  waitFor(() => {
+  await waitFor(() => {
     expect(confirmPassHeading).toBeInTheDocument();
   });
 
   const signUpBtn = screen.getByRole("button");
-  waitFor(() => {
+  await waitFor(() => {
     expect(signUpBtn).toBeInTheDocument();
   });
 
   const arrowLeft = screen.getAllByRole("img")[0];
-  waitFor(() => {
+  await waitFor(() => {
     expect(arrowLeft).toBeInTheDocument();
   });
 
   const plantImg = screen.getAllByRole("img")[1];
-  waitFor(() => {
+  await waitFor(() => {
     expect(plantImg).toBeInTheDocument();
   });
 
   const alreadyHaveAnAccountStr = screen.getByText("Already have an account?");
-  waitFor(() => {
+  await waitFor(() => {
     expect(alreadyHaveAnAccountStr).toBeInTheDocument();
   });
 
   const loginTag = screen.getByText("Login");
-  waitFor(() => {
+  await waitFor(() => {
     expect(loginTag).toBeInTheDocument();
   });
 });
@@ -98,7 +98,7 @@ test("Check redirection to login page", async () => {
 
   fireEvent.click(loginTag);
 
-  await waitFor(() => {
+  await await waitFor(() => {
     expect(mockedFn).toHaveBeenCalled();
   });
 });
@@ -123,7 +123,7 @@ test("Check successful sign up", async () => {
   fireEvent.change(confirmPassword, { target: { value: "Harry123@@" } });
 
   const signUpBtn = screen.getByRole("button");
-  waitFor(() => {
+  await waitFor(() => {
     expect(signUpBtn).toBeInTheDocument();
   });
 
@@ -133,7 +133,7 @@ test("Check successful sign up", async () => {
   const modalMsg = await screen.findByText(
     "Created account successfully! Now login 😃",
   );
-  waitFor(() => {
+  await waitFor(() => {
     expect(modalMsg).toBeInTheDocument();
   });
 });
@@ -158,14 +158,14 @@ test("Check modal popup after Unsuccessful sign up", async () => {
   fireEvent.change(confirmPassword, { target: { value: "Harry123@@@" } });
 
   const signUpBtn = screen.getByRole("button");
-  waitFor(() => {
+  await waitFor(() => {
     expect(signUpBtn).toBeInTheDocument();
   });
 
   fireEvent.click(signUpBtn);
 
   const modalMsg = await screen.findByText("Passwords do not match");
-  waitFor(() => {
+  await waitFor(() => {
     expect(modalMsg).toBeInTheDocument();
   });
 });
