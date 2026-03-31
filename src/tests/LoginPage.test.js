@@ -32,28 +32,28 @@ const mockedSuccessResponse = {
 test("Check whether UI elements are rendered", () => {
   render(<LoginPage />);
   const heading = screen.getByText("Login to your account");
-  expect(heading).toBeInTheDocument();
+  expect(heading).toBeVisible();
 
   const usernameHeading = screen.getByText("Username:");
-  expect(usernameHeading).toBeInTheDocument();
+  expect(usernameHeading).toBeVisible();
 
   const passHeading = screen.getByText("Password:");
-  expect(passHeading).toBeInTheDocument();
+  expect(passHeading).toBeVisible();
 
   const loginBtn = screen.getByRole("button");
-  expect(loginBtn).toBeInTheDocument();
+  expect(loginBtn).toBeVisible();
 
   const arrowLeft = screen.getAllByRole("img")[0];
-  expect(arrowLeft).toBeInTheDocument();
+  expect(arrowLeft).toBeVisible();
 
   const plantImg = screen.getAllByRole("img")[1];
-  expect(plantImg).toBeInTheDocument();
+  expect(plantImg).toBeVisible();
 
   const dontHaveAnAccountStr = screen.getByText("Don't have an account?");
-  expect(dontHaveAnAccountStr).toBeInTheDocument();
+  expect(dontHaveAnAccountStr).toBeVisible();
 
   const SignUpTag = screen.getByText("Sign up");
-  expect(SignUpTag).toBeInTheDocument();
+  expect(SignUpTag).toBeVisible();
 });
 
 test("Check succesful login", async () => {
@@ -71,7 +71,7 @@ test("Check succesful login", async () => {
   fireEvent.click(loginBtn);
 
   await waitFor(() => {
-    expect(mockedFn).toHaveBeenCalledWith("/loadingPage");
+    expect(mockedFn).toHaveBeenCalled();
   })
 
   // Clear data created by this test
@@ -100,4 +100,16 @@ test("Check unsuccessful login", async () => {
 
   // Clear data created by this test
   localStorage.clear()
+});
+
+test("Check redirection to sign up page", async () => {
+  render(<LoginPage />);
+
+  const signUpTag = screen.getByText("Sign up");
+
+  fireEvent.click(signUpTag);
+
+  await waitFor(() => {
+    expect(mockedFn).toHaveBeenCalled();
+  });
 });

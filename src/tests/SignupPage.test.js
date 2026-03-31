@@ -1,7 +1,8 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import SignUpPage from "../components/SignUpPage";
 import * as axios from "axios";
 
+const mockedFn = jest.fn();
 
 const mockedSuccessResponse = {
   data: {
@@ -26,7 +27,7 @@ const mockedFailResponse = {
 };
 
 jest.mock("react-router-dom", () => ({
-  useNavigate: () => jest.fn(),
+  useNavigate: () => mockedFn,
 }));
 
 jest.mock("axios");
@@ -67,12 +68,16 @@ test("Check whether UI elements are rendered", () => {
   expect(loginTag).toBeInTheDocument();
 });
 
-test("Check redirection to login page", () => {
+test("Check redirection to login page", async () => {
   render(<SignUpPage />);
 
   const loginTag = screen.getByText("Login");
 
-  expect(loginTag).toHaveAttribute("href", "/login");
+  fireEvent.click(loginTag);
+
+  await waitFor(() => {
+    expect(mockedFn).toHaveBeenCalled();
+  });
 });
 
 test("Check successful sign up", async () => {

@@ -16,9 +16,9 @@ test("Check whether UI elements are displayed", () => {
   const plantImg = screen.getByRole("img");
 
   expect(btns).toHaveLength(2);
-  expect(title).toBeInTheDocument();
-  expect(description).toBeInTheDocument();
-  expect(plantImg).toBeInTheDocument();
+  expect(title).toBeVisible();
+  expect(description).toBeVisible();
+  expect(plantImg).toBeVisible();
 });
 
 test('Check login navigation', () => {

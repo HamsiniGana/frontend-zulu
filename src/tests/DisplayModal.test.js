@@ -5,29 +5,29 @@ const mockSetModalMsg = jest.fn();
 test("Check if display modal is displayed with correct title, msg and buttons", () => {
   render(
     <DisplayModal
-        show={true}
+      show={true}
       modalTitle={"Woops!"}
       modalMsg={"Plant with given name not found"}
       setModalMsg={mockSetModalMsg}
     />,
   );
   const title = screen.getByText("Woops!");
-  expect(title).toBeInTheDocument();
+  expect(title).toBeVisible();
 
   const msg = screen.getByText("Plant with given name not found");
-  expect(msg).toBeInTheDocument();
+  expect(msg).toBeVisible();
 
   const crossBtn = screen.getAllByRole("button")[0];
   const closeBtn = screen.getAllByRole("button")[1];
 
-  expect(closeBtn).toBeInTheDocument();
-  expect(crossBtn).toBeInTheDocument();
+  expect(closeBtn).toBeVisible();
+  expect(crossBtn).toBeVisible();
 });
 
 test("Check confirm modal behaviour after close btn is clicked", () => {
   render(
     <DisplayModal
-        show={true}
+      show={true}
       modalTitle={"Woops!"}
       modalMsg={"Plant with given name not found"}
       setModalMsg={mockSetModalMsg}
@@ -43,7 +43,7 @@ test("Check confirm modal behaviour after close btn is clicked", () => {
 test("Check confirm modal behaviour after the cross btn is clicked", () => {
   render(
     <DisplayModal
-        show={true}
+      show={true}
       modalTitle={"Woops!"}
       modalMsg={"Plant with given name not found"}
       setModalMsg={mockSetModalMsg}

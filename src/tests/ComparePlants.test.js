@@ -69,7 +69,7 @@ test("Check if closable tabs and compare cards are created when plants are added
 
   const compareBtn = screen.getByRole("button", { name: /Compare/i });
 
-  expect(compareBtn).toBeInTheDocument();
+  expect(compareBtn).toBeVisible();
 
   fireEvent.change(searchBar, { target: { value: "tomato" } });
   fireEvent.click(addBtn);
@@ -77,11 +77,11 @@ test("Check if closable tabs and compare cards are created when plants are added
   fireEvent.click(compareBtn);
   await waitFor(() => {
     const onionCompareCard = screen.getByText("ONION");
-    expect(onionCompareCard).toBeInTheDocument();
+    expect(onionCompareCard).toBeVisible();
   });
   await waitFor(() => {
     const tomatoCompareCard = screen.getByText("TOMATO");
-    expect(tomatoCompareCard).toBeInTheDocument();
+    expect(tomatoCompareCard).toBeVisible();
   });
   await waitFor(() => {
     const closableTabs = screen.getAllByRole("button", { name: /Close/i });
@@ -107,7 +107,7 @@ test("Check if modal displays error messages", async () => {
 
   await waitFor(() => {
     const modalMsg = screen.getByText("Woops!");
-    expect(modalMsg).toBeInTheDocument();
+    expect(modalMsg).toBeVisible();
   });
 });
 
@@ -115,7 +115,7 @@ test("Check if navbar is displayed", () => {
   render(<ComparePlants />);
 
   const navbar = screen.getByRole("navigation");
-  expect(navbar).toBeInTheDocument();
+  expect(navbar).toBeVisible();
 
   // Clear data created by this test
   localStorage.clear();

@@ -25,9 +25,9 @@ test("Check if confirm modal is displayed with correct title, msg and buttons", 
   const closeBtn = screen.getByRole("button", { name: /Close/i });
 
   // fireEvent.click(cancelBtn)
-  expect(cancelBtn).toBeInTheDocument();
-  expect(yesBtn).toBeInTheDocument();
-  expect(closeBtn).toBeInTheDocument();
+  expect(cancelBtn).toBeVisible();
+  expect(yesBtn).toBeVisible();
+  expect(closeBtn).toBeVisible();
 });
 
 test("Check confirm modal behaviour after yes is clicked", () => {
