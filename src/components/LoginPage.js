@@ -96,6 +96,7 @@ export default function LoginPage() {
                       id="username"
                       type="text"
                       name="username"
+                      placeholder="Username"
                       required
                       autoComplete="username"
                       onChange={(e) => setUsername(e.target.value)}
@@ -120,6 +121,7 @@ export default function LoginPage() {
                       id="password"
                       type="password"
                       name="password"
+                      placeholder="Password"
                       required
                       autoComplete="current-password"
                       className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1
@@ -143,15 +145,17 @@ export default function LoginPage() {
                 </div>
               </form>
 
-              <p className="mt-10 text-center text-md text-gray-600">
-                Don't have an account?
-                <a
-                  href="/sign-up"
-                  className="font-semibold text-dark-green hover:underline hover: decoration-2"
+              <div className="flex flex-row justify-center">
+                <p className="mt-10 text-center text-md text-gray-600">
+                  Don't have an account?
+                </p>
+                <p
+                  onClick={() => nav("/sign-up")}
+                  className="mt-10 font-semibold text-dark-green hover:underline hover: decoration-2"
                 >
                   Sign up
-                </a>
-              </p>
+                </p>
+              </div>
             </div>
           </div>
         </div>
