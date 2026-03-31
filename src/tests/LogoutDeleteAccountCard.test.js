@@ -1,11 +1,22 @@
 import { screen, render, fireEvent, waitFor } from "@testing-library/react";
 import LogoutDeleteAccountCard from "../components/LogoutDeleteAccountCard";
+import * as axios from "axios";
+
+jest.mock("axios");
 
 const mockedFn = jest.fn();
 
 jest.mock("react-router-dom", () => ({
   useNavigate: () => mockedFn,
 }));
+
+const logoutRes = {
+  status: 200,
+};
+
+const deleteAccRes = {
+  status: 200,
+};
 
 test("Check whether logout dropdown id displayed when button is clicked", async () => {
   render(<LogoutDeleteAccountCard />);
@@ -40,11 +51,25 @@ test("Check logout navigation", async () => {
 
   const logoutBtn = screen.getByText("Logout");
 
+  axios.mockResolvedValue(logoutRes);
+
   fireEvent.click(logoutBtn);
 
   const logoutReq = screen.getByText("Logout request");
   await waitFor(() => {
     expect(logoutReq).toBeVisible();
+  });
+
+  const yesBtn = screen.getByText("Yes");
+
+  await waitFor(() => {
+    expect(yesBtn).toBeVisible();
+  });
+
+  fireEvent.click(yesBtn);
+
+  await waitFor(() => {
+    expect(mockedFn).toHaveBeenCalled();
   });
 });
 
@@ -56,10 +81,23 @@ test("Check delete account navigation", async () => {
 
   const deleteAccountBtn = screen.getByText("Delete account");
 
+  axios.mockResolvedValue(deleteAccRes);
+
   fireEvent.click(deleteAccountBtn);
 
   const deleteReq = screen.getByText("Account deletion request");
   await waitFor(() => {
     expect(deleteReq).toBeVisible();
+  });
+
+  const yesBtn = screen.getByText("Yes");
+
+  await waitFor(() => {
+    expect(yesBtn).toBeVisible();
+  });
+  fireEvent.click(yesBtn);
+
+  await waitFor(() => {
+    expect(mockedFn).toHaveBeenCalled();
   });
 });

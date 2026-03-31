@@ -1,4 +1,10 @@
-import { fireEvent, render, screen, waitFor, within} from "@testing-library/react";
+import {
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+  within,
+} from "@testing-library/react";
 import PlantInfoCard from "../components/PlantInfoCard";
 
 jest.mock("../components/plantsAndImagesMap.js", () => ({
@@ -7,6 +13,9 @@ jest.mock("../components/plantsAndImagesMap.js", () => ({
     default: "default.jpeg",
   },
 }));
+
+const mockSetListPlant = jest.fn();
+const mockSetListPlantInfo = jest.fn();
 
 test("Check if plant info card has the right values", () => {
   render(
@@ -27,6 +36,8 @@ test("Check if plant info card has the right values", () => {
       photo={"short day"}
       texture={"medium"}
       plant_name={"onion"}
+      setListPlant={mockSetListPlant}
+      setListPlantInfo={mockSetListPlantInfo}
     />,
   );
 
@@ -169,9 +180,48 @@ test("Check if default image is used for a plant that has not been mapped to an 
       photo={"short day"}
       texture={"medium"}
       plant_name={"mungbohne"}
+      setListPlant={mockSetListPlant}
+      setListPlantInfo={mockSetListPlantInfo}
     />,
   );
 
   const img = screen.getByRole("img");
   expect(img).toHaveAttribute("src", "default.jpeg");
+});
+
+test("Check if plant info card closes when close button is clicked", () => {
+  render(
+    <PlantInfoCard
+      attributes={"grow on large scale"}
+      category={"vegetables"}
+      cliz={"tropical wet & dry"}
+      life_form={"herb"}
+      life_span={"biennial"}
+      gmax={175}
+      gmin={85}
+      phmax={8.3}
+      phmin={4.3}
+      ropmn={350}
+      ropmx={600}
+      topmn={12}
+      topmx={25}
+      photo={"short day"}
+      texture={"medium"}
+      plant_name={"onion"}
+      setListPlant={mockSetListPlant}
+      setListPlantInfo={mockSetListPlantInfo}
+    />,
+  );
+
+  const plantInfoCard = screen.queryByText("ONION");
+  expect(plantInfoCard).toBeVisible();
+
+  const closeBtn = screen.getByRole("button", { name: /Close/i });
+  expect(closeBtn).toBeVisible();
+
+  fireEvent.click(closeBtn);
+
+  waitFor(() => {
+    expect(plantInfoCard).not.toBeInTheDocument();
+  });
 });

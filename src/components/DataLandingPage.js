@@ -21,10 +21,11 @@ export default function DataLandingPage() {
       <div
         className="bg-white/10 h-[83vh] flex flex-col mt-4 mb-5 mx-4 rounded-2xl items-center justify-center border border-solid border-white"
         style={{ backdropFilter: "blur(5px)"}}
+        data-testid={"data-container"}
       >
         <h1 className="text-white mb-5">Data</h1>
         <div className="flex flex-row gap-5 justify-between">
-          <Card style={{ width: "18rem", background: "rgba(158, 237, 136, 0.3)", backdropFilter: "blur(5px)"}} className="">
+          <Card style={{ width: "15rem", background: "rgba(158, 237, 136, 0.3)", backdropFilter: "blur(5px)"}} className="">
             <Card.Img variant="top" src={irrigation} alt="irrigation-icon" className="p-3"/>
             <Card.Body>
               <Card.Title className="text-white">Irrigation guide</Card.Title>
@@ -36,7 +37,7 @@ export default function DataLandingPage() {
             </Card.Body>
           </Card>
 
-          <Card style={{ width: "18rem", background: "rgba(158, 237, 136, 0.3)", backdropFilter: "blur(5px)"}} className="">
+          <Card style={{ width: "15rem", background: "rgba(158, 237, 136, 0.3)", backdropFilter: "blur(5px)"}} className="">
             <Card.Img variant="top" src={listPlants} alt="plant-information-icon" className="p-3"/>
             <Card.Body>
               <Card.Title className="text-white">Plant information</Card.Title>
@@ -48,7 +49,7 @@ export default function DataLandingPage() {
             </Card.Body>
           </Card>
 
-          <Card style={{ width: "18rem", background: "rgba(158, 237, 136, 0.3)", backdropFilter: "blur(5px)"}} className="">
+          <Card style={{ width: "15rem", background: "rgba(158, 237, 136, 0.3)", backdropFilter: "blur(5px)"}} className="">
             <Card.Img variant="top" src={comparePlants} alt="compare-plants-icon" className="p-3"/>
             <Card.Body>
               <Card.Title className="text-white">Compare plants</Card.Title>
