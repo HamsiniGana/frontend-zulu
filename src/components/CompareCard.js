@@ -6,7 +6,7 @@ export default function CompareCard(props) {
     <Card
       style={{
         width: "18rem",
-        height: "50vh",
+        height: "43vh",
         background: "rgba(255, 255, 255, 0.5)",
         backdropFilter: "blur(20px)",
         borderRadius: "1rem",

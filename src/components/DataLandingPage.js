@@ -19,17 +19,17 @@ export default function DataLandingPage() {
     >
       <Navbar />
       <div
-        className="bg-white/10 h-[83vh] flex flex-col mt-4 mb-5 mx-4 rounded-2xl items-center justify-center border border-solid border-white"
+        className="bg-white/10 h-[80vh] flex flex-col mt-4 mb-5 mx-4 rounded-2xl items-center justify-center border border-solid border-white"
         style={{ backdropFilter: "blur(5px)"}}
         data-testid={"data-container"}
       >
-        <h1 className="text-white mb-5">Data</h1>
+        <h1 className="text-white mb-2">Data</h1>
         <div className="flex flex-row gap-5 justify-between">
           <Card style={{ width: "15rem", background: "rgba(158, 237, 136, 0.3)", backdropFilter: "blur(5px)"}} className="">
             <Card.Img variant="top" src={irrigation} alt="irrigation-icon" className="p-3"/>
             <Card.Body>
               <Card.Title className="text-white">Irrigation guide</Card.Title>
-              <Card.Text className="font-bold h-[10vh]">
+              <Card.Text className="font-bold h-[10vh] text-sm">
                 Get information on how and when to water your plants, and how weather affects it.
               </Card.Text>
               <Button className="hover:!text-black hover:!bg-white" style={{backgroundColor: "var(--dark-bottle-green)", borderColor:"var(--dark-bottle-green)", borderWidth:"2px"}}
@@ -41,7 +41,7 @@ export default function DataLandingPage() {
             <Card.Img variant="top" src={listPlants} alt="plant-information-icon" className="p-3"/>
             <Card.Body>
               <Card.Title className="text-white">Plant information</Card.Title>
-              <Card.Text className="font-bold h-[10vh]">
+              <Card.Text className="font-bold h-[10vh] text-sm">
                 Get detailed information about a plant.
               </Card.Text>
               <Button className="hover:!text-black hover:!bg-white" style={{backgroundColor: "var(--dark-bottle-green)", borderColor:"var(--dark-bottle-green)", borderWidth:"2px"}}
@@ -53,7 +53,7 @@ export default function DataLandingPage() {
             <Card.Img variant="top" src={comparePlants} alt="compare-plants-icon" className="p-3"/>
             <Card.Body>
               <Card.Title className="text-white">Compare plants</Card.Title>
-              <Card.Text className="font-bold h-[10vh]">
+              <Card.Text className="font-bold h-[10vh] text-sm">
                 Compare plant information and understand how they differ.
               </Card.Text>
               <Button className="hover:!text-black hover:!bg-white" style={{backgroundColor: "var(--dark-bottle-green)", borderColor:"var(--dark-bottle-green)", borderWidth:"2px"}}
