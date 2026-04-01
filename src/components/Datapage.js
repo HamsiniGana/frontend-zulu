@@ -72,6 +72,7 @@ export default function DataPage() {
             min: res.data.daily.temperature_2m_min[i],
             rain: res.data.daily.rain_sum[i],
         }))
+        console.log(res)
         setWeather(resultData)
       }
 
@@ -98,9 +99,10 @@ export default function DataPage() {
 
         const res = await axios.post(url, body)
         setWater(res.data)
+        // console.log(res.data)
 
       } catch(err) {
-        console.log(err)
+        // console.log(err)
       }
     }
 
@@ -149,6 +151,7 @@ return (
               value={soil}
               onChange={(e) => setSoil(e.target.value)}
               className="border border-black rounded-xl px-3 py-2 text-center focus:outline-none"
+              data-testid={"soil-dropdown"}
             >
               <option value="">-- Choose soil type --</option>
               <option value="clay">Clay</option>
@@ -168,7 +171,7 @@ return (
 
             <input
               type="text"
-              placeholder="e.g tomato"
+              placeholder="e.g. tomato"
               value={plant}
               onChange={(e) => setPlant(e.target.value)}
               className="border border-black rounded-xl px-3 py-2 focus:outline-none"

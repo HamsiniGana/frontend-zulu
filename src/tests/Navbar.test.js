@@ -46,4 +46,11 @@ test("Check navigation", async () => {
       expect(mockedFn).toHaveBeenCalled();
     });
   }
+
+  const plantImg = screen.getAllByRole("img")[0];
+  fireEvent.click(plantImg);
+
+  await waitFor(() => {
+    expect(mockedFn).toHaveBeenCalled();
+  });
 });

@@ -17,7 +17,8 @@ export default function Homepage() {
       }}
     >
       <Navbar />
-      <div className=" min-h-screen flex flex-col">
+      <div className=" min-h-screen flex flex-col"
+      data-testId={"data-container"}>
         <div
           className="flex flex-row gap-[20vw] bg-white/30 mx-5 p-5 items-center justify-center
                         rounded-3xl
@@ -113,7 +114,7 @@ export default function Homepage() {
               <button
                 className="hover:bg-white hover:!text-black py-2 px-3 rounded-xl w-[150px] hover:border hover:border-solid hover:border-black
               bg-dark-bottle-green text-white text-xl"
-                onClick={() => nav("/homepage/compare-plants")}
+                // onClick={() => nav("/homepage/compare-plants")}
               >
                 Get started
               </button>
