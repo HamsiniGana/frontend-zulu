@@ -6,7 +6,6 @@ import {
   within,
 } from "@testing-library/react";
 import Homepage from "../components/Homepage";
-import { data } from "react-router-dom";
 
 const mockedFn = jest.fn();
 
