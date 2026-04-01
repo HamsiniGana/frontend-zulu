@@ -59,7 +59,7 @@ export default function PlantInfo() {
           style={{ backdropFilter: "blur(10px)" }}
         >
           <div className="flex flex-row items-center gap-[35vw]">
-            <h1 className="mt-3 text-white">Plant information</h1>
+            <h2 className="mt-3 text-white">Plant information</h2>
           </div>
 
           <div className="flex flex-row justify-between">

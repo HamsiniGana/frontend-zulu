@@ -22,7 +22,7 @@ export default function Homepage() {
         <div
           className="flex flex-row gap-[20vw] bg-white/30 mx-5 p-5 items-center justify-center
                         rounded-3xl
-                        hover:scale-[1.01] h-[40vh] mt-[5vh] border border-solid border-white"
+                        hover:scale-[1.01] h-[45vh] mt-[5vh] border border-solid border-white"
           style={{ backdropFilter: "blur(10px)" }}
         >
           <div className="flex flex-col gap-2 h-full items-center justify-center mb-2">
@@ -37,7 +37,7 @@ export default function Homepage() {
 
           <div className="flex flex-col flex-1 h-full">
             <div className="flex flex-col flex-1 justify-center">
-              <h1 className="text-black font-bold text-2xl pb-5">
+              <h1 className="text-black font-bold text-xl pb-1">
                 Data
               </h1>
               <p className="text-xl text-black">
@@ -59,19 +59,19 @@ export default function Homepage() {
 
         <div className="flex flex-row justify-between items-center">
           <div
-            className="flex flex-col bg-white/30 m-5 p-5
+            className="flex flex-col bg-white/30 m-5 pt-3 pl-5
                         rounded-3xl
-                        hover:scale-[1.01] w-[49vw]  h-[40vh]
+                        hover:scale-[1.01] w-[49vw]  h-[47vh]
                         border border-solid border-white"
             style={{ backdropFilter: "blur(10px)" }}
           >
             <div className="flex flex-row justify-start w-full">
-              <h1 className="text-black font-bold text-2xl">
+              <h1 className="text-black font-bold text-xl" >
                 Graphs
               </h1>
             </div>
 
-            <div className="flex flex-row gap-5 items-center flex-1 ">
+            <div className="flex flex-row gap-5 items-center flex-1 " style={{marginTop:"-1vw"}}>
               {/* <div className='flex flex-row items-center h-full  border border-solid border-black'>   */}
               <img
                 src={graph}
@@ -84,25 +84,27 @@ export default function Homepage() {
             <div className="flex flex-row justify-end mr-1">
               <button
                 className="hover:bg-white hover:!text-black py-2 px-3 rounded-xl w-[150px] hover:border hover:border-solid hover:border-black
-              bg-dark-bottle-green text-white text-xl"
+              bg-dark-bottle-green text-white text-xl mb-5 mr-3"
+              // style={{marginTop: "-20px"}}
               >
                 Get started
               </button>
             </div>
           </div>
           <div
-            className="flex flex-col bg-white/30 m-5 p-5
+            className="flex flex-col bg-white/30 m-5 pt-3 pl-5
                         rounded-3xl shadow-2xl
-                        hover:scale-[1.01] w-[49vw]  h-[40vh] border border-solid border-white"
+                        hover:scale-[1.01] w-[49vw]  h-[47vh] border border-solid border-white"
             style={{ backdropFilter: "blur(10px)" }}
           >
             <div className="flex flex-row justify-start w-full">
-              <h1 className="text-black font-bold text-2xl ">
+              <h1 className="text-black font-bold text-xl ">
                 Reports
               </h1>
             </div>
 
-            <div className="flex flex-row gap-5 items-center flex-1">
+            <div className="flex flex-row gap-5 items-center flex-1" 
+            style={{marginTop:"-1vw"}}>
               <img
                 src={report}
                 alt="graph-icon"
@@ -113,8 +115,8 @@ export default function Homepage() {
             <div className="flex flex-row justify-end mr-1">
               <button
                 className="hover:bg-white hover:!text-black py-2 px-3 rounded-xl w-[150px] hover:border hover:border-solid hover:border-black
-              bg-dark-bottle-green text-white text-xl"
-                // onClick={() => nav("/homepage/compare-plants")}
+              bg-dark-bottle-green text-white text-xl mb-5 mr-3"
+              // style={{marginTop: "-20px"}}
               >
                 Get started
               </button>

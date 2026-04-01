@@ -103,11 +103,11 @@ export default function ComparePlants() {
       <Navbar />
       <div>
         <div
-          className="relative flex flex-col items-center bg-white/10 m-4 rounded-2xl h-[85vh] my-3 border border-solid border-white/20"
+          className="relative flex flex-col items-center bg-white/10 m-4 rounded-2xl h-[81vh] my-3 border border-solid border-white/20"
           style={{ backdropFilter: "blur(10px)" }}
         >
           <div className="flex flex-row items-center gap-[35vw]">
-            <h1 className="mt-3 text-white">Compare plants</h1>
+            <h2 className="mt-3 text-white">Compare plants</h2>
           </div>
 
           <div className="flex flex-row justify-between">
@@ -168,7 +168,7 @@ export default function ComparePlants() {
             </Form>
           </div>
 
-          <div className="flex flex-row m-4 justify-center">
+          <div className="flex flex-row m-4 pr-3 justify-center w-full">
             {plants.map((plant) => {
               return (
                 <ClosableTabs
@@ -194,7 +194,7 @@ export default function ComparePlants() {
             )}
           </div>
 
-          <div className="flex flex-row justify-between gap-5 overflow flex-wrap mt-3">
+          <div className="flex flex-row gap-2 justify-center mt-3 w-full px-2">
             {plantsInfo.length >= 1 &&
               plantsInfo.map((p) => {
                 return (
