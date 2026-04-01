@@ -12,7 +12,8 @@ export default function ClosableTabs(props) {
             const plantFound = prev.find((p) => p === props.plant);
             if (plantFound) {
               return prev.filter((p) => p !== props.plant);
-            } else {
+            }
+            else {
               return prev;
             }
           });
