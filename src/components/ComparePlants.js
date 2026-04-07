@@ -36,6 +36,20 @@ export default function ComparePlants() {
   }, [plants, plantsInfo]);
 
   useEffect(() => {
+    const searchPlantFn = async () => {
+      try {
+        const res = await axios({
+          method: "get",
+          url: `https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/v2/plants/search?search=${newPlant}`,
+        });
+        setPlantNameSuggestions(res.data);
+        // console.log(res.data)
+      } catch (e) {
+        // console.log(e);
+        // setModalTitle("Woops!")
+        alert("Unable to fetch plant name suggestions");
+      }
+    };
     searchPlantFn();
     if (newPlant.trim() === "") {
       setShowSuggestions(false);
@@ -98,21 +112,6 @@ export default function ComparePlants() {
     } catch (e) {
       setModalMsg(e.response.data.detail);
       setModalTitle("Woops!");
-    }
-  };
-
-  const searchPlantFn = async () => {
-    try {
-      const res = await axios({
-        method: "get",
-        url: `https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/v2/plants/search?search=${newPlant}`,
-      });
-      setPlantNameSuggestions(res.data);
-      // console.log(res.data)
-    } catch (e) {
-      // console.log(e);
-      // setModalTitle("Woops!")
-      alert("Unable to fetch plant name suggestions")
     }
   };
 

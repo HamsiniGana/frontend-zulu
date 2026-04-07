@@ -21,10 +21,10 @@ export default function PlantInfo() {
       ? JSON.parse(localStorage.getItem("listPlantInfo"))
       : {};
   });
-  const [plantNameSuggestions, setPlantNameSuggestions] = useState([])
+  const [plantNameSuggestions, setPlantNameSuggestions] = useState([]);
   const [modalMsg, setModalMsg] = useState("");
   const [modalTitle, setModalTitle] = useState("");
-  const [showSuggestions, setShowSuggestions] = useState(true)
+  const [showSuggestions, setShowSuggestions] = useState(true);
 
   useEffect(() => {
     localStorage.setItem("listPlant", JSON.stringify(listPlant));
@@ -35,12 +35,25 @@ export default function PlantInfo() {
 
   useEffect(() => {
     // if (plantNameSuggestions.length == 0) return
-    searchPlantFn()
+    const searchPlantFn = async () => {
+      try {
+        const res = await axios({
+          method: "get",
+          url: `https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/v2/plants/search?search=${listPlant}`,
+        });
+        setPlantNameSuggestions(res.data);
+        // console.log(res.data)
+      } catch (e) {
+        // console.log(e);
+        // setModalTitle("Woops!")
+        alert("Unable to fetch plant name suggestions");
+      }
+    };
+    searchPlantFn();
     if (listPlant.trim() === "") {
-      setShowSuggestions(false)
+      setShowSuggestions(false);
     }
-
-  },[listPlant])
+  }, [listPlant]);
 
   const infoFn = async () => {
     try {
@@ -54,22 +67,6 @@ export default function PlantInfo() {
       setModalTitle("Woops!");
     }
   };
-
-  const searchPlantFn = async () => {
-    try {
-      const res = await axios ({
-        method: "get",
-        url:`https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/v2/plants/search?search=${listPlant}`,
-      })
-      setPlantNameSuggestions(res.data)
-      // console.log(res.data)
-    }
-    catch (e){
-      // console.log(e)
-      // setModalTitle("Woops!")
-      alert("Unable to fetch plant name suggestions")
-    }
-  }
 
   return (
     <div
@@ -92,51 +89,54 @@ export default function PlantInfo() {
 
           <div className="flex flex-row justify-between">
             <div className="flex flex-col">
-            <Form >
-              <Row>
-                <Col xs="auto">
-                  <Form.Control
-                    type="text"
-                    placeholder="Search for plant"
-                    className=" mt-3"
-                    style={{
-                      width: "400px",
-                      borderColor: "black",
-                      borderWidth: "2px",
-                    }}
-                    value={listPlant}
-                    onChange={(e) => {
-                      setListPlant(e.target.value)
-                      // searchPlantFn()
-                      setShowSuggestions(true)
-
-                    }}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") {
-                        e.preventDefault();
-                        infoFn();
-                      }
-                    }}
-                  />
-                </Col>
-                <Col xs="auto">
-                  <Button
-                    style={{
-                      backgroundColor: "var(--dark-green)",
-                      borderColor: "black",
-                      marginLeft: "-20px",
-                      borderWidth: "2px",
-                    }}
-                    className="mt-3 hover:!bg-white hover:!text-black hover:border hover:border-solid hover:border-black"
-                    onClick={() => infoFn()}
-                  >
-                    +Add
-                  </Button>
-                </Col>
-              </Row>
-            </Form>
-            <DropdownSuggestions plantSuggestions={plantNameSuggestions} setPlant={setListPlant}
-            setShow={setShowSuggestions} show={showSuggestions}/>
+              <Form>
+                <Row>
+                  <Col xs="auto">
+                    <Form.Control
+                      type="text"
+                      placeholder="Search for plant"
+                      className=" mt-3"
+                      style={{
+                        width: "400px",
+                        borderColor: "black",
+                        borderWidth: "2px",
+                      }}
+                      value={listPlant}
+                      onChange={(e) => {
+                        setListPlant(e.target.value);
+                        // searchPlantFn()
+                        setShowSuggestions(true);
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          e.preventDefault();
+                          infoFn();
+                        }
+                      }}
+                    />
+                  </Col>
+                  <Col xs="auto">
+                    <Button
+                      style={{
+                        backgroundColor: "var(--dark-green)",
+                        borderColor: "black",
+                        marginLeft: "-20px",
+                        borderWidth: "2px",
+                      }}
+                      className="mt-3 hover:!bg-white hover:!text-black hover:border hover:border-solid hover:border-black"
+                      onClick={() => infoFn()}
+                    >
+                      +Add
+                    </Button>
+                  </Col>
+                </Row>
+              </Form>
+              <DropdownSuggestions
+                plantSuggestions={plantNameSuggestions}
+                setPlant={setListPlant}
+                setShow={setShowSuggestions}
+                show={showSuggestions}
+              />
             </div>
           </div>
 
@@ -174,7 +174,6 @@ export default function PlantInfo() {
           show={modalMsg !== ""}
           setModalMsg={setModalMsg}
         />
-        
       </div>
     </div>
   );
