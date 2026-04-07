@@ -8,6 +8,7 @@ import DisplayModal from "./DisplayModal";
 import axios from "axios";
 import plantBg from "../assets/bg-img.avif";
 import PlantInfoCard from "./PlantInfoCard";
+import DropdownSuggestions from "./DropdownSuggestions";
 
 export default function PlantInfo() {
   const [listPlant, setListPlant] = useState(() => {
@@ -20,8 +21,10 @@ export default function PlantInfo() {
       ? JSON.parse(localStorage.getItem("listPlantInfo"))
       : {};
   });
+  const [plantNameSuggestions, setPlantNameSuggestions] = useState([])
   const [modalMsg, setModalMsg] = useState("");
   const [modalTitle, setModalTitle] = useState("");
+  const [showSuggestions, setShowSuggestions] = useState(true)
 
   useEffect(() => {
     localStorage.setItem("listPlant", JSON.stringify(listPlant));
@@ -29,6 +32,15 @@ export default function PlantInfo() {
     // console.log(listPlant);
     // console.log(listPlantInfo);
   }, [listPlant, listPlantInfo]);
+
+  useEffect(() => {
+    // if (plantNameSuggestions.length == 0) return
+    searchPlantFn()
+    if (listPlant === "") {
+      setShowSuggestions(false)
+    }
+
+  },[listPlant])
 
   const infoFn = async () => {
     try {
@@ -42,6 +54,20 @@ export default function PlantInfo() {
       setModalTitle("Woops!");
     }
   };
+
+  const searchPlantFn = async () => {
+    try {
+      const res = await axios ({
+        method: "get",
+        url:`https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/v2/plants/search?search=${listPlant}`,
+      })
+      setPlantNameSuggestions(res.data)
+      // console.log(res.data)
+    }
+    catch (e){
+      console.log(e)
+    }
+  }
 
   return (
     <div
@@ -63,7 +89,8 @@ export default function PlantInfo() {
           </div>
 
           <div className="flex flex-row justify-between">
-            <Form>
+            <div className="flex flex-col">
+            <Form >
               <Row>
                 <Col xs="auto">
                   <Form.Control
@@ -75,7 +102,13 @@ export default function PlantInfo() {
                       borderColor: "black",
                       borderWidth: "2px",
                     }}
-                    onChange={(e) => setListPlant(e.target.value)}
+                    value={listPlant}
+                    onChange={(e) => {
+                      setListPlant(e.target.value)
+                      // searchPlantFn()
+                      setShowSuggestions(true)
+
+                    }}
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
                         e.preventDefault();
@@ -100,6 +133,9 @@ export default function PlantInfo() {
                 </Col>
               </Row>
             </Form>
+            <DropdownSuggestions plantSuggestions={plantNameSuggestions} setPlant={setListPlant}
+            setShow={setShowSuggestions} show={showSuggestions}/>
+            </div>
           </div>
 
           <div className="flex flex-row justify-between gap-5 overflow flex-wrap mt-3">
@@ -136,6 +172,7 @@ export default function PlantInfo() {
           show={modalMsg !== ""}
           setModalMsg={setModalMsg}
         />
+        
       </div>
     </div>
   );

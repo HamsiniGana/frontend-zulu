@@ -9,6 +9,7 @@ import axios from "axios";
 import ClosableTabs from "./ClosableTabs";
 import plantBg from "../assets/bg-img.avif";
 import CompareCard from "./CompareCard";
+import DropdownSuggestions from "./DropdownSuggestions";
 
 export default function ComparePlants() {
   const [plants, setPlants] = useState(() => {
@@ -24,6 +25,8 @@ export default function ComparePlants() {
   });
   const [modalMsg, setModalMsg] = useState("");
   const [modalTitle, setModalTitle] = useState("");
+  const [plantNameSuggestions, setPlantNameSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(true);
 
   useEffect(() => {
     localStorage.setItem("plants", JSON.stringify(plants));
@@ -31,6 +34,13 @@ export default function ComparePlants() {
     // console.log(plants);
     // console.log(plantsInfo);
   }, [plants, plantsInfo]);
+
+  useEffect(() => {
+    searchPlantFn();
+    if (newPlant === "") {
+      setShowSuggestions(false);
+    }
+  }, [newPlant]);
 
   const compareFn = async () => {
     const params = new URLSearchParams();
@@ -91,6 +101,19 @@ export default function ComparePlants() {
     }
   };
 
+  const searchPlantFn = async () => {
+    try {
+      const res = await axios({
+        method: "get",
+        url: `https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/v2/plants/search?search=${newPlant}`,
+      });
+      setPlantNameSuggestions(res.data);
+      // console.log(res.data)
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <div
       style={{
@@ -111,23 +134,51 @@ export default function ComparePlants() {
           </div>
 
           <div className="flex flex-row justify-between">
-            <Form>
-              <Row>
-                <Col xs="auto">
-                  <Form.Control
-                    type="text"
-                    placeholder="Search for plants to compare"
-                    className=" mt-3"
-                    style={{
-                      width: "400px",
-                      borderColor: "black",
-                      borderWidth: "2px",
-                    }}
-                    onChange={(e) => setNewPlant(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") {
-                        e.preventDefault();
-                        setPlants((prev) => {
+            <div className="flex flex-col">
+              <Form>
+                <Row>
+                  <Col xs="auto">
+                    <Form.Control
+                      type="text"
+                      placeholder="Search for plants to compare"
+                      className=" mt-3"
+                      value={newPlant}
+                      style={{
+                        width: "400px",
+                        borderColor: "black",
+                        borderWidth: "2px",
+                      }}
+                      onChange={(e) => {
+                        setNewPlant(e.target.value);
+                        setShowSuggestions(true);
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          e.preventDefault();
+                          setPlants((prev) => {
+                            e.preventDefault();
+                            const foundPlant = prev.find((p) => p === newPlant);
+                            if (!foundPlant && newPlant !== "") {
+                              return [...prev, newPlant];
+                            } else {
+                              return prev;
+                            }
+                          });
+                        }
+                      }}
+                    />
+                  </Col>
+                  <Col xs="auto">
+                    <Button
+                      style={{
+                        backgroundColor: "var(--dark-green)",
+                        borderColor: "black",
+                        marginLeft: "-20px",
+                        borderWidth: "2px",
+                      }}
+                      className="mt-3 hover:!bg-white hover:!text-black hover:border hover:border-solid hover:border-black"
+                      onClick={(e) => {
+                        return setPlants((prev) => {
                           e.preventDefault();
                           const foundPlant = prev.find((p) => p === newPlant);
                           if (!foundPlant && newPlant !== "") {
@@ -136,36 +187,20 @@ export default function ComparePlants() {
                             return prev;
                           }
                         });
-                      }
-                    }}
-                  />
-                </Col>
-                <Col xs="auto">
-                  <Button
-                    style={{
-                      backgroundColor: "var(--dark-green)",
-                      borderColor: "black",
-                      marginLeft: "-20px",
-                      borderWidth: "2px",
-                    }}
-                    className="mt-3 hover:!bg-white hover:!text-black hover:border hover:border-solid hover:border-black"
-                    onClick={(e) => {
-                      return setPlants((prev) => {
-                        e.preventDefault();
-                        const foundPlant = prev.find((p) => p === newPlant);
-                        if (!foundPlant && newPlant !== "") {
-                          return [...prev, newPlant];
-                        } else {
-                          return prev;
-                        }
-                      });
-                    }}
-                  >
-                    +Add
-                  </Button>
-                </Col>
-              </Row>
-            </Form>
+                      }}
+                    >
+                      +Add
+                    </Button>
+                  </Col>
+                </Row>
+              </Form>
+              <DropdownSuggestions
+                plantSuggestions={plantNameSuggestions}
+                setPlant={setNewPlant}
+                setShow={setShowSuggestions}
+                show={showSuggestions}
+              />
+            </div>
           </div>
 
           <div className="flex flex-row m-4 pr-3 justify-center w-full">

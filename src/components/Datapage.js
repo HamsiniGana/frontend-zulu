@@ -72,7 +72,7 @@ export default function DataPage() {
             min: res.data.daily.temperature_2m_min[i],
             rain: res.data.daily.rain_sum[i],
         }))
-        console.log(res)
+        // console.log(res)
         setWeather(resultData)
       }
 
