@@ -91,7 +91,7 @@ test("Check if plant info card changes when a different plant is added", async (
   axios.mockResolvedValueOnce({ data: [] }).mockResolvedValue(mockSuccessReponse);
 
   fireEvent.change(searchBar, { target: { value: "onion" } });
-  await waitFor(() => {}); 
+  // await waitFor(() => {}); 
   fireEvent.click(addBtn);
 
   fireEvent.click(addBtn);
@@ -103,7 +103,7 @@ test("Check if plant info card changes when a different plant is added", async (
   axios.mockResolvedValueOnce({ data: [] }).mockResolvedValue(mockSuccessReponse2);
 
   fireEvent.change(searchBar, { target: { value: "tomato" } });
-  await waitFor(() => {}); 
+  // await waitFor(() => {}); 
   fireEvent.click(addBtn);
 
   fireEvent.click(addBtn);
