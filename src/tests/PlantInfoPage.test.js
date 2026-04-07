@@ -88,9 +88,10 @@ test("Check if plant info card changes when a different plant is added", async (
   const addBtn = screen.getByRole("button", { name: /\+Add/i });
   const searchBar = screen.getByPlaceholderText("Search for plant");
 
-  axios.mockResolvedValue(mockSuccessReponse);
+  axios.mockResolvedValueOnce({ data: [] }).mockResolvedValue(mockSuccessReponse);
 
   fireEvent.change(searchBar, { target: { value: "onion" } });
+  await waitFor(() => {}); 
   fireEvent.click(addBtn);
 
   fireEvent.click(addBtn);
@@ -99,15 +100,17 @@ test("Check if plant info card changes when a different plant is added", async (
     expect(onionCompareCard).toBeVisible();
   });
 
-  axios.mockResolvedValue(mockSuccessReponse2);
+  axios.mockResolvedValueOnce({ data: [] }).mockResolvedValue(mockSuccessReponse2);
 
   fireEvent.change(searchBar, { target: { value: "tomato" } });
+  await waitFor(() => {}); 
   fireEvent.click(addBtn);
 
   fireEvent.click(addBtn);
+
   await waitFor(() => {
-    const onionCompareCard = screen.getByText("TOMATO");
-    expect(onionCompareCard).toBeVisible();
+    const tomatoCompareCard = screen.getByText("TOMATO");
+    expect(tomatoCompareCard).toBeVisible();
   });
 
   // Clear data created by this test

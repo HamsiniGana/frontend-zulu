@@ -36,7 +36,7 @@ export default function PlantInfo() {
   useEffect(() => {
     // if (plantNameSuggestions.length == 0) return
     searchPlantFn()
-    if (listPlant === "") {
+    if (listPlant.trim() === "") {
       setShowSuggestions(false)
     }
 
@@ -65,7 +65,9 @@ export default function PlantInfo() {
       // console.log(res.data)
     }
     catch (e){
-      console.log(e)
+      // console.log(e)
+      // setModalTitle("Woops!")
+      alert("Unable to fetch plant name suggestions")
     }
   }
 

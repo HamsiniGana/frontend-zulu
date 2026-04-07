@@ -37,7 +37,7 @@ export default function ComparePlants() {
 
   useEffect(() => {
     searchPlantFn();
-    if (newPlant === "") {
+    if (newPlant.trim() === "") {
       setShowSuggestions(false);
     }
   }, [newPlant]);
@@ -110,7 +110,9 @@ export default function ComparePlants() {
       setPlantNameSuggestions(res.data);
       // console.log(res.data)
     } catch (e) {
-      console.log(e);
+      // console.log(e);
+      // setModalTitle("Woops!")
+      alert("Unable to fetch plant name suggestions")
     }
   };
 
