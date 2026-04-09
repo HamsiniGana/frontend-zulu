@@ -410,7 +410,7 @@ export default function SearchPlant() {
           <div className="bg-white/80 p-3 rounded-xl m-3 w-[30vw] flex flex-col items-center max-h-[25vh] overflow-y-auto">
             <h5>Available plants:</h5>
             <div>
-              {availablePlants.map((index, plant) => {
+              {availablePlants.map((plant, index) => {
                 return <p key={index}>{plant}</p>;
               })}
             </div>
