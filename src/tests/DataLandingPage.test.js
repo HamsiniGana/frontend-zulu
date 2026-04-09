@@ -20,10 +20,10 @@ test("Check whether UI elements are displayed", () => {
   const dataContainer = screen.getByTestId("data-container");
   expect(dataContainer).toBeVisible();
 
-  expect(within(dataContainer).getAllByRole("img")).toHaveLength(3);
+  expect(within(dataContainer).getAllByRole("img")).toHaveLength(4);
   expect(
     within(dataContainer).getAllByRole("button", /Get started/i),
-  ).toHaveLength(3);
+  ).toHaveLength(4);
 
   const irrigationTitle = screen.getByText("Irrigation guide");
   expect(irrigationTitle).toBeVisible();
