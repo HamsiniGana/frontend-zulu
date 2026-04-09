@@ -13,7 +13,7 @@ import DisplayModal from "./DisplayModal";
 
 export default function SearchPlant() {
   const [plant, setPlant] = useState("");
-  const [showSuggestions, setShowSuggestions] = useState(true);
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const [plantNameSuggestions, setPlantNameSuggestions] = useState([]);
   const [lifeForms, setLifeForms] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -110,8 +110,10 @@ export default function SearchPlant() {
         className="bg-white/10 min-h-[80vh] flex flex-col mt-4 mb-5 mx-3 rounded-2xl items-center justify-center border border-solid border-white"
         style={{ backdropFilter: "blur(5px)" }}
       >
-        <div className="flex flex-col justify-between items-center w-full ">
-          <h2 className="text-white ml-3 w-full text-center pt-2">Search plant</h2>
+        <div className="flex flex-col justify-between items-center w-full">
+          <h2 className="text-white ml-3 w-full text-center pt-2">
+            Search plant
+          </h2>
           <div style={{ marginTop: "-5px" }} className="mr-3">
             <Form className="pb-5">
               <Row>
@@ -139,18 +141,45 @@ export default function SearchPlant() {
                     }}
                   />
                 </Col>
-                <Col xs="auto">
+                <Col xs="auto" className="gap-5">
                   <Button
                     style={{
                       backgroundColor: "var(--dark-green)",
                       borderColor: "black",
-                      marginLeft: "-20px",
+                      // marginLeft: "-20px",
                       borderWidth: "2px",
                     }}
                     className="mt-3 hover:!bg-white hover:!text-black hover:border hover:border-solid hover:border-black"
                     onClick={() => searchForPlants()}
                   >
                     Search
+                  </Button>
+
+                  <Button
+                    style={{
+                      backgroundColor: "var(--medium-green)",
+                      borderColor: "black",
+                      marginLeft: "8px",
+                      borderWidth: "2px",
+                      color: "black",
+                    }}
+                    className="mt-3 hover:!bg-white hover:!text-black hover:border hover:border-solid hover:border-black"
+                    onClick={() => {
+                      setCategories([]);
+                      setClimateZones([]);
+                      setLifeForms([]);
+                      setLifespan([]);
+                      setPhMax(-1);
+                      setPhMin(-1);
+                      setShowSuggestions(false);
+                      setPlant("");
+                      setPlantNameSuggestions([]);
+                      setAvailablePlants([]);
+                      setModalMsg("");
+                      setModalTitle("");
+                    }}
+                  >
+                    Reset params
                   </Button>
                 </Col>
               </Row>
