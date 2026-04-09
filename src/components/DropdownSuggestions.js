@@ -7,7 +7,7 @@ export default function DropdownSuggestions(props) {
         style={{
           maxHeight: "10vh",
           overflowY: "auto",
-          width: "51vh",
+          width: "62vh",
           background: "rgba(255, 255, 255, 0.5)",
           backdropFilter: "blur(12px)",
           borderRadius: "12px",

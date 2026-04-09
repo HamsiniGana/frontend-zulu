@@ -5,7 +5,9 @@ import Card from "react-bootstrap/Card";
 import comparePlants from "../assets/comparePlants.png"
 import irrigation from "../assets/irrigation.png"
 import listPlants from "../assets/listPlants.png"
+import search from "../assets/search.png"
 import { useNavigate } from "react-router-dom";
+
 export default function DataLandingPage() {
     const nav = useNavigate()
   return (
@@ -24,7 +26,7 @@ export default function DataLandingPage() {
         data-testid={"data-container"}
       >
         <h1 className="text-white mb-2">Data</h1>
-        <div className="flex flex-row gap-5 justify-between">
+        <div className="flex flex-row gap-3 justify-between mx-2">
           <Card style={{ width: "15rem", background: "rgba(158, 237, 136, 0.3)", backdropFilter: "blur(5px)"}} className="">
             <Card.Img variant="top" src={irrigation} alt="irrigation-icon" className="p-3"/>
             <Card.Body>
@@ -34,6 +36,18 @@ export default function DataLandingPage() {
               </Card.Text>
               <Button className="hover:!text-black hover:!bg-white" style={{backgroundColor: "var(--dark-bottle-green)", borderColor:"var(--dark-bottle-green)", borderWidth:"2px"}}
               onClick={()=> nav('/homepage/data/irrigation-guide')}>Get started</Button>
+            </Card.Body>
+          </Card>
+
+          <Card style={{ width: "15rem", background: "rgba(158, 237, 136, 0.3)", backdropFilter: "blur(5px)"}} className="">
+            <Card.Img variant="top" src={search} alt="irrigation-icon" className="p-3"/>
+            <Card.Body>
+              <Card.Title className="text-white">Search plants</Card.Title>
+              <Card.Text className="font-bold h-[10vh] text-sm">
+                Search for plants by providing some attributes.
+              </Card.Text>
+              <Button className="hover:!text-black hover:!bg-white" style={{backgroundColor: "var(--dark-bottle-green)", borderColor:"var(--dark-bottle-green)", borderWidth:"2px"}}
+              onClick={()=> nav('/homepage/data/search-plant')}>Get started</Button>
             </Card.Body>
           </Card>
 
