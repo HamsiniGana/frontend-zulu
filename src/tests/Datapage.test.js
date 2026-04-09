@@ -46,11 +46,13 @@ test("Check whether UI elements are displayed", () => {
   const soilDropdown = screen.getByTestId("soil-dropdown");
   expect(soilDropdown).toBeVisible();
 });
-test("Test soil dropdown", () => {
+test("Test soil dropdown", async () => {
   render(<DataPage />);
   const soilDropdown = screen.getByTestId("soil-dropdown");
 
-  expect(within(soilDropdown).getAllByRole("option")).toHaveLength(7);
+  await waitFor(() => {
+    expect(within(soilDropdown).getAllByRole("option")).toHaveLength(7);
+  });
 });
 
 test("Check irrigation guide", async () => {
@@ -101,7 +103,9 @@ test("Check irrigation guide", async () => {
     "The days you should water your plants",
   );
 
-  expect(wateringGuideTitle).toBeVisible();
+  await waitFor(() => {
+    expect(wateringGuideTitle).toBeVisible();
+  });
 });
 
 test("Check if location alert is displayed when location is not entered", () => {
@@ -125,7 +129,7 @@ test("Check if location alert is displayed when location is not entered", () => 
   expect(mockAlert).toHaveBeenCalledWith("Enter the location of your plant");
 });
 
-test("Check if plant name alert is displayed when plant name is not entered", () => {
+test("Check if plant name alert is displayed when plant name is not entered", async () => {
   axios.get.mockResolvedValueOnce({
     data: [
       {
@@ -162,7 +166,9 @@ test("Check if plant name alert is displayed when plant name is not entered", ()
 
   fireEvent.click(wateringGuideBtn);
 
-  expect(mockAlert).toHaveBeenCalledWith("Enter a plant name");
+  await waitFor(() => {
+    expect(mockAlert).toHaveBeenCalledWith("Enter a plant name");
+  })
 
   mockAlert.mockRestore();
 });

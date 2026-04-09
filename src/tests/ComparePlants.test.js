@@ -62,7 +62,7 @@ test("Check if closable tabs and compare cards are created when plants are added
   const addBtn = screen.getByRole("button", { name: /\+Add/i });
   const searchBar = screen.getByPlaceholderText("Search for plants to compare");
 
-  axios.mockResolvedValue(mockSuccessReponse);
+  axios.mockResolvedValueOnce({ data: [] }).mockResolvedValueOnce({ data: [] }).mockResolvedValue(mockSuccessReponse);
 
   fireEvent.change(searchBar, { target: { value: "onion" } });
   fireEvent.click(addBtn);

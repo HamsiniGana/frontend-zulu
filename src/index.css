@@ -54,3 +54,8 @@
 .no-arrow::after {
   display: none !important;
 }
+.custom-slider::-webkit-slider-thumb {
+  background-color:rgb(69, 118, 50)!important;
+  opacity: 60;
+  border: 5px solid white;
+}
