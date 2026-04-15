@@ -30,7 +30,8 @@ export default function Navbar() {
         <button className="hover:bg-white hover:decoration-2 bg-medium-green p-3 rounded-xl">
           Graphs
         </button>
-        <button className="hover:bg-white hover:decoration-2 bg-medium-green p-3 rounded-xl">
+        <button className="hover:bg-white hover:decoration-2 bg-medium-green p-3 rounded-xl"
+        onClick={() => nav("/homepage/trade-report")}>
           Reports
         </button>
       </div>

@@ -1,15 +1,15 @@
 import Navbar from "./Navbar";
 import bgImg from "../assets/bg-img.avif";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+// import Button from "react-bootstrap/Button";
+// import Card from "react-bootstrap/Card";
 import comparePlants from "../assets/comparePlants.png"
 import irrigation from "../assets/irrigation.png"
 import listPlants from "../assets/listPlants.png"
+import soil from "../assets/soil.png"
 import search from "../assets/search.png"
-import { useNavigate } from "react-router-dom";
+import DataLandingPageCards from "./DataLandingPageCards";
 
 export default function DataLandingPage() {
-    const nav = useNavigate()
   return (
     <div
       style={{
@@ -21,59 +21,18 @@ export default function DataLandingPage() {
     >
       <Navbar />
       <div
-        className="bg-white/10 h-[80vh] flex flex-col mt-4 mb-5 mx-4 rounded-2xl items-center justify-center border border-solid border-white"
+        className="bg-white/10 h-[80vh] flex flex-col mt-4 mb-5 mx-4 rounded-2xl items-center justify-between border border-solid border-white"
         style={{ backdropFilter: "blur(5px)"}}
         data-testid={"data-container"}
       >
         <h1 className="text-white mb-2">Data</h1>
         <div className="flex flex-row gap-3 justify-between mx-2">
-          <Card style={{ width: "15rem", background: "rgba(158, 237, 136, 0.3)", backdropFilter: "blur(5px)"}} className="">
-            <Card.Img variant="top" src={irrigation} alt="irrigation-icon" className="p-3"/>
-            <Card.Body>
-              <Card.Title className="text-white">Irrigation guide</Card.Title>
-              <Card.Text className="font-bold h-[10vh] text-sm">
-                Get information on how and when to water your plants, and how weather affects it.
-              </Card.Text>
-              <Button className="hover:!text-black hover:!bg-white" style={{backgroundColor: "var(--dark-bottle-green)", borderColor:"var(--dark-bottle-green)", borderWidth:"2px"}}
-              onClick={()=> nav('/homepage/data/irrigation-guide')}>Get started</Button>
-            </Card.Body>
-          </Card>
 
-          <Card style={{ width: "15rem", background: "rgba(158, 237, 136, 0.3)", backdropFilter: "blur(5px)"}} className="">
-            <Card.Img variant="top" src={search} alt="irrigation-icon" className="p-3"/>
-            <Card.Body>
-              <Card.Title className="text-white">Search plants</Card.Title>
-              <Card.Text className="font-bold h-[10vh] text-sm">
-                Search for plants by providing some attributes.
-              </Card.Text>
-              <Button className="hover:!text-black hover:!bg-white" style={{backgroundColor: "var(--dark-bottle-green)", borderColor:"var(--dark-bottle-green)", borderWidth:"2px"}}
-              onClick={()=> nav('/homepage/data/search-plant')}>Get started</Button>
-            </Card.Body>
-          </Card>
-
-          <Card style={{ width: "15rem", background: "rgba(158, 237, 136, 0.3)", backdropFilter: "blur(5px)"}} className="">
-            <Card.Img variant="top" src={listPlants} alt="plant-information-icon" className="p-3"/>
-            <Card.Body>
-              <Card.Title className="text-white">Plant information</Card.Title>
-              <Card.Text className="font-bold h-[10vh] text-sm">
-                Get detailed information about a plant.
-              </Card.Text>
-              <Button className="hover:!text-black hover:!bg-white" style={{backgroundColor: "var(--dark-bottle-green)", borderColor:"var(--dark-bottle-green)", borderWidth:"2px"}}
-              onClick={()=> nav('/homepage/data/plant-info')}>Get started</Button>
-            </Card.Body>
-          </Card>
-
-          <Card style={{ width: "15rem", background: "rgba(158, 237, 136, 0.3)", backdropFilter: "blur(5px)"}} className="">
-            <Card.Img variant="top" src={comparePlants} alt="compare-plants-icon" className="p-3"/>
-            <Card.Body>
-              <Card.Title className="text-white">Compare plants</Card.Title>
-              <Card.Text className="font-bold h-[10vh] text-sm">
-                Compare plant information and understand how they differ.
-              </Card.Text>
-              <Button className="hover:!text-black hover:!bg-white" style={{backgroundColor: "var(--dark-bottle-green)", borderColor:"var(--dark-bottle-green)", borderWidth:"2px"}}
-              onClick={()=> nav('/homepage/data/compare-plants')}>Get started</Button>
-            </Card.Body>
-          </Card>
+        <DataLandingPageCards img={soil} alt={"soil-icon"} title={"Soil types"} description={"Get a list of all soil types."} navLink={'/homepage/data/soil-types'}/>
+        <DataLandingPageCards img={irrigation} alt={"irrigation-icon"} title={"Irrigation guide"} description={"Get information on how and when to water your plants, and how weather affects it."} navLink={'/homepage/data/irrigation-guide'}/>
+        <DataLandingPageCards img={search} alt={"search-icon"} title={"Search plants"} description={"Search for plants by providing some attributes."} navLink={'/homepage/data/search-plant'}/>
+        <DataLandingPageCards img={listPlants} alt={"plant-information-icon"} title={"Plant information"} description={"Get detailed information about a plant."} navLink={'/homepage/data/plant-info'}/>
+        <DataLandingPageCards img={comparePlants} alt={"compare-plants-icon"} title={"Compare plants"} description={"Compare plant information and understand how they differ."} navLink={'/homepage/data/compare-plants'}/>
         </div>
       </div>
     </div>
