@@ -9,6 +9,7 @@
   --light-green: #E9F8E2;
   /* --secondary-color: rgb(237, 255, 253); A custom RGB color */
 }
+
 /* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -22,9 +23,10 @@
   }
 
   to {
-    opacity:0
+    opacity: 0
   }
 }
+
 .dot-one {
   animation-name: loadingAnimation;
   animation-duration: 1.5s;
@@ -38,12 +40,14 @@
   animation-delay: -0.66s;
   animation-iteration-count: 10;
 }
+
 .dot-three {
   animation-name: loadingAnimation;
   animation-duration: 1.5s;
   animation-delay: -0.44s;
   animation-iteration-count: 10;
 }
+
 .dot-four {
   animation-name: loadingAnimation;
   animation-duration: 1.5s;
@@ -54,8 +58,16 @@
 .no-arrow::after {
   display: none !important;
 }
+
 .custom-slider::-webkit-slider-thumb {
-  background-color:rgb(69, 118, 50)!important;
+  background-color: rgb(69, 118, 50) !important;
   opacity: 60;
   border: 5px solid white;
+}
+
+.glass-table, .glass-table th, .glass-table td {
+  margin: 5px !important;
+  width: 85vw;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: black;
 }
