@@ -5,9 +5,6 @@ import bgImage from "../assets/bg-img.avif"
 import DisplayModal from "./DisplayModal"
 import CalendarCard from "./CalendarCard"
 
-const API_BASE = 
-"https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io"
-
 export default function DataPage() {
   const [lat, setLat] = useState(null)
   const [lon, setLon] = useState(null)
@@ -47,7 +44,7 @@ export default function DataPage() {
     try {
       const res = await axios({
         method: "post",
-        url: `${API_BASE}/v2/plants/${plant}/water`,
+        url: `https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/v2/plants/${plant}/water`,
         params: {
           soil_type: soil || "loam"
         },

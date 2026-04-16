@@ -16,9 +16,9 @@ export default function CalendarCard({ water, plant }) {
         today.getMonth() + monthOffset, 
     )
 
-    const year = today.getFullYear()
-    const month = today.getMonth()
-    const monthString = today.toLocaleString("default", {month: "long"})
+    const year = currentDate.getFullYear()
+    const month = currentDate.getMonth()
+    const monthString = currentDate.toLocaleString("default", {month: "long"})
 
     const daysInMonth = new Date(year, month + 1, 0).getDate()
     const firstDay = new Date(year, month, 1).getDay()

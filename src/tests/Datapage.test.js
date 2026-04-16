@@ -1,12 +1,11 @@
 import {
-  fireEvent,
   render,
   screen,
-  waitFor,
-  within,
+  // waitFor,
+  // within,
 } from "@testing-library/react";
 import DataPage from "../components/Datapage";
-import * as axios from "axios";
+// import * as axios from "axios";
 
 const mockedFn = jest.fn();
 
@@ -16,7 +15,7 @@ jest.mock("react-router-dom", () => ({
 
 jest.mock("axios");
 
-const mockAlert = jest.spyOn(window, "alert").mockImplementation(() => {});
+// const mockAlert = jest.spyOn(window, "alert").mockImplementation(() => {});
 
 test("Check whether UI elements are displayed", () => {
   render(<DataPage />);
