@@ -6,8 +6,6 @@ import {
   fireEvent,
 } from "@testing-library/react";
 import DataLandingPage from "../components/DataLandingPage";
-import { data } from "react-router-dom";
-import { wait } from "@testing-library/user-event/dist/utils";
 
 const mockedFn = jest.fn();
 
@@ -20,10 +18,10 @@ test("Check whether UI elements are displayed", () => {
   const dataContainer = screen.getByTestId("data-container");
   expect(dataContainer).toBeVisible();
 
-  expect(within(dataContainer).getAllByRole("img")).toHaveLength(4);
+  expect(within(dataContainer).getAllByRole("img")).toHaveLength(5);
   expect(
     within(dataContainer).getAllByRole("button", /Get started/i),
-  ).toHaveLength(4);
+  ).toHaveLength(5);
 
   const irrigationTitle = screen.getByText("Irrigation guide");
   expect(irrigationTitle).toBeVisible();

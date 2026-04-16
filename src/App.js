@@ -12,6 +12,7 @@ import DataLandingPage from "./components/DataLandingPage";
 import PlantInfo from "./components/PlantInfoPage";
 import SearchPlant from "./components/SearchPlant";
 import TradeReport from "./components/TradeReport";
+import SoilTypes from "./components/SoilTypes";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/homepage/data/plant-info" element={<PlantInfo />} />
         <Route path="/homepage/data/search-plant" element={<SearchPlant />} />
         <Route path="/homepage/trade-report" element={<TradeReport />} />
+        <Route path="/homepage/data/soil-types" element={<SoilTypes />} />
       </Routes>
     </BrowserRouter>
   );
