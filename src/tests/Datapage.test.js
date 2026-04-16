@@ -1,51 +1,51 @@
-// import {
-//   fireEvent,
-//   render,
-//   screen,
-//   waitFor,
-//   within,
-// } from "@testing-library/react";
-// import DataPage from "../components/Datapage";
-// import * as axios from "axios";
+import {
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+  within,
+} from "@testing-library/react";
+import DataPage from "../components/Datapage";
+import * as axios from "axios";
 
-// const mockedFn = jest.fn();
+const mockedFn = jest.fn();
 
-// jest.mock("react-router-dom", () => ({
-//   useNavigate: () => mockedFn,
-// }));
+jest.mock("react-router-dom", () => ({
+  useNavigate: () => mockedFn,
+}));
 
-// jest.mock("axios");
+jest.mock("axios");
 
-// const mockAlert = jest.spyOn(window, "alert").mockImplementation(() => {});
+const mockAlert = jest.spyOn(window, "alert").mockImplementation(() => {});
 
-// test("Check whether UI elements are displayed", () => {
-//   render(<DataPage />);
-//   const irrigationGuideTitle = screen.getByText("Irrigation Guide");
-//   expect(irrigationGuideTitle).toBeVisible();
+test("Check whether UI elements are displayed", () => {
+  render(<DataPage />);
+  const irrigationGuideTitle = screen.getByText("Irrigation Guide");
+  expect(irrigationGuideTitle).toBeVisible();
 
-//   const enterAddressTitle = screen.getByText("Enter your address:");
-//   expect(enterAddressTitle).toBeVisible();
+  const enterAddressTitle = screen.getByText("Enter your plant's location:");
+  expect(enterAddressTitle).toBeVisible();
 
-//   const soilTypeTitle = screen.getByText("Select your soil type:");
-//   expect(soilTypeTitle).toBeVisible();
+  const soilTypeTitle = screen.getByText("Select your soil type (optional):");
+  expect(soilTypeTitle).toBeVisible();
 
-//   const plantNameTitle = screen.getByText("Enter plant name:");
-//   expect(plantNameTitle).toBeVisible();
+  const plantNameTitle = screen.getByText("Enter plant name:");
+  expect(plantNameTitle).toBeVisible();
 
-//   const wateringGuideBtn = screen.getByRole("button", {
-//     name: /Get Watering Guide/i,
-//   });
-//   expect(wateringGuideBtn).toBeVisible();
+  const wateringGuideBtn = screen.getByRole("button", {
+    name: /Get Watering Guide/i,
+  });
+  expect(wateringGuideBtn).toBeVisible();
 
-//   const addressInput = screen.getByPlaceholderText(/e.g. Kensington, NSW/i);
-//   expect(addressInput).toBeVisible();
+  const addressInput = screen.getByPlaceholderText(/e.g. Kensington, NSW/i);
+  expect(addressInput).toBeVisible();
 
-//   const plantNameInput = screen.getByPlaceholderText(/e.g. tomato/i);
-//   expect(plantNameInput).toBeVisible();
+  const plantNameInput = screen.getByPlaceholderText(/e.g. tomato/i);
+  expect(plantNameInput).toBeVisible();
 
-//   const soilDropdown = screen.getByTestId("soil-dropdown");
-//   expect(soilDropdown).toBeVisible();
-// });
+  // const soilDropdown = screen.getByTestId("soil-dropdown");
+  // expect(soilDropdown).toBeVisible();
+});
 // test("Test soil dropdown", async () => {
 //   render(<DataPage />);
 //   const soilDropdown = screen.getByTestId("soil-dropdown");
