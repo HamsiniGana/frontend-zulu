@@ -5,7 +5,7 @@ import LandingPage from "./components/LandingPage";
 import LoginPage from "./components/LoginPage";
 import SignUpPage from "./components/SignUpPage";
 import LoadingPage from "./components/LoadingPage";
-import DataPage from "./components/DataPage";
+import DataPage from "./components/Datapage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ComparePlants from "./components/ComparePlants";
 import DataLandingPage from "./components/DataLandingPage";
