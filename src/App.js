@@ -5,7 +5,7 @@ import LandingPage from "./components/LandingPage";
 import LoginPage from "./components/LoginPage";
 import SignUpPage from "./components/SignUpPage";
 import LoadingPage from "./components/LoadingPage";
-import DataPage from "./components/Datapage";
+import DataPage from "./components/DataPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ComparePlants from "./components/ComparePlants";
 import DataLandingPage from "./components/DataLandingPage";
@@ -13,6 +13,7 @@ import PlantInfo from "./components/PlantInfoPage";
 import SearchPlant from "./components/SearchPlant";
 import TradeReport from "./components/TradeReport";
 import SoilTypes from "./components/SoilTypes";
+import TradeGraph from "./components/TradeGraph";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/homepage/data/plant-info" element={<PlantInfo />} />
         <Route path="/homepage/data/search-plant" element={<SearchPlant />} />
         <Route path="/homepage/trade-report" element={<TradeReport />} />
+        <Route path="/homepage/graphs" element={<TradeGraph />} />
         <Route path="/homepage/data/soil-types" element={<SoilTypes />} />
       </Routes>
     </BrowserRouter>
