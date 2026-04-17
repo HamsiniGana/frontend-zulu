@@ -85,6 +85,7 @@ export default function Homepage() {
               <button
                 className="hover:bg-white hover:!text-black py-2 px-3 rounded-xl w-[150px] hover:border hover:border-solid hover:border-black
               bg-dark-bottle-green text-white text-xl mb-5 mr-3"
+              onClick={() => nav("/homepage/graphs")}
               // style={{marginTop: "-20px"}}
               >
                 Get started
