@@ -1,11 +1,9 @@
 import plantLight from "../assets/plantLight.png";
 import { useNavigate } from "react-router-dom";
-import LogoutDeleteAccountCard from "./LogoutDeleteAccountCard";
-
-export default function Navbar() {
-  const nav = useNavigate();
+export default function RedditNavbar() {
+    const nav = useNavigate()
     return (
-        <nav
+    <nav
       className="flex flex-row bg-dark-bottle-green/70 items-center"
       style={{ backdropFilter: "blur(12px)", "zIndex": "999", position: "relative" }}
     >
@@ -23,21 +21,16 @@ export default function Navbar() {
       >
         <button
           className="hover:bg-white hover:decoration-2 bg-medium-green p-3 rounded-xl"
-          onClick={() => nav("/homepage/data")}
+          onClick={() => nav("/homepage/reddit-homepage")}
         >
-          Data
+          Search posts
         </button>
-        <button className="hover:bg-white hover:decoration-2 bg-medium-green p-3 rounded-xl"
+        {/* <button className="hover:bg-white hover:decoration-2 bg-medium-green p-3 rounded-xl"
           onClick={() => nav("/homepage/graphs")}>
           Graphs
-        </button>
-        <button className="hover:bg-white hover:decoration-2 bg-medium-green p-3 rounded-xl"
-        onClick={() => nav("/homepage/trade-report")}>
-          Reports
-        </button>
+        </button> */}
       </div>
-      <LogoutDeleteAccountCard className="justify-end" />
+      {/* <LogoutDeleteAccountCard className="justify-end" /> */}
     </nav>
-    )
-
+  );
 }

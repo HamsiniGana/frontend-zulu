@@ -34,7 +34,7 @@ export default function RedditLoginPage() {
       });
 
       if (res.status === 200) {
-        // nav("/loadingPage");
+        nav("/homepage/reddit-homepage");
         localStorage.setItem("reddit-token", res.data.token)
         console.log(res);
       } else {

@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 import report from "../assets/report.png";
 import { useNavigate } from "react-router-dom";
 import plantBg from "../assets/bg-img.avif";
-import reddit from "../assets/reddit.png"
+import reddit from "../assets/reddit.png";
 
 export default function Homepage() {
   const nav = useNavigate();
@@ -18,85 +18,79 @@ export default function Homepage() {
       }}
     >
       <Navbar />
-      <div className=" min-h-screen flex flex-col"
-      data-testid={"data-container"}>
+      <div
+        className=" min-h-screen flex flex-col"
+        data-testid={"data-container"}
+      >
         <div className="flex flex-row">
-        <div
-          className="flex flex-row gap-[7vw] bg-white/30 mx-5 p-5 items-center justify-center
+          <div
+            className="flex flex-row gap-[7vw] bg-white/30 mx-5 p-5 items-center justify-center
                         rounded-3xl
                         hover:scale-[1.01] mt-[5vh] border border-solid border-white"
-          style={{ backdropFilter: "blur(10px)" }}
-        >
-          <div className="flex flex-col gap-2 h-full items-center justify-center mb-2">
-            <img src={rain} alt="rain-icon" className="w-[80px] h-[80px]" />
-            <img
-              src={sappling}
-              alt="sappling-icon"
-              className="w-[70px] h-[70px]"
-              color="white"
-            />
-          </div>
-
-          <div className="flex flex-col flex-1 h-full">
-            <div className="flex flex-col flex-1 justify-center">
-              <h1 className="text-black font-bold text-xl pb-1">
-                Data
-              </h1>
-              <p className="text-xl text-black">
-                Upload or use existing datasets to analyse plant data in
-                relation to weather data.
-              </p>
+            style={{ backdropFilter: "blur(10px)" }}
+          >
+            <div className="flex flex-col gap-2 h-full items-center justify-center mb-2">
+              <img src={rain} alt="rain-icon" className="w-[80px] h-[80px]" />
+              <img
+                src={sappling}
+                alt="sappling-icon"
+                className="w-[70px] h-[70px]"
+                color="white"
+              />
             </div>
-            <div className="flex flex-row justify-end mr-1">
-              <button
-                className="hover:bg-white hover:!text-black py-2 px-3 rounded-xl w-[150px] hover:border hover:border-solid hover:border-black
+
+            <div className="flex flex-col flex-1 h-full">
+              <div className="flex flex-col flex-1 justify-center">
+                <h1 className="text-black font-bold text-xl pb-1">Data</h1>
+                <p className="text-xl text-black">
+                  Upload or use existing datasets to analyse plant data in
+                  relation to weather data.
+                </p>
+              </div>
+              <div className="flex flex-row justify-end mr-1">
+                <button
+                  className="hover:bg-white hover:!text-black py-2 px-3 rounded-xl w-[150px] hover:border hover:border-solid hover:border-black
                 bg-dark-bottle-green text-white text-xl"
-                onClick={() => nav("/homepage/data")}
-              >
-                Get started
-              </button>
+                  onClick={() => nav("/homepage/data")}
+                >
+                  Get started
+                </button>
+              </div>
             </div>
           </div>
-        </div>
 
-
-
-
-
-
-        <div
-          className="flex flex-row gap-[5vw] bg-white/30 mx-5 p-5 items-center justify-center
+          <div
+            className="flex flex-row gap-[5vw] bg-white/30 mx-5 p-5 items-center justify-center
                         rounded-3xl
                         hover:scale-[1.01] h-[45vh] mt-[5vh] border border-solid border-white"
-          style={{ backdropFilter: "blur(10px)" }}
-        >
-          {/* <div className="flex flex-col gap-2 h-full items-center justify-center mb-2"> */}
+            style={{ backdropFilter: "blur(10px)" }}
+          >
+            {/* <div className="flex flex-col gap-2 h-full items-center justify-center mb-2"> */}
             <img src={reddit} alt="reddit-icon" className="w-[80px] h-[80px]" />
 
-          {/* </div> */}
+            {/* </div> */}
 
-          <div className="flex flex-col flex-1 h-full">
-            <div className="flex flex-col flex-1 justify-center">
-              <h1 className="text-black font-bold text-xl pb-1">
-                Reddit data
-              </h1>
-              <p className="text-xl text-black">
-                Use our third-party feature to comb through reddit data.
-              </p>
-            </div>
-            <div className="flex flex-row justify-end mr-1">
-              <button
-                className="hover:bg-white hover:!text-black py-2 px-3 rounded-xl w-[150px] hover:border hover:border-solid hover:border-black
+            <div className="flex flex-col flex-1 h-full">
+              <div className="flex flex-col flex-1 justify-center">
+                <h1 className="text-black font-bold text-xl pb-1">
+                  Reddit data
+                </h1>
+                <p className="text-xl text-black">
+                  Use our third-party feature to comb through reddit data.
+                </p>
+              </div>
+              <div className="flex flex-row justify-end mr-1">
+                <button
+                  className="hover:bg-white hover:!text-black py-2 px-3 rounded-xl w-[150px] hover:border hover:border-solid hover:border-black
                 bg-dark-bottle-green text-white text-xl"
-                onClick={() => nav("/homepage/reddit-sign-up")}
-              >
-                Get started
-              </button>
+                  onClick={() => nav("/homepage/reddit-sign-up")}
+                >
+                  Get started
+                </button>
+              </div>
             </div>
           </div>
         </div>
-        </div>
-        
 
         <div className="flex flex-row justify-between items-center">
           <div
@@ -107,27 +101,30 @@ export default function Homepage() {
             style={{ backdropFilter: "blur(10px)" }}
           >
             <div className="flex flex-row justify-start w-full">
-              <h1 className="text-black font-bold text-xl" >
-                Graphs
-              </h1>
+              <h1 className="text-black font-bold text-xl">Graphs</h1>
             </div>
 
-            <div className="flex flex-row gap-5 items-center flex-1 " style={{marginTop:"-1vw"}}>
+            <div
+              className="flex flex-row gap-5 items-center flex-1 "
+              style={{ marginTop: "-1vw" }}
+            >
               {/* <div className='flex flex-row items-center h-full  border border-solid border-black'>   */}
               <img
                 src={graph}
                 alt="graph-icon"
                 className="w-[80px] h-[80px] "
               />
-              <p className="text-xl pb-5 text-center mt-5 text-black">View data trends.</p>
+              <p className="text-xl pb-5 text-center mt-5 text-black">
+                View data trends.
+              </p>
               {/* </div> */}
             </div>
             <div className="flex flex-row justify-end mr-1">
               <button
                 className="hover:bg-white hover:!text-black py-2 px-3 rounded-xl w-[150px] hover:border hover:border-solid hover:border-black
               bg-dark-bottle-green text-white text-xl mb-5 mr-3"
-              onClick={() => nav("/homepage/graphs")}
-              // style={{marginTop: "-20px"}}
+                onClick={() => nav("/homepage/graphs")}
+                // style={{marginTop: "-20px"}}
               >
                 Get started
               </button>
@@ -140,26 +137,28 @@ export default function Homepage() {
             style={{ backdropFilter: "blur(10px)" }}
           >
             <div className="flex flex-row justify-start w-full">
-              <h1 className="text-black font-bold text-xl ">
-                Reports
-              </h1>
+              <h1 className="text-black font-bold text-xl ">Reports</h1>
             </div>
 
-            <div className="flex flex-row gap-5 items-center flex-1" 
-            style={{marginTop:"-1vw"}}>
+            <div
+              className="flex flex-row gap-5 items-center flex-1"
+              style={{ marginTop: "-1vw" }}
+            >
               <img
                 src={report}
                 alt="graph-icon"
                 className="w-[80px] h-[80px]"
               />
-              <p className="text-xl pb-5 mt-5 text-black">Harvest final intelligence.</p>
+              <p className="text-xl pb-5 mt-5 text-black">
+                Harvest final intelligence.
+              </p>
             </div>
             <div className="flex flex-row justify-end mr-1">
               <button
                 className="hover:bg-white hover:!text-black py-2 px-3 rounded-xl w-[150px] hover:border hover:border-solid hover:border-black
               bg-dark-bottle-green text-white text-xl mb-5 mr-3"
-              onClick={() => nav("/homepage/trade-report")}
-              // style={{marginTop: "-20px"}}
+                onClick={() => nav("/homepage/trade-report")}
+                // style={{marginTop: "-20px"}}
               >
                 Get started
               </button>
