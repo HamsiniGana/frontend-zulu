@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import report from "../assets/report.png";
 import { useNavigate } from "react-router-dom";
 import plantBg from "../assets/bg-img.avif";
+import reddit from "../assets/reddit.png"
 
 export default function Homepage() {
   const nav = useNavigate();
@@ -19,10 +20,11 @@ export default function Homepage() {
       <Navbar />
       <div className=" min-h-screen flex flex-col"
       data-testid={"data-container"}>
+        <div className="flex flex-row">
         <div
-          className="flex flex-row gap-[20vw] bg-white/30 mx-5 p-5 items-center justify-center
+          className="flex flex-row gap-[7vw] bg-white/30 mx-5 p-5 items-center justify-center
                         rounded-3xl
-                        hover:scale-[1.01] h-[45vh] mt-[5vh] border border-solid border-white"
+                        hover:scale-[1.01] mt-[5vh] border border-solid border-white"
           style={{ backdropFilter: "blur(10px)" }}
         >
           <div className="flex flex-col gap-2 h-full items-center justify-center mb-2">
@@ -56,6 +58,45 @@ export default function Homepage() {
             </div>
           </div>
         </div>
+
+
+
+
+
+
+        <div
+          className="flex flex-row gap-[5vw] bg-white/30 mx-5 p-5 items-center justify-center
+                        rounded-3xl
+                        hover:scale-[1.01] h-[45vh] mt-[5vh] border border-solid border-white"
+          style={{ backdropFilter: "blur(10px)" }}
+        >
+          {/* <div className="flex flex-col gap-2 h-full items-center justify-center mb-2"> */}
+            <img src={reddit} alt="reddit-icon" className="w-[80px] h-[80px]" />
+
+          {/* </div> */}
+
+          <div className="flex flex-col flex-1 h-full">
+            <div className="flex flex-col flex-1 justify-center">
+              <h1 className="text-black font-bold text-xl pb-1">
+                Reddit data
+              </h1>
+              <p className="text-xl text-black">
+                Use our third-party feature to comb through reddit data.
+              </p>
+            </div>
+            <div className="flex flex-row justify-end mr-1">
+              <button
+                className="hover:bg-white hover:!text-black py-2 px-3 rounded-xl w-[150px] hover:border hover:border-solid hover:border-black
+                bg-dark-bottle-green text-white text-xl"
+                onClick={() => nav("/homepage/reddit-sign-up")}
+              >
+                Get started
+              </button>
+            </div>
+          </div>
+        </div>
+        </div>
+        
 
         <div className="flex flex-row justify-between items-center">
           <div
