@@ -52,7 +52,7 @@ export default function SearchPosts() {
           Authorization: `Bearer ${localStorage.getItem("reddit-token")}`,
         },
       });
-      console.log(res);
+    //   console.log(res);
       if (res.status === 200) {
         if (res.data.data.events.length === 0) {
           alert("No posts found");
@@ -190,6 +190,7 @@ export default function SearchPosts() {
                 return (
                   <Post
                     key={p.attributes.id}
+                    id={p.attributes.id}
                     author={p.attributes.author}
                     createdAt={p.time_object.timestamp.slice(0, 10)}
                     title={p.attributes.title}
