@@ -19,7 +19,7 @@ test("Check whether UI elements are displayed", () => {
   const dataContainer = screen.getByTestId("data-container");
   expect(dataContainer).toBeVisible();
 
-  expect(within(dataContainer).getAllByRole("img")).toHaveLength(4);
+  expect(within(dataContainer).getAllByRole("img")).toHaveLength(5);
 
   expect(within(dataContainer).getByText("Data")).toBeVisible();
 
@@ -29,7 +29,7 @@ test("Check whether UI elements are displayed", () => {
 
   expect(
     within(dataContainer).getAllByRole("button", /Get started/i),
-  ).toHaveLength(3);
+  ).toHaveLength(4);
 
   const dataInfo = screen.getByText(
     "Upload or use existing datasets to analyse plant data in relation to weather data.",
