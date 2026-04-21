@@ -90,28 +90,21 @@ export default function DataPage() {
       const res = await axios({
         method: "post",
         url: `https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/v2/save`,
+        params: {
+          username: user, 
+          plant_name: plant
+        },
         data: {
-          username: user,
-          plant_name: plant, 
           irrigation_dates: water, 
           temperature_data: tempEvents, 
           plant_date: plantDate || null
         },
       })
-
-      if(res.status === 200) {
-        setModalTitle("Success")
-        setModalMsg("Saved successfully")
-      } else {
-        setModalTitle("Woops!")
-        setModalMsg("Something went wrong :(")
-      }
-      
+      setModalTitle("Success")
+      setModalMsg("Saved successfully")
     } catch (e) {
-      setModalTitle("Woops!");   
-      setModalMsg(
-        e.response?.data?.detail || "Failed to save"
-      );  
+      setModalTitle("Woops")
+      setModalMsg("Failed to save data")
     }
   }
 
