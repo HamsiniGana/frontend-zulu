@@ -106,7 +106,7 @@ export default function TradeGraph() {
                   <p className="text-white"> * Year Range: </p>
                   <Form.Control
                     type="text"
-                    placeholder="E.g. 2000-2012"
+                    placeholder="E.g. 2000-2010"
                     onChange={(e) => setPeriod(e.target.value)}
                   />
                 </div>

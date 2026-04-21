@@ -14,6 +14,7 @@ import SearchPlant from "./components/SearchPlant";
 import TradeReport from "./components/TradeReport";
 import SoilTypes from "./components/SoilTypes";
 import TradeGraph from "./components/TradeGraph";
+import UserData from "./components/UserData";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="/homepage/trade-report" element={<TradeReport />} />
         <Route path="/homepage/graphs" element={<TradeGraph />} />
         <Route path="/homepage/data/soil-types" element={<SoilTypes />} />
+        <Route path="/user" element={<UserData />} />
       </Routes>
     </BrowserRouter>
   );
