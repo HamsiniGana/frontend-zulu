@@ -1,7 +1,7 @@
 import { plantAndImgMap } from "./plantsAndImagesMap"
 import { useState } from "react"
 
-export default function CalendarCard({water, tempEvents = [], plant}) {
+export default function CalendarCard({water, tempEvents = [], plant, onSave}) {
   const [monthOffset, setMonthOffset] = useState(0)
 
   if (!water || water.length === 0) return null
@@ -76,6 +76,13 @@ export default function CalendarCard({water, tempEvents = [], plant}) {
           className="w-[200px] h-[200px]"
       />
       <p className="text-white mt-2 capitalize">{plant}</p>
+
+      <button 
+        onClick={onSave}
+        className="bg-green-600 text-white px-4 py-2 rounded-xl
+        hover:!bg-green-200 hover:!text-black hover:!border-green-800 transition">
+          Save Calendar
+      </button>
       </div>
 
       {/* calendar dispaly */}
