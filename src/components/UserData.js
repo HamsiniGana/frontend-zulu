@@ -56,12 +56,12 @@ export default function UserData() {
 
   }, [user])
 
-  const riskRatio = getRiskRatio(selectedPlant)
+  const riskRatio = selectedPlant ? getRiskRatio(selectedPlant) : 0
   const riskMessage = (ratio) => {
-    if (ratio < 0.3) return {label: "The environment for " + selectedPlant.plant_name + " is ideal", colour: "text-green-600"}
-    if (ratio < 0.5) return {label: "The environment for " + selectedPlant.plant_name + " is at risk", colour: "text-yellow-600"}
+    if (ratio < 0.3) return {label: "The environment is ideal", colour: "text-green-600"}
+    if (ratio > 0.5) return {label: "The environment is at risk", colour: "text-yellow-600"}
     return {
-      label: "The environment for " + selectedPlant.plant_name + " is NOT ideal",
+      label: "The environment is NOT ideal",
       colour: "text-red-600"
     }
   }
