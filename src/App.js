@@ -14,7 +14,7 @@ import SearchPlant from "./components/SearchPlant";
 import TradeReport from "./components/TradeReport";
 import SoilTypes from "./components/SoilTypes";
 import TradeGraph from "./components/TradeGraph";
-import UserData from "./components/UserData";
+import UserData from "./components/userData";
 import RedditSignUpPage from "./components/RedditSignUpPage";
 import RedditLoginPage from "./components/RedditLoginPage";
 import RedditHomepage from "./components/RedditHompage";
