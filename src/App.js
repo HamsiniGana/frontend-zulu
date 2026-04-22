@@ -15,6 +15,10 @@ import TradeReport from "./components/TradeReport";
 import SoilTypes from "./components/SoilTypes";
 import TradeGraph from "./components/TradeGraph";
 import UserData from "./components/UserData";
+import RedditSignUpPage from "./components/RedditSignUpPage";
+import RedditLoginPage from "./components/RedditLoginPage";
+import RedditHomepage from "./components/RedditHompage";
+import SearchPosts from "./components/SearchPosts";
 
 function App() {
   return (
@@ -37,6 +41,10 @@ function App() {
         <Route path="/homepage/graphs" element={<TradeGraph />} />
         <Route path="/homepage/data/soil-types" element={<SoilTypes />} />
         <Route path="/user" element={<UserData />} />
+        <Route path="/homepage/reddit-sign-up" element={<RedditSignUpPage />} />
+        <Route path="/homepage/reddit-login" element={<RedditLoginPage />} />
+        <Route path="/homepage/reddit-homepage" element={<RedditHomepage />} />
+        <Route path="/homepage/reddit-homepage/search-posts" element={<SearchPosts />} />
       </Routes>
     </BrowserRouter>
   );
