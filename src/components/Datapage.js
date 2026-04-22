@@ -16,7 +16,7 @@ export default function DataPage() {
   const [plantDate, setPlantDate] = useState("")
   const [modalMsg, setModalMsg] = useState("")
   const [modalTitle, setModalTitle] = useState("")
-  const[loading, setLoading] = useState("")
+  const[loading, setLoading] = useState(false)
 
   // Get user's location (optional)
   useEffect(() => {
