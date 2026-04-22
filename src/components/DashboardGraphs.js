@@ -4,7 +4,6 @@ import {
 
 // irrigation statistics on line graph 
 export function IrrigationGraph({ plant }) {
-
   if (!plant?.irrigation_dates?.length) return null
 
   const irrigationStat = {}
@@ -15,7 +14,7 @@ export function IrrigationGraph({ plant }) {
 
   plant.irrigation_dates.forEach(date => {
     const d = new Date(date)
-    const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`
+    const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2,"0")}`
     irrigationStat[key] = (irrigationStat[key] || 0) + 1
   })
 
@@ -65,7 +64,6 @@ export function IrrigationGraph({ plant }) {
 
 // temperature bar graph
 export function TemperatureGraph({ plants }) {
-
   if (!plants?.length) return null;
 
   const tempStat = {};

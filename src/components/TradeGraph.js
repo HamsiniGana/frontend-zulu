@@ -11,12 +11,10 @@ export default function TradeGraph() {
   const [country, setCountry] = useState("");
   const [period, setPeriod] = useState("");
   const [commodity, setCommodity] = useState("");
-  const [trade, setTrade] = useState("Trade type");
-  const [variable, setVariable] = useState("variable")
-  
+  const [trade, setTrade] = useState("Trade Type");
+  const [variable, setVariable] = useState("Variable")
   const [imgUrl, setImgUrl] = useState(null);
   const [loading, setLoading] = useState(false)
-
   const [modalMsg, setModalMsg] = useState("");
   const [modalTitle, setModalTitle] = useState("");
 
@@ -25,7 +23,7 @@ export default function TradeGraph() {
     setImgUrl(null)
 
     if(!country.trim() || !commodity.trim() || !period.trim() 
-       || trade.trim() === "Trade type" || variable.trim() === "variable") {
+       || trade.trim() === "Trade Type" || variable.trim() === "Variable") {
         setModalTitle("Missing Input")
         setModalMsg("All the input fields are required")
         setLoading(false)
@@ -80,13 +78,13 @@ export default function TradeGraph() {
         style={{ backdropFilter: "blur(5px)" }}
       >
         <div className="flex flex-col justify-between items-center w-full">
-          <h3 className="text-white mt-4">Trade graph Visualiser</h3>
+          <h3 className="text-white mt-4">Trade Graph Visualiser</h3>
           <div
             className="flex flex-col bg-white/20 p-3 rounded-2xl border border-solid border-white/10 m-3"
             style={{ backdropFilter: "blur(5px)" }}
           >
             <p className="text-white text-xl text-center">
-              Filter search criteria
+              Filter Search Criteria
             </p>
             <div
               className="flex flex-col bg-dark-bottle-green/60 p-3 rounded-xl"
@@ -118,7 +116,7 @@ export default function TradeGraph() {
                   <p className="text-white"> * Commodity: </p>
                   <Form.Control
                     type="text"
-                    placeholder="E.g. pineapple"
+                    placeholder="E.g. Pineapple"
                     onChange={(e) => setCommodity(e.target.value)}
                   />
                 </div>
@@ -183,17 +181,13 @@ export default function TradeGraph() {
               <div className="flex justify-center mt-4">
                 <button
                   className="bg-dark-bottle-green/70 p-3 rounded-2xl text-white w-full"
-                  onClick={() => tradeGraphFn()}
+                  onClick={() => tradeGraphFn()} disabled={loading}
                 >
-                  Get graph
+                {loading ? "Generating Graph..." : "Get Graph"}
                 </button>   
-              </div>   
+              </div>  
 
             </div>
-            {loading  && (
-              <p className="text-white"> Generating graph...</p>
-            )}
-
             {imgUrl && (
               <div className="bg-white p-4 rounded-2xl shadow-lg mb-4">
                 <img

@@ -8,15 +8,17 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Table from "react-bootstrap/Table";
 
 export default function TradeReport() {
-  const [trade, setTrade] = useState("Trade type");
+  const [trade, setTrade] = useState("Trade Type");
   const [country, setCountry] = useState("");
   const [year, setYear] = useState(0);
   const [commodity, setCommodity] = useState("");
   const [report, setReport] = useState([]);
   const [modalMsg, setModalMsg] = useState("");
   const [modalTitle, setModalTitle] = useState("");
+  const [loading, setLoading] = useState(false)
 
   const tradeReportFn = async () => {
+    setLoading(true);
     const params = new URLSearchParams();
 
     params.append("country", country);
@@ -46,6 +48,7 @@ export default function TradeReport() {
         setModalMsg(e.response.data.detail);
       }
     }
+    setLoading(false);
   };
 
   return (
@@ -64,13 +67,13 @@ export default function TradeReport() {
         style={{ backdropFilter: "blur(5px)" }}
       >
         <div className="flex flex-col justify-between items-center w-full">
-          <h3 className="text-white mt-4">Trade data query</h3>
+          <h3 className="text-white mt-4">Trade Data Query</h3>
           <div
             className="flex flex-col bg-white/20 p-3 rounded-2xl border border-solid border-white/10 m-3"
             style={{ backdropFilter: "blur(5px)" }}
           >
             <p className="text-white text-xl text-center">
-              Filter search criteria
+              Filter Search Criteria
             </p>
             <div
               className="flex flex-col bg-dark-bottle-green/60 p-3 rounded-xl "
@@ -82,7 +85,7 @@ export default function TradeReport() {
                     <p className="text-white"> * Country: </p>
                     <Form.Control
                       type="text"
-                      placeholder="Enter country"
+                      placeholder="Enter Country"
                       onChange={(e) => setCountry(e.target.value)}
                     />
                   </div>
@@ -90,7 +93,7 @@ export default function TradeReport() {
                     <p className="text-white"> * Year: </p>
                     <Form.Control
                       type="number"
-                      placeholder="Enter year"
+                      placeholder="Enter Year"
                       onChange={(e) => setYear(e.target.value)}
                     />
                   </div>
@@ -101,13 +104,13 @@ export default function TradeReport() {
                     <p className="text-white"> Commodity: </p>
                     <Form.Control
                       type="text"
-                      placeholder="Enter commodity"
+                      placeholder="Enter Commodity"
                       onChange={(e) => setCommodity(e.target.value)}
                     />
                   </div>
 
                   <div className="flex flex-col p-3">
-                    <p className="text-white"> * Trade type: </p>
+                    <p className="text-white"> * Trade Type: </p>
                     <Dropdown>
                       <Dropdown.Toggle
                         id="dropdown-basic"
@@ -143,9 +146,9 @@ export default function TradeReport() {
 
                 <button
                   className="bg-dark-bottle-green/70 p-3 rounded-2xl text-white"
-                  onClick={() => tradeReportFn()}
+                  onClick={() => tradeReportFn()} disabled={loading}
                 >
-                  Get report
+                  {loading ? "Generating Report..." : "Get Report"}
                 </button>
               </div>
 

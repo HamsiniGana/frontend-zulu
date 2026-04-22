@@ -8,7 +8,7 @@ import axios from "axios"
 import DisplayModal from "./DisplayModal"
 import { IrrigationGraph, TemperatureGraph } from "./DashboardGraphs"
 import UserPlantCard from "./UserPlantCard"
-import getRiskRatio from "./GetRiskRatio"
+import { GetRiskRatio, GetRiskInsight,  GetMostSensitive } from "./GetRiskInsight"
 
 export default function UserData() {
   const user = localStorage.getItem("username") || "Guest"
@@ -56,38 +56,26 @@ export default function UserData() {
 
   }, [user])
 
-  const riskRatio = selectedPlant ? getRiskRatio(selectedPlant) : 0
-  const riskMessage = (ratio) => {
-    if (ratio < 0.3) return {label: "The environment is ideal", colour: "text-green-600"}
-    if (ratio > 0.5) return {label: "The environment is at risk", colour: "text-yellow-600"}
-    return {
-      label: "The environment is NOT ideal",
-      colour: "text-red-600"
-    }
-  }
-  const riskInfo = riskMessage(riskRatio)
-
-  const mostSensitive = [...plants].sort((a,b) => getRiskRatio(b) - getRiskRatio(a))[0]
+  const riskRatio = selectedPlant ? GetRiskRatio(selectedPlant) : 0
+  const riskInfo = GetRiskInsight(selectedPlant, riskRatio)
+  const mostSensitive = GetMostSensitive(plants, GetRiskRatio)
 
   return (
     <div className="flex flex-col"
       style={{ backgroundImage: `url(${plantImg})` }}
     >
       <Navbar />
-
       <div className="flex min-h-screen p-6 gap-6">
 
         {/* content tab */}
         <div className="w-[260px] flex flex-col items-center p-5
           bg-white/10 rounded-3xl border border-white shadow-xl"
-          style={{ backdropFilter: "blur(10px)" }}
+          style={{backdropFilter: "blur(10px)"}}
         >
           <img src={account} alt="User avatar" className="w-[90px] mb-3" />
-
           <h2 className="text-white font-bold">{user}</h2>
 
           <div className="flex flex-col w-full gap-3 mt-6">
-
             <button
               onClick={() => setView("home")}
               className={`p-3 rounded-xl ${
@@ -110,45 +98,45 @@ export default function UserData() {
 
         {/* info panel */}
         <div className="flex-1 p-6 bg-white/10 rounded-3xl border border-white"
-          style={{ backdropFilter: "blur(10px)" }}
+          style={{backdropFilter: "blur(10px)"}}
         >
 
           {/* home info */}
           {view === "home" && (
             <div className="text-white space-y-6">
-
               <h1 className="text-3xl font-bold">Welcome {user} 🌿</h1>
-
               <div className="grid grid-cols-3 gap-4">
                 <div className="bg-white text-black p-4 rounded-xl">
-                  <h3 className="font-bold">Plants</h3>
+                  <h3 className="font-bold">Plants Count</h3>
                   <p className="text-2xl">{plants.length}</p>
                 </div>
 
                 <div className="bg-white text-black p-4 rounded-xl">
-                  <h3 className="font-bold">Most Sensitive</h3>
+                  <h3 className="font-bold">Most Sensitive Plant</h3>
                   <p>{mostSensitive?.plant_name || "Your plants are safe"}</p>
                 </div>
               </div>
 
               <div className="bg-white text-black p-5 rounded-xl">
-                <h2 className="font-bold mb-2">Insights</h2>
-                <ul className="list-disc pl-5">
+                <h2 className="font-bold mb-2">Insights ✨</h2>
+                
+                <ul className="list-disc pl-5 space-y-2">
                   <li>
-                    Pay Attention to Planting Zones - if you are planting 
-                    outdoors and from a seed, check the back of your seed packet 
-                    for suggested zone and timing for planting
+                    <span className="font-semibold">Pay Attention to Planting Zones - </span>{"  "}
+                    if you are planting outdoors and from a seed, check the back 
+                    of your seed packet for suggested zone and timing for planting
                   </li>
                   <li>
-                    Hydrate but don't overwater - overwatering can be just as 
+                    <span className="font-semibold">Pay Attention to Planting Zones - </span>{"  "}
+                    overwatering can be just as 
                     harmful as underwatering. Make sure to check the soil 
                     moisture before watering.
                   </li>
                   <li>
-                    Watchout for hot weathers - When the temperature is too 
-                    high, plants respire rapidly. This can lead to dehydration and
-                    wilting. Consider providing shade or water in the early 
-                    morning or late evening. 
+                    <span className="font-semibold">Watchout for Hot Weathers - </span>{"  "}
+                    When the temperature is too high, plants respire rapidly. 
+                    This can lead to dehydration and wilting. Consider providing 
+                    shade or water in the early morning or late evening. 
                   </li>
                 </ul>
               </div>
@@ -160,19 +148,15 @@ export default function UserData() {
           {view === "plants" && (
             <div>
               <h1 className="text-white text-2xl mb-4">Your Plants</h1>
-
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {plants.map((p, i) => (
                   <UserPlantCard 
-                    key={i}
-                    plant={p}
+                    key={i} plant={p}
                     onCalendar={() => {
-                      setSelectedPlant(p);
-                      setView("calendar");
+                      setSelectedPlant(p); setView("calendar");
                     }}
                     onRisk={() => {
-                      setSelectedPlant(p);
-                      setView("risk");
+                      setSelectedPlant(p); setView("risk");
                     }}
                   />
                 ))}
@@ -235,18 +219,13 @@ export default function UserData() {
 
               <div className="bg-white p-4 rounded-xl">
                 <h2 className="font-bold mb-2">Summary</h2>
-
                 <p>🔥 Days that are too hot: {selectedPlant.hot_days}</p>
                 <p>❄️ Days that are too cold: {selectedPlant.cold_days}</p>
                 <p>⚠️ Total days at risk: {selectedPlant.total_risk}</p>
-
-            <p className={`${riskInfo.colour} mt-2`}>
-              {riskInfo.label}
-            </p>
+                <p className={`${riskInfo.colour} mt-2`}>{riskInfo.label}</p>
               </div>
             </div>
           )}
-
         </div>
       </div>
       <DisplayModal
