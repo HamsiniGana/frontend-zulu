@@ -10,7 +10,7 @@ import { IrrigationGraph, TemperatureGraph } from "./DashboardGraphs"
 import UserPlantCard from "./UserPlantCard"
 import { GetRiskRatio, GetRiskInsight,  GetMostSensitive } from "./GetRiskInsight"
 
-export default function UserData() {
+export default function UserDataDashboard() {
   const user = localStorage.getItem("username") || "Guest"
   const fetchedRef = useRef(false)
   const [modalMsg, setModalMsg] = useState("")
