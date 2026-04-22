@@ -9,11 +9,20 @@ export default function CalendarCard({water, tempEvents = [], plant, onSave}) {
   const plantImage =
   plantAndImgMap[plant?.trim().toLowerCase()] ||
   plantAndImgMap["default"]
+  
+  const wateringDates = water.map((d) => new Date(d))
 
-  const today = new Date()
+  let start = wateringDates[0];
+  for (let i = 1; i < wateringDates.length; i++) {
+    if (wateringDates[i].getTime() < start.getTime()) {
+      start = wateringDates[i];
+    }
+  }
+  const startDate = start;
+
   const currentDate = new Date(
-    today.getFullYear(),
-    today.getMonth() + monthOffset, 
+    startDate.getFullYear(),
+    startDate.getMonth() + monthOffset, 
   )
 
   const year = currentDate.getFullYear()
@@ -22,8 +31,6 @@ export default function CalendarCard({water, tempEvents = [], plant, onSave}) {
 
   const daysInMonth = new Date(year, month + 1, 0).getDate()
   const firstDay = new Date(year, month, 1).getDay()
-
-  const wateringDates = water.map((d) => new Date(d))
 
   const tempDates = tempEvents.map((t) => ({
     date: new Date(t.date), status: t.status
@@ -103,7 +110,7 @@ export default function CalendarCard({water, tempEvents = [], plant, onSave}) {
             <button
               disabled={!spilloverWateringDates}
               onClick={() => setMonthOffset(prev => prev + 1)}
-              className="text-lg px-2 py-1 bg-grey-200 rounded hover:bg-gray-300 disabled:opacity:-25"
+              className="text-lg px-2 py-1 bg-grey-200 rounded hover:bg-gray-300 disabled:opacity-25"
             >
               →
             </button>

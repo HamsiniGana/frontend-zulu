@@ -32,20 +32,20 @@ export default function DataPage() {
   }, [])
 
   async function getWateringDays() {
-    setLoading(true)
     if (!plant.trim()) {
       setModalTitle("Missing Input")
       setModalMsg("Please enter a plant name")
-      setLoading(false)
       return
     }
 
     if (!lat && !lon && !addr.trim()) {
       setModalTitle("Location Required")
       setModalMsg("Please allow location access or enter the location of your plant")
-      setLoading(false)
       return
     }
+
+    setLoading(true)
+
     try {
       const res = await axios({
         method: "post",
@@ -67,17 +67,14 @@ export default function DataPage() {
       } else {
         setModalTitle("Woops!")
         setModalMsg("Something went wrong :(")
-        setLoading(false)
       }
       
     } catch (e) {
       setModalTitle("Woops!");   
-      setModalMsg(
-        e.response?.data?.detail || "Failed to fetch watering guide"
-      );  
+      setModalMsg("Failed to fetch watering guide");  
+    } finally {
+      setLoading(false)
     }
-
-    setLoading(false)
   }
 
   async function saveData() {
@@ -209,7 +206,6 @@ export default function DataPage() {
               </button>
             </div>
           </div>
-          {/* calendar display */}
           <CalendarCard water={water} tempEvents={tempEvents} plant={plant} onSave={saveData}/>
         </div>
       </div>
