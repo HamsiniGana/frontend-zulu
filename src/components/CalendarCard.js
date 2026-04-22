@@ -100,7 +100,7 @@ export default function CalendarCard({water, tempEvents = [], plant, onSave}) {
           <button
             disabled={monthOffset === 0}
             onClick={() => setMonthOffset(prev => prev - 1)}
-            className="text-lg px-2 py-1 bg-grey-200 rounded hover:bg-grey-300 disabled:opacity-25">
+            className="text-lg px-2 py-1 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-25">
               ←
             </button>
             <div className="font-bold text-lg">
@@ -110,7 +110,7 @@ export default function CalendarCard({water, tempEvents = [], plant, onSave}) {
             <button
               disabled={!spilloverWateringDates}
               onClick={() => setMonthOffset(prev => prev + 1)}
-              className="text-lg px-2 py-1 bg-grey-200 rounded hover:bg-gray-300 disabled:opacity-25"
+              className="text-lg px-2 py-1 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-25"
             >
               →
             </button>
