@@ -36,12 +36,14 @@ export default function DataPage() {
     if (!plant.trim()) {
       setModalTitle("Missing Input")
       setModalMsg("Please enter a plant name")
+      setLoading(false)
       return
     }
 
     if (!lat && !lon && !addr.trim()) {
       setModalTitle("Location Required")
       setModalMsg("Please allow location access or enter the location of your plant")
+      setLoading(false)
       return
     }
     try {
@@ -65,6 +67,7 @@ export default function DataPage() {
       } else {
         setModalTitle("Woops!")
         setModalMsg("Something went wrong :(")
+        setLoading(false)
       }
       
     } catch (e) {
@@ -87,7 +90,7 @@ export default function DataPage() {
     }
     
     try {
-      const res = await axios({
+      await axios({
         method: "post",
         url: `https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/v2/save`,
         params: {
