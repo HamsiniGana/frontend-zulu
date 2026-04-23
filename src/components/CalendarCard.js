@@ -24,7 +24,7 @@ export default function CalendarCard({water, tempEvents = [], plant, onSave}) {
     startDate.getFullYear(),
     startDate.getMonth() + monthOffset, 
   )
-
+ 
   const year = currentDate.getFullYear()
   const month = currentDate.getMonth()
   const monthString = currentDate.toLocaleString("default", {month: "long"})
