@@ -11,7 +11,7 @@ export default function LogoutDeleteAccountCard() {
   const [modalTitle, setModalTitle] = useState("");
   const [modalMsg, setModalMsg] = useState("");
   const [modalFn, setModalFn] = useState(null);
-  const nav = useNavigate(null);
+  const nav = useNavigate();
 
   const logoutFn = async () => {
     const username = localStorage.getItem("username");
@@ -94,6 +94,18 @@ export default function LogoutDeleteAccountCard() {
             >
               Delete account
             </Button>
+            <Button 
+              style={{
+                backgroundColor: "var(--medium-green)",
+                borderColor: "var(--medium-green)",
+                margin: "3px",
+                color: "black",
+                width: "150px",
+              }}
+              onClick={() => nav("/user")}
+              > 
+                User Data
+              </Button>
           </div>
         </Dropdown.Menu>
       </Dropdown>

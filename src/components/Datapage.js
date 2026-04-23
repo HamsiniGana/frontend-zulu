@@ -12,9 +12,11 @@ export default function DataPage() {
   const [plant, setPlant] = useState("")
   const [soil, setSoil] = useState("")
   const [water, setWater] = useState([])
+  const [tempEvents, setTempEvents] = useState([])
   const [plantDate, setPlantDate] = useState("")
   const [modalMsg, setModalMsg] = useState("")
   const [modalTitle, setModalTitle] = useState("")
+  const[loading, setLoading] = useState(false)
 
   // Get user's location (optional)
   useEffect(() => {
@@ -41,6 +43,9 @@ export default function DataPage() {
       setModalMsg("Please allow location access or enter the location of your plant")
       return
     }
+
+    setLoading(true)
+
     try {
       const res = await axios({
         method: "post",
@@ -57,7 +62,8 @@ export default function DataPage() {
       })
 
       if(res.status === 200) {
-        setWater(res.data)
+        setWater(res.data.watering_days)
+        setTempEvents(res.data.temperature_events)
       } else {
         setModalTitle("Woops!")
         setModalMsg("Something went wrong :(")
@@ -65,9 +71,40 @@ export default function DataPage() {
       
     } catch (e) {
       setModalTitle("Woops!");   
-      setModalMsg(
-        e.response?.data?.detail || "Failed to fetch watering guide"
-      );  
+      setModalMsg("Failed to fetch watering guide");  
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  async function saveData() {
+    const user = localStorage.getItem("username")
+
+    if(!user) {
+      setModalTitle("Error")
+      setModalMsg("User not logged in")
+      return
+    }
+    
+    try {
+      await axios({
+        method: "post",
+        url: `https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/v2/save`,
+        params: {
+          username: user, 
+          plant_name: plant
+        },
+        data: {
+          irrigation_dates: water, 
+          temperature_data: tempEvents, 
+          plant_date: plantDate || null
+        },
+      })
+      setModalTitle("Success")
+      setModalMsg("Saved successfully")
+    } catch (e) {
+      setModalTitle("Woops")
+      setModalMsg("Failed to save data")
     }
   }
 
@@ -93,10 +130,7 @@ export default function DataPage() {
             Irrigation Guide
           </h1>
 
-          {/* INPUT SECTION */}
           <div className="flex flex-wrap gap-6 justify-center">
-
-            {/*  PLANT DATE INPUT */}
             <div className="flex flex-col gap-3 w-full max-w-[300px]">
               <label className="font-semibold text-white">
                 When did you plant it? (optional):
@@ -109,8 +143,7 @@ export default function DataPage() {
               className="border border-black rounded-xl px-3 py-2 focus:outline-none"
               />
             </div>
-
-            {/* ADDRESS INPUT */}
+            
             <div className="flex flex-col gap-3 w-full max-w-[300px]">
               <label className="font-semibold text-white">
                 Enter your plant's location:
@@ -129,7 +162,6 @@ export default function DataPage() {
               />
             </div>
 
-            {/* SOIL TYPE INPUT */}
             <div className="flex flex-col gap-3 w-full max-w-[300px]">
               <label className="font-semibold text-white">
                 Select your soil type (optional):
@@ -150,7 +182,6 @@ export default function DataPage() {
               </select>
             </div>
 
-            {/* PLANT INPUT */}
             <div className="flex flex-col gap-3 w-full max-w-[300px]">
               <label className="font-semibold text-white">
                 Enter plant name:
@@ -166,16 +197,16 @@ export default function DataPage() {
 
               <button
                 onClick={getWateringDays}
+                disabled={loading}
                 className="bg-black text-white py-2 px-3 rounded-xl
-                hover:!bg-white hover:!text-black hover:!border-black hover:!border-2 transition"
+                hover:!bg-white hover:!text-black hover:!border-black hover:!border-2 transition
+                disabled:opacity-50"
               >
-                Get Watering Guide
+                {loading ? "Getting Water guide..." : "Get Watering Guide"}
               </button>
             </div>
           </div>
-
-          {/* RESULTS SECTION */}
-          <CalendarCard water={water} plant={plant}/>
+          <CalendarCard water={water} tempEvents={tempEvents} plant={plant} onSave={saveData}/>
         </div>
       </div>
 

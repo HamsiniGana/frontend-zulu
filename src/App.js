@@ -18,6 +18,7 @@ import RedditSignUpPage from "./components/RedditSignUpPage";
 import RedditLoginPage from "./components/RedditLoginPage";
 import RedditHomepage from "./components/RedditHompage";
 import SearchPosts from "./components/SearchPosts";
+import UserDataDashboard from "./components/UserDashboard";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <Route path="/homepage/trade-report" element={<TradeReport />} />
         <Route path="/homepage/graphs" element={<TradeGraph />} />
         <Route path="/homepage/data/soil-types" element={<SoilTypes />} />
+        <Route path="/user" element={<UserDataDashboard />} />
         <Route path="/homepage/reddit-sign-up" element={<RedditSignUpPage />} />
         <Route path="/homepage/reddit-login" element={<RedditLoginPage />} />
         <Route path="/homepage/reddit-homepage" element={<RedditHomepage />} />
