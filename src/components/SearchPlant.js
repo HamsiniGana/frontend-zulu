@@ -31,7 +31,7 @@ export default function SearchPlant() {
       try {
         const res = await axios({
           method: "get",
-          url: `https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/v2/plants/search?search=${plant}`,
+          url: `http://localhost:8000/v2/plants/search?search=${plant}`,
         });
         setPlantNameSuggestions(res.data);
 
@@ -81,7 +81,7 @@ export default function SearchPlant() {
       }
       const res = await axios({
         method: "get",
-        url: `https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/v2/plants/search?${params.toString()}`,
+        url: `http://localhost:8000/v2/plants/search?${params.toString()}`,
       });
       setPlantNameSuggestions(res.data);
       console.log(res.data);

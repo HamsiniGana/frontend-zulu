@@ -40,7 +40,7 @@ export default function ComparePlants() {
       try {
         const res = await axios({
           method: "get",
-          url: `https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/v2/plants/search?search=${newPlant}`,
+          url: `http://localhost:8000/v2/plants/search?search=${newPlant}`,
         });
         setPlantNameSuggestions(res.data);
         // console.log(res.data)
@@ -66,7 +66,7 @@ export default function ComparePlants() {
     try {
       const res = await axios({
         method: "get",
-        url: "https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/compare/",
+        url: "http://localhost:8000/compare/",
         params: params,
       });
       if (res.status === 200) {

@@ -10,7 +10,7 @@ export default function SoilTypes() {
     const getSoilListFn = async () => {
       const res = await axios({
         method: "get",
-        url: `https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/soil`,
+        url: `http://localhost:8000/soil`,
       });
       console.log(res.data);
       setSoils(res.data);

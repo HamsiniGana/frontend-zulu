@@ -49,7 +49,7 @@ export default function DataPage() {
     try {
       const res = await axios({
         method: "post",
-        url: `https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/v2/plants/${plant}/water`,
+        url: `http://localhost:8000/v2/plants/${plant}/water`,
         params: {
           soil_type: soil || "loam"
         },
@@ -89,7 +89,7 @@ export default function DataPage() {
     try {
       await axios({
         method: "post",
-        url: `https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/v2/save`,
+        url: `http://localhost:8000/v2/save`,
         params: {
           username: user, 
           plant_name: plant
