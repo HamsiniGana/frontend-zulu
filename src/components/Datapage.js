@@ -54,8 +54,8 @@ export default function DataPage() {
           soil_type: soil || "loam"
         },
         data: {
-          latitude: lat || null,
-          longitude: lon || null,
+          latitude: addr.trim() ? null : lat,
+          longitude: addr.trim() ? null : lon,
           address: addr || null,
           plant_date: plantDate || null
         },
@@ -153,7 +153,7 @@ export default function DataPage() {
                 type="text"
                 placeholder={
                   lat
-                    ? `Using device location (Lat: ${lat.toFixed(2)}, Lon: ${lon?.toFixed(2)})`
+                    ? `Lat: ${lat.toFixed(2)}, Lon: ${lon?.toFixed(2)}`
                     : "e.g. Kensington, NSW"
                 }
                 value={addr}
