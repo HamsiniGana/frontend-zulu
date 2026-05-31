@@ -30,7 +30,7 @@ export default function TradeReport() {
     try {
       const res = await axios({
         method: "get",
-        url: `https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/trade_report/?${params.toString()}`,
+        url: `http://localhost:8000/trade_report/?${params.toString()}`,
       });
       //   console.log(res);
       setReport(res.data.slice(0, 31));

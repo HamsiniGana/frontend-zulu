@@ -19,7 +19,7 @@ export default function LogoutDeleteAccountCard() {
 
     const res = await axios({
       method: "post",
-      url: "https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/logout/",
+      url: "http://localhost:8000/logout/",
       params: {
         username: username,
       },
@@ -33,7 +33,7 @@ export default function LogoutDeleteAccountCard() {
   const deleteAccountFn = async () => {
     const res = await axios({
       method: "delete",
-      url: `https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/delete-user/${localStorage.getItem("username")}`,
+      url: `http://localhost:8000/delete-user/${localStorage.getItem("username")}`,
     });
 
     if (res.status === 200) {

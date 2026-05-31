@@ -20,7 +20,7 @@ export default function SignUpPage() {
     try {
       res = await axios({
         method: "post",
-        url: "https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/sign-up/",
+        url: "http://localhost:8000/sign-up/",
         data: {
           username: username,
           plain_password: password,

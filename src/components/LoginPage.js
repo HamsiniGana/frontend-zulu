@@ -29,7 +29,7 @@ export default function LoginPage() {
     try {
       res = await axios({
         method: "post",
-        url: "https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/login/",
+        url: "http://localhost:8000/login/",
         data: params,
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -48,6 +48,9 @@ export default function LoginPage() {
         setModalTitle("⚠ Woops");
       } else if (e.response.data.detail !== undefined) {
         setModalMsg(e.response.data.detail);
+        setModalTitle("⚠ Woops");
+      } else {
+        setModalMsg("Cannot connect to server");
         setModalTitle("⚠ Woops");
       }
     }

@@ -10,7 +10,7 @@ export default function Post(props) {
     try {
       const res = await axios({
         method: "get",
-        url: `https://215fbbb9u9.execute-api.us-east-1.amazonaws.com/v1/post/comments?link_id=${props.id}&limit={5}`,
+        url: `http://localhost:8000/v1/post/comments?link_id=${props.id}&limit={5}`,
         headers: {
           Authorization: `Bearer ${localStorage.getItem("reddit-token")}`,
         },

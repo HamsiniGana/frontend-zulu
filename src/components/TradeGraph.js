@@ -41,7 +41,7 @@ export default function TradeGraph() {
     try {
       const res = await axios({
         method: "get",
-        url: `https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/trade_report/visual?${params.toString()}`,
+        url: `http://localhost:8000/trade_report/visual?${params.toString()}`,
         responseType: "blob",
     });
       if(imgUrl) URL.revokeObjectURL(imgUrl)

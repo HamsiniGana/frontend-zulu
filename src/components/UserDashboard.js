@@ -32,7 +32,7 @@ export default function UserDataDashboard() {
     async function fetchData() {
       try {
         const res = await axios.get(
-          `https://sengzulu.gentlehill-6b9262ed.australiaeast.azurecontainerapps.io/v2/user/${user}`
+          `http://localhost:8000/v2/user/${user}`
         )
 
         const formatted = res.data.map(p => ({
